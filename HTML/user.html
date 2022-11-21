@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KFS USER</title>
+    <link rel="stylesheet" href="/CSS/grid.css">
+    <link rel="stylesheet" href="/CSS/user.css">
+    <link rel="stylesheet" href="/CSS/admin.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+  
+    <div class="form_moi" style="display: block;" id="form_nv">
+    <!--Header thongtin-->
+    <div>
+        <nav class="header">
+            <ul id="nav">
+                <img src="/IMG/logo.png" style="width:4em">
+                <div class="button_back" onclick="dangxuat()"><i class="fa-solid fa-chevron-left"style="width:4em"></i></div>
+                <li><a href="#"></a>CÔNG VIỆC</li>
+                <li id="trangthai_cvm"><a href="#"></a>THÔNG BÁO</li>
+                <li><a href="#"></a>TRANG CHỦ</li>
+                <li><a href="#"></a><i class="fa fa-phone" aria-hidden="true"></i> 0386 250 217</li>
+            <!--<li><span><i class="fa fa-search" aria-hidden="true"></i><input class="search-input" placeholder=" Tìm kiếm..."></span></li>--> 
+            </ul>
+        </nav>
+        <div class="grid wide">
+            <div class="row no-gutters">
+                <div class="col l-2" >
+                    <a  href="#"><img class="avt_nv" id="avt_opennv"></a> 
+                </div>
+                <div class="col l-10">
+                    <h1><text_header id="ten_nv">Lê Xuân Đức</text_header></h1>
+                    <div class="row no-gutters">
+                        <div class="col l-5">
+                            <div class="row">
+                                <div class="col l-5">
+                                    <textmargin><label>Mã nhân viên</label></textmargin>
+                                    <textmargin><label>Chức vụ</label></textmargin>
+                                    <textmargin><label>Gmail công ty</label></textmargin>
+                                </div>
+                                <div class="col l-7">
+                                    <textmargin><thongtin id="id_nv"></thongtin></textmargin>
+                                    <textmargin><thongtin id="chucvu_nv"></thongtin></textmargin>
+                                    <textmargin><thongtin>lexuanduc@kfs.com.vn</thongtin></textmargin>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col l-4">
+                            <div class="row no-gutters">
+                                <div class="col l-5">
+                                    <textmargin><label>Ngày sinh</label></textmargin>
+                                    <textmargin><label>Quê quán </label></textmargin>
+                                    <textmargin><label>Gmail cá nhân</label></textmargin>
+                                </div>
+                                <div class="col l-7">
+                                    <textmargin><thongtin>23/09/2030</thongtin></textmargin>
+                                    <textmargin><thongtin>Quảng Nam</thongtin></textmargin>
+                                    <textmargin><thongtin>lexuanduc@gmail.com</thongtin></textmargin>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col l-3">
+                            <div class="row no-gutters">
+                                <div class="col l-5">
+                                
+                                    <textmargin><label>Tài khoản</label></textmargin>
+                                    <textmargin><label>Điện thoại</label></textmargin>
+                                </div>
+                                <div class="col l-7">
+                                
+                                    <textmargin><thongtin>17864927</thongtin></textmargin>
+                                    <textmargin><thongtin>0386250217</thongtin></textmargin>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>    
+                </div>  
+            </div>
+            
+                <text_header1>I. THÔNG TIN CÁ NHÂN 
+                    <i class="fa-solid fa-pen" onclick="sua_ttcn()"></i>
+                </text_header1>
+                <div id="thongtin_canhan">
+                    <!--noi dung thong tin-->
+                </div>
+
+            <text_header1>II. THÔNG TIN CÔNG VIỆC <i class="fa-solid fa-pen"></i></text_header1>
+            <text_header><i class="fa-solid fa-list"></i>&emsp;Thông tin cơ bản</text_header>
+           <!--////////////////////////////////////////-->
+            <text_header><i class="fa-solid fa-money-check-dollar"></i>&emsp;Tài sản</text_header>
+            <!--///////////////////////////////////////////////////////////////////////////////////////////////////-->
+            <text_header><i class="fa-sharp fa-solid fa-briefcase"></i>&emsp;Tiến độ công việc</text_header>
+        <!--/////////////////////////////////////////Công việc đang thực hiện//////////////////////////////////////////////////////-->
+            <text_header1>III. CẬP NHẬT CÔNG VIỆC <i class="fa-solid fa-pen"></i></text_header1>
+            <text_header><i class="fa-sharp fa-solid fa-spinner"></i></i>&emsp;Công việc đang thực hiện</text_header>
+            <div id="dscv_update">
+                <!--//////////////////// nội dung công việc-->
+            </div>
+            <text_header><i class="fa-sharp fa-solid fa-spinner"></i></i>&emsp;Lịch sử yêu cầu</text_header>
+            <div id="his_update">
+                <!--//////////////////// nội dung công việc-->
+            </div>
+         <!--Cập nhật công việc việc-->   
+            <text_header><i class="fa-solid fa-bars-progress"></i>&emsp;Báo cáo tiến độ</text_header>
+            <form action="#" id="form_sua_giaoviec">
+                <div class="row no-gutter">
+                    <div class="col l-6">
+                        <div class="row no-gutter">
+                            <div class="col l-12"><textmargin><thongtin>Công việc</thongtin></textmargin></div>
+                            <div class="col l-12">
+                                <h1 id="id_cvg" style="display: none;"></h1>
+                                <div id="aa">
+                                    <select id="ten_cvg" onchange="select_congviec_bc(this)">
+                                        
+                                     <!--nơi thêm giá trị công việc từ CSDL để hiển thị lên web-->
+                                    </select>
+                                </div>
+                               
+                            </div>
+
+                            <div class="col l-3"><textmargin><thongtin >Tiên độ hiện tại</thongtin></textmargin></div>           
+                            <div class="col l-12"><textmargin><textarea id="tiendo_cv" disabled></textarea></textmargin></div>
+                            <div class="col l-3"><textmargin><thongtin>Cập nhật tiến độ</thongtin></textmargin></div> 
+                            <div class="col l-12"><textmargin><textarea placeholder="Nhập mô tả..." id="tiendo_update" required></textarea></textmargin></div> 
+
+
+                        </div>
+                    </div>
+                    <div class="col l-6">
+                        
+                        <div class="row no-gutter">
+                            <div class="col l-2"><img class="avt"src="/IMG/bg.jpg" style="border-radius: 5px; height: 18em;"></div>
+                            <div class="col l-2"><img class="avt"src="/IMG/bg.jpg" style="border-radius: 5px; height: 18em;"></div>
+                            <div class="col l-2"><img class="avt"src="/IMG/bg.jpg" style="border-radius: 5px; height: 18em;"></div>
+                            <div class="col l-2"><img class="avt"src="/IMG/bg.jpg" style="border-radius: 5px; height: 18em;"></div>
+                            <div class="col l-2"><img class="avt"src="/IMG/bg.jpg" style="border-radius: 5px; height: 18em;"></div>
+                        </div> 
+                        <div class="row no-gutter">
+                            <div class="col l-12"><textmargin><thongtin>Thêm người nhận</thongtin></textmargin></div>                   
+                        </div>
+                       
+                        <div id="ds_nguoinhan"></div>
+                        <div id="ds_nguoinhan_tmp" style="display: none;"></div>
+                <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                        <div class="row no-gutter">
+                            <div class="col l-12"><textmargin><thongtin style="margin-bottom:-1.5em;">Yêu cầu hỗ trợ</thongtin></textmargin></div>                
+                        </div>
+                        <div id="ds_nguoihotro"><textmargin><thongtin></thongtin></textmargin></div>
+                        <div class="row no-gutter">
+                            <div class="col l-12"><textmargin><thongtin>Trạng thái công việc</thongtin></textmargin></div>                
+                        </div>
+                        <select onchange="sel_ttcv(this)">
+                            <option value="Không chọn">Lựa chọn</option>
+                            <option value="Đã hoàn thành">Đã hoàn thành</option>
+                            <option value="Đang hoàn thành">Đang hoàn thành</option>
+                            <option value="Cần hỗ trợ">Cần hỗ trợ</option>
+                            <option value="Không hoàn thành">Không hoàn thành</option>
+                            <option value="Yêu cầu hủy">Yêu cầu hủy</option>
+                        </select>
+                        <div id="sel_tt" style="display:none"></div> <!--/////////////// lưu trạng thái lựa chọn-->
+                    <div class="col l-o-9" id="btn_submit_bc"></div>  
+                </div>
+                <text_header><i class="fa-sharp fa-solid fa-spinner"></i></i>&emsp;Lịch sử báo cáo</text_header>
+                </div>
+                <div id="tmp_data_sgv" style="display: none;"></div> <!--Nơi lưu giá trị tạm của lịch sử, dùng để update giá trị lịch sử-->
+                <div id="tmp_data_baocao" style="display:none"></div> <!--/////////////// lưu dữ liệu báo cáo-->
+            </form>
+           
+
+            
+        
+            <text_header1>IV. THÔNG TIN CHI TIẾT<i class="fa-solid fa-pen"></i></text_header1>
+            <text_header><i class="fa-sharp fa-solid fa-briefcase"></i>&emsp;Mô tả công việc</text_header>
+            <textmargin><label id="mota_cv">Lập trình IOS</label></textmargin>
+            <text_header><i class="fa-sharp fa-solid fa-briefcase"></i>&emsp;CV xin việc</text_header>
+            <text_header onclick="xoa_nv()"><i class="fa-solid fa-x"></i>&emsp;Hủy tài khoản</text_header>
+        <div>
+    </div>
+</div>
+<div class="footer_moi">
+    <div class="grid wide">
+        <div class="row">
+            <div class="col l-4">
+                <textmargin><text_footer>Về chúng tôi</text_footer></textmargin>
+                <textmarginw><thongtin>KFS Store là cửa hàng công nghệ có gần 7 năm kinh nghiệm 
+                    về dịch vụ sửa chữa Apple (iPhone, iPad, iPod, MacBook, iMac, iMac Pro, 
+                    Mac Pro, Mac mini, Apple Watch, AirPods), máy tính văn phòng và các dòng 
+                    laptop mọi thương hiệu đồng thời cung cấp các sản phẩm chính hãng Apple,
+                    phụ kiện chính hãng, linh kiện máy tính, đồ chơi Hi-Tech.
+                </thongtin></textmarginw>
+                <div class="row">
+                    <div class="col l-o-5"></div>
+                        <textmargin><i class="fa-brands fa-youtube"></i></textmargin>
+                        <textmargin><i class="fa-brands fa-instagram"></i></textmargin>
+                        <textmargin><i class="fa-brands fa-twitter"></i></textmargin>
+                        <textmargin><i class="fa-brands fa-facebook"></i></textmargin>
+                    </div>
+            </div>
+            <div class="col l-4">
+                <textmargin><text_footer>Thời gian làm việc</text_footer></textmargin>
+                <div class="row">
+                    <div class="col l-5">
+                        <textmarginw><thongtin>Thứ 2 - Thứ 7</thongtin></textmarginw>
+                        <textmarginw><thongtin>Chủ nhật</thongtin></textmarginw>
+                    </div>
+                 
+                    <div class="col l-7">
+                        <textmarginw><thongtin>08:00 - 22:00</thongtin></textmarginw>
+                        <textmarginw><thongtin>08:00 - 21:00</thongtin></textmarginw>
+                    </div>
+                    <iframe src="http://127.0.0.1:5500/HTML/user.html"></iframe>
+                </div>
+            </div>
+            <div class="col l-4">
+                <textmargin><text_footer>Thông tin liên hệ</text_footer></textmargin>
+                <textmarginw><thongtin><i class="fa-solid fa-location-dot"></i>&emsp;
+                    2 đường Đồng Nai, phường 2, quận Tân Bình, thành phố Hồ Chí Minh</thongtin></textmarginw>
+                <textmarginw><thongtin><i class="fa-solid fa-location-dot"></i>&emsp;
+                    104 đường Nguyễn Văn Thương, phường 25, quận Bình Thạnh, thành phố Hồ Chí Minh</thongtin></textmarginw>
+                <textmarginw><thongtin><i class="fa fa-phone" aria-hidden="true"></i>&emsp; 0386 250 217</thongtin></textmarginw>
+                <textmarginw><thongtin>&emsp;&emsp; 0708 963 966</thongtin></textmarginw>
+                <textmarginw><thongtin><i class="fa-sharp fa-solid fa-envelope"></i>&emsp; lexuanduc@kfs.com.vn</thongtin></textmarginw>
+                <textmarginw><thongtin><i class="fa-solid fa-pen"></i>&emsp; <input type="email" placeholder="Đăng ký Gmail"><button>Gửi</button></thongtin></textmarginw>
+            </div> 
+        </div> 
+    </div>
+    <div class="by_leduc">Design by LeDuc</div> 
+</div>
+<div id="display_bc">
+</div>
+</div>
+
+
+</div>
+    <div id="ht_user"></div>
+    <script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="/JS/logout.js"></script>
+    <script src="/JS/sortTable.js"></script>
+    <script src="/JS/search.js"></script>
+    <script src="/JS/database.js"></script>
+    <script src="/JS/user.js"></script>
+</body>
+</html>
