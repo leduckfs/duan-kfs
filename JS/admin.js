@@ -604,6 +604,7 @@ function xembaocao(tiendo, yeucau, yeucau_ht, nguoinhan_bc, tinhtrangcv, thoigia
                                                   <div class="col l-3"><button class="btn-manhotro">${tinhtrangcv}</button></div>
                                                   <div class="col l-9"><button class="btn-manhotro">${thoigianbaocao}</button></div>
                                                   <div class="col l-12"><textmargin><text_header1 >&emsp;|&emsp;Lịch sử cập nhật tiến độ</text_header1></textmargin></div>
+                                                  <div class="col l-12"><textmargin><text_header1 >&emsp;|&emsp;Lịch sử cập nhật tiến độ</text_header1></textmargin></div>
                                         
                                                 </div>
                                             
@@ -697,9 +698,5 @@ function close_tiendo(){
   document.getElementById('display_bc').style.display = "none"
 }
 function get_nhanxet(giatri_nhap, id_nv, macv, ma_bc_his){
- // console.log(giatri_nhap)
- // console.log(ma_bc_his)
-  //console.log(id_nv)
- // console.log(macv)
  database.ref("LICHSU_TIENDO").child(id_nv).child(macv).child(ma_bc_his).child("DANHGIA").set(giatri_nhap);
 }
