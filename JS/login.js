@@ -59,4 +59,48 @@ function showpass(){
     }
        
 }
+function change_passOpen(){
+    document.getElementById('formRegister').style.display = 'block'
+    document.getElementById('formLogin').style.display = 'none' 
+}
 
+function change_passClose(){
+   // document.getElementById('titleDoipass_thanhcong').innerText = ""
+    document.getElementById('formRegister').style.display = 'none'
+    document.getElementById('formLogin').style.display = 'block' 
+    //document.getElementById('themtk').disabled = false;
+    document.getElementById("iddoi").value = ""
+    document.getElementById("matkhau").value = ""
+    document.getElementById("matkhaudoi").value = ""
+    document.getElementById("nhaplaimatkhaudoi").value = ""
+   
+  
+}
+
+function doimatkhau(){
+    taikhoan = document.getElementById("iddoi").value; 
+    matkhau = document.getElementById("matkhau").value;  
+    matkhaudoi = document.getElementById("matkhaudoi").value;
+    nhaplaimatkhau = document.getElementById("nhaplaimatkhaudoi").value;
+    if (matkhaudoi!=nhaplaimatkhau ||  matkhaudoi.length<5 ){
+        swal("Thất bại","Mật khẩu mới nhập lại không trùng khớp hoặc mật khẩu mới bé hơn 5 ký tự","error") 
+        matkhaudoi.innerHTML =''
+        nhaplaimatkhau.innerHTML =''
+    } else{
+        database.ref("NHANSU").child(taikhoan).get().then((snapshot) => {
+            if (snapshot.exists()) {
+                mk = snapshot.val().MATKHAU
+                if (mk == matkhau){
+                    swal("Thành công","Tài khoản đã được đổi mật khẩu","success")
+                    matkhaumoi = database.ref("NHANSU").child(taikhoan).child("MATKHAU").set(nhaplaimatkhau);
+                    matkhaudoi.innerHTML =''
+                    nhaplaimatkhau.innerHTML =''
+                } else swal("Thất bại","Mật khẩu không chính xác","error") 
+            } else swal("Thất bại","Tài khoản không tồn tại","error") 
+        }).catch((error) => {
+            console.error(error);
+        });
+    }
+
+}
+    

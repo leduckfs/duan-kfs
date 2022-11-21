@@ -20,6 +20,32 @@
 </head>
 
 <body>
+     <!--    //////////////////////////////////////////////////////////////////////////////////////////////-->
+
+     <div id="formRegister" class="formLoginAU" style="display: none;">
+        <div>
+            <div class="formLoginAU-content animate">
+                <div class="imgcontainer">
+                    <span onclick="change_passClose()" class="closelogin" style="margin-top: -4%;"><i class="fad fa-chevron-right" style="font-size: 60%;"></i></span>
+                    
+                    <h2 style="text-align:left;margin-left: 5%;" value="" id="titleDangky">ĐỔI MẬT KHẨU <span id="titleDangky_thanhcong"></span></h2>
+                    
+                </div>
+                <div class="container1">
+                    <button class="btncus2" disabled><i class="fas fa-user"></i></button><input type="inidlogin" placeholder="Nhập ID"  id="iddoi" value="">
+                    <button class="btncus2" disabled><i class="fas fa-key"></i></button><input type="password" placeholder="Nhập mật khẩu cũ" id="matkhau" value="">
+                    <button class="btncus2" disabled><i class="fas fa-key"></i></button><input type="password" placeholder="Nhập mật khẩu mới" id="matkhaudoi" value="">
+                    <button class="btncus2" disabled><i class="fas fa-key"></i></button><input type="password" placeholder="Nhập lại mật khẩu mới" id="nhaplaimatkhaudoi" value="">
+                    <h6 style="position:relative;"><input type="checkbox"><label>Hiện mật khẩu</label><button class="btndangnhap" onclick="doimatkhau()" id="themtk">Xác nhận</button></h6>
+                  
+            </div>
+            
+        </div>
+    </div>
+    </div>
+   
+    <!--    //////////////////////////////////////////////////////////////////////////////////////////////-->
+
     <div id="formLogin" class="formLoginAU">
         <div>
             <div class="formLoginAU-content">
@@ -47,7 +73,7 @@
                         <button class="btndangnhap" onclick="login()">Đăng nhập</button></h6>
                     <hr class="light" style="width:80%; text-align:center" />
                     <h6 style="text-align: center">Bạn không có tài khoản? <a href="#">Đăng ký</a></h6>
-                    <h6 style="text-align: center">Quên mật khẩu? <a href="#">Đổi mật khẩu</a></h6>
+                    <h6 style="text-align: center">Quên mật khẩu? <a href="#" onclick="change_passOpen()">Đổi mật khẩu</a></h6>
                
             </div>
         </div>
