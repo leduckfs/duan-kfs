@@ -1,5 +1,4 @@
 iduser =  localStorage.getItem("in_id")
-
 hienthi_user()
 function hienthi_user() {
     langnghe_nhansu()

@@ -14,7 +14,7 @@ function login(){
 
                             if(id_nv == in_id && mk_nv == in_mk){
                                 localStorage.setItem("in_id", in_id);
-                                window.location.href = '/HTML/user.html';
+                                window.location.href = '../HTML/user.html';
                             } else swal("Thất bại","Tài khoản hoặc mật khẩu không chính xác","error") 
                         }
 
@@ -24,7 +24,7 @@ function login(){
                 
                 } else if(chon_checkbox[i].value === "QL"){
                     if(in_id === "admin" && in_mk === "admin"){
-                        window.location.href = '/HTML/admin.html';
+                        window.location.href = '../HTML/admin.html';
                        
                     } else  swal("Thất bại","Tài khoản hoặc mật khẩu không chính xác","error") 
                 }

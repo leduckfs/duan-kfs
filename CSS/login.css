@@ -4,7 +4,7 @@ html, body {
     height: 100%; /*full màn*/
     font-family: 'Arial';
     font-size: 0.9rem;
-    background-image: url(/IMG/bg.jpg);
+    background-image: url(../IMG/bg.jpg);
 }
 label{
     margin-bottom: -0.2rem;

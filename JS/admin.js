@@ -1,5 +1,5 @@
 hienthi_nv_realtime()
-const audio = new Audio('/SOUND/notify.mp3');
+const audio = new Audio('../SOUND/notify.mp3');
 function clr_addnv(){
   document.getElementById("tk_addnv").value = ""
   document.getElementById("mk_addnv").value = ""

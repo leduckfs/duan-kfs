@@ -10,7 +10,7 @@ function dangxuat(){
       },
       function(isConfirm){
       if (isConfirm){
-          window.location.href = '/HTML/login.html';
+          window.location.href = '../HTML/login.html';
       }
       });
   }
