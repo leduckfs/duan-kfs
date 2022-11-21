@@ -321,9 +321,8 @@ function xembaocao(tiendo, yeucau, yeucau_ht, nguoinhan_bc, tinhtrangcv, thoigia
                                                 </div>
                                             
                                                 <div class="row no-gutter">
-                                                  <div class="col l-12"> 
-                                            
-                                                    <table id="table_bc" width="100%">
+                                                  <div class="col l-12">
+                                                  <table id="table_bc" width="100%">
                                                       <input  type="search" onkeyup="search()" id="inputsearch" class="search-input" style="background:#fff;border: 1px solid #333; color:#000"placeholder="Tìm kiếm...">
                                                       <tr class="header">
                                                         <th colspan="3" aria-sort="ascending" onclick="sortTable(0, '${macv}')">Thời gian cập nhật</th>
@@ -387,14 +386,14 @@ function xembaocao(tiendo, yeucau, yeucau_ht, nguoinhan_bc, tinhtrangcv, thoigia
               }
               if(thoigiaobc_his!= "Chưa cập nhật"){
                 document.getElementById("table_bc").innerHTML += `<tr><td colspan="3">${thoigiaobc_his}</td>
-                <td colspan="2">${tinhtrang_his}</td>
-                <td colspan="3">${yeucau_nht_h}</td>
-                <td colspan="3">${nguoinhanbc_h}<br></td>
-                <td colspan="4" style="text-align:justify;max-width:31.25em">${tiendo_his}</td>
-                <td colspan="1">
-                  <textarea id="nx${ma_bc_his}" placeholder="Nhận xét" disabled>${nhanxet}</textarea>
-                </td>
-              </tr>`      
+                                                                    <td colspan="2">${tinhtrang_his}</td>
+                                                                    <td colspan="3">${yeucau_nht_h}</td>
+                                                                    <td colspan="3">${nguoinhanbc_h}<br></td>
+                                                                    <td colspan="4" style="text-align:justify;max-width:31.25em;">${tiendo_his}</td>
+                                                                    <td colspan="1">
+                                                                      <textarea id="nx${ma_bc_his}" placeholder="Nhận xét" style="height: auto;" disabled>${nhanxet}</textarea>
+                                                                    </td>
+                                                                  </tr>`      
               } 
                                             
             })                                

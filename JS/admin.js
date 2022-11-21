@@ -423,11 +423,7 @@ function giaoviec(){
         database.ref("GIAOVIEC").child(id_nv).child(tmp_dem).child("THOIGIANBAOCAO").set("Chưa cập nhật");
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
         database.ref("GIAOVIEC").child(id_nv).child(tmp_dem).child("TRANGTHAIGIAOVIEC").set("1");
-        var thongbao;
-        thongbao = setTimeout(thongbaos, 500);
-        function thongbaos(){ 
-          swal("Đã giao việc!", "Công việc đã được cập nhật", "success");
-        }
+        swal("Đã giao việc!", "Công việc đã được cập nhật", "success");
         /////////// clr 
         document.getElementById("ten_cv").value = ""
         document.getElementById("cv_giaomt").value = ""
@@ -622,7 +618,7 @@ function xembaocao(tiendo, yeucau, yeucau_ht, nguoinhan_bc, tinhtrangcv, thoigia
                                                         <th colspan="3" aria-sort="ascending" onclick="sortTable(2, '${macv}')">Yêu cầu hỗ trợ</th>
                                                         <th colspan="3" aria-sort="ascending" onclick="sortTable(3, '${macv}')">Người nhận báo cáo</th>
                                                         <th colspan="4" aria-sort="ascending" onclick="sortTable(4, '${macv}')">Nội dung báo cáo</th>
-                                                        <th colspan="1" aria-sort="ascending" onclick="sortTable(5, '${macv}')">Đánh giá</th>
+                                                        <th colspan="1" aria-sort="ascending" onclick="sortTable(5, '${macv}')">Viết đánh giá</th>
                                                       </tr>
                                                     </table>
                                                   </div>
@@ -684,7 +680,7 @@ function xembaocao(tiendo, yeucau, yeucau_ht, nguoinhan_bc, tinhtrangcv, thoigia
                 <td colspan="3">${nguoinhanbc_h}<br></td>
                 <td colspan="4" style="text-align:justify;max-width:31.25em">${tiendo_his}</td>
                 <td colspan="1">
-                  <textarea id="nx${ma_bc_his}" placeholder="Nhận xét" onkeyup="get_nhanxet(this.value,'${id_nv}', '${macv}', '${ma_bc_his}')">${nhanxet}</textarea>
+                  <textarea id="nx${ma_bc_his}" placeholder="Nhận xét" style="height: auto;" onkeyup="get_nhanxet(this.value,'${id_nv}', '${macv}', '${ma_bc_his}')">${nhanxet}</textarea>
                 </td>
               </tr>`      
               } 
