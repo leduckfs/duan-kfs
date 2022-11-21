@@ -2,7 +2,7 @@ id_admin =  localStorage.getItem("in_id_admin")
 if(id_admin == undefined || id_admin == ""){
   window.location.href = '../HTML/login.html';
 }
-hienthi_nv_realtime()
+const timeout = setTimeout(hienthi_nv_realtime, 5000);
 const audio = new Audio('../SOUND/notify.mp3');
 function clr_addnv(){
   document.getElementById("tk_addnv").value = ""
@@ -608,8 +608,6 @@ function xembaocao(tiendo, yeucau, yeucau_ht, nguoinhan_bc, tinhtrangcv, thoigia
                                                   <div class="col l-3"><button class="btn-manhotro">${tinhtrangcv}</button></div>
                                                   <div class="col l-9"><button class="btn-manhotro">${thoigianbaocao}</button></div>
                                                   <div class="col l-12"><textmargin><text_header1 >&emsp;|&emsp;Lịch sử cập nhật tiến độ</text_header1></textmargin></div>
-                                                  <div class="col l-12"><textmargin><text_header1 >&emsp;|&emsp;Lịch sử cập nhật tiến độ</text_header1></textmargin></div>
-                                        
                                                 </div>
                                             
                                                 <div class="row no-gutter">
@@ -704,7 +702,6 @@ function close_tiendo(){
 function get_nhanxet(giatri_nhap, id_nv, macv, ma_bc_his){
  database.ref("LICHSU_TIENDO").child(id_nv).child(macv).child(ma_bc_his).child("DANHGIA").set(giatri_nhap);
 }
-
 function dangxuat(){
   swal({
         title: "Xác nhận đăng xuất",
