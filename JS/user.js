@@ -1,4 +1,8 @@
 iduser =  localStorage.getItem("in_id")
+console.log(iduser)
+if(iduser == undefined || iduser == ""){
+  window.location.href = '../HTML/login.html';
+}
 hienthi_user()
 function hienthi_user() {
     langnghe_nhansu()
@@ -406,3 +410,21 @@ function xembaocao(tiendo, yeucau, yeucau_ht, nguoinhan_bc, tinhtrangcv, thoigia
   function close_tiendo(){
     document.getElementById('display_bc').style.display = "none"
   }
+  
+function dangxuat(){
+  swal({
+        title: "Xác nhận đăng xuất",
+        showCancelButton: true,
+        confirmButtonColor: '#DD3435',
+        confirmButtonText: 'Đồng ý',
+        cancelButtonText: "Không, hủy yêu cầu!",
+        closeOnConfirm: true,
+        closeOnCancel: true
+    },
+    function(isConfirm){
+    if (isConfirm){
+        localStorage.clear();
+        window.location.href = '../HTML/login.html';
+    }
+    });
+}

@@ -1,6 +1,6 @@
 function login(){
     var in_id = document.getElementById("id_dangnhap").value;
-    var in_mk = document.getElementById("mk_dangnhap").value;
+    var in_mk = document.getElementById("mk_dangnhap").value;   
     var chon_checkbox = document.getElementsByName("luachon");
         for (var i = 0; i < chon_checkbox.length; i++){
             if (chon_checkbox[i].checked === true){
@@ -11,22 +11,27 @@ function login(){
                             id_nhanvien = ketqualangnghe[seach_nhansu]
                             var mk_nv = id_nhanvien.MATKHAU
                             var id_nv = id_nhanvien.ID
-
                             if(id_nv == in_id && mk_nv == in_mk){
                                 localStorage.setItem("in_id", in_id);
                                 window.location.href = '../HTML/user.html';
-                            } else swal("Thất bại","Tài khoản hoặc mật khẩu không chính xác","error") 
-                        }
-
-                        
-                           
+                            } else {
+                                swal("Thất bại","Tài khoản hoặc mật khẩu không chính xác","error")
+                            }
+                        }          
                     });
                 
                 } else if(chon_checkbox[i].value === "QL"){
-                    if(in_id === "admin" && in_mk === "admin"){
-                        window.location.href = '../HTML/admin.html';
-                       
-                    } else  swal("Thất bại","Tài khoản hoặc mật khẩu không chính xác","error") 
+                    database.ref("ADMIN").once('value', async function(snap) {
+                        var ketqualangnghe = await snap.val();
+                            var mk_nv = ketqualangnghe.MATKHAU
+                            var id_nv = ketqualangnghe.ID
+                            if(id_nv == in_id && mk_nv == in_mk){
+                                localStorage.setItem("in_id_admin", in_id);
+                                window.location.href = '../HTML/admin.html';
+                            } else {
+                                swal("Thất bại","Tài khoản hoặc mật khẩu không chính xác","error")
+                            }     
+                    });
                 }
             }
         }

@@ -1,3 +1,7 @@
+id_admin =  localStorage.getItem("in_id_admin")
+if(id_admin == undefined || id_admin == ""){
+  window.location.href = '../HTML/login.html';
+}
 hienthi_nv_realtime()
 const audio = new Audio('../SOUND/notify.mp3');
 function clr_addnv(){
@@ -699,4 +703,22 @@ function close_tiendo(){
 }
 function get_nhanxet(giatri_nhap, id_nv, macv, ma_bc_his){
  database.ref("LICHSU_TIENDO").child(id_nv).child(macv).child(ma_bc_his).child("DANHGIA").set(giatri_nhap);
+}
+
+function dangxuat(){
+  swal({
+        title: "Xác nhận đăng xuất",
+        showCancelButton: true,
+        confirmButtonColor: '#DD3435',
+        confirmButtonText: 'Đồng ý',
+        cancelButtonText: "Không, hủy yêu cầu!",
+        closeOnConfirm: true,
+        closeOnCancel: true
+    },
+    function(isConfirm){
+    if (isConfirm){
+        localStorage.clear();
+        window.location.href = '../HTML/login.html';
+    }
+    });
 }
