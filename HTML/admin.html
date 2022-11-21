@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <title>KFS ADMIN</title>
-    <link rel="stylesheet" href="/CSS/admin.css">
-    <link rel="stylesheet" href="/CSS/grid.css">
+    <link rel="stylesheet" href="./CSS/admin.css">
+    <link rel="stylesheet" href="./CSS/grid.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css">
     <link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
 </head>
@@ -121,7 +121,7 @@
         </div>
        
         <!--form them nhan vien-->
-    <form action="#" id="form_addnv" style="display: none;">
+    <form onsubmit="return false" id="form_addnv" style="display: none;">
             <div class="header_addnv">ĐĂNG KÝ TÀI KHOẢN
                 <i class="fas fa-chevron-double-left" onclick="close_addnv()"></i>
             </div>
@@ -316,7 +316,7 @@
             <!-- Giao việcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc-->
             <text_header><i class="fa-solid fa-bars-progress"></i>&emsp;Giao việc</text_header>
             <!--giao viec-->
-            <form action="#" id="form_giaoviec">
+            <form onsubmit="return false" id="form_giaoviec">
                 <div class="row no-gutter">
                     <div class="col l-6">
                         <div class="row no-gutter">
@@ -359,7 +359,7 @@
             </form>
          <!--Cập nhật giao việc-->   
             <text_header><i class="fa-solid fa-bars-progress"></i>&emsp;Cập nhật giao việc</text_header>
-            <form action="#" id="form_sua_giaoviec">
+            <form onsubmit="return false" id="form_sua_giaoviec">
                 <div class="row no-gutter">
                     <div class="col l-6">
                         <div class="row no-gutter">
@@ -492,11 +492,11 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/JS/logout.js"></script>
-    <script src="/JS/sortTable.js"></script>
-    <script src="/JS/search.js"></script>
-    <script src="/JS/database.js"></script>
-    <script src="/JS/admin.js"></script>
+    <script src="./JS/logout.js"></script>
+    <script src="./JS/sortTable.js"></script>
+    <script src="./JS/search.js"></script>
+    <script src="./JS/database.js"></script>
+    <script src="./JS/admin.js"></script>
     
 </body>
 
