@@ -2,7 +2,7 @@ id_admin =  localStorage.getItem("in_id_admin")
 if(id_admin == undefined || id_admin == ""){
   window.location.href = '../HTML/login.html';
 }
-const timeout = setTimeout(hienthi_nv_realtime, 5000);
+const timeout = setTimeout(hienthi_nv_realtime, 1000);
 const audio = new Audio('../SOUND/notify.mp3');
 function clr_addnv(){
   document.getElementById("tk_addnv").value = ""

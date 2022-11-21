@@ -3,7 +3,7 @@ console.log(iduser)
 if(iduser == undefined || iduser == ""){
   window.location.href = '../HTML/login.html';
 }
-const timeout = setTimeout(hienthi_user, 5000);
+const timeout = setTimeout(hienthi_user, 1000);
 function hienthi_user() {
     langnghe_nhansu()
     document.getElementById("ht_user").innerHTML = ""
