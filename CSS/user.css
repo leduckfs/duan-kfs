@@ -4,12 +4,12 @@
 }
 .btn-mannhan{
     padding: 0.5em;
-    border: 1px solid #333;
     display: inline-block;
     color: #000;
     margin-left: 5px;
     margin-bottom: 5px;
     text-align: center;
+    border: none;
 }
 .btn-mannhan:hover{
     color: rgb(219, 114, 114);
@@ -18,12 +18,12 @@
 
 .btn-manhotrou{
     padding: 0.5em;
-    border: 1px solid #333;
     display: inline-block;
     color: #000;
     margin-left: 5px;
     margin-bottom: 5px;
     text-align: center;
+    border: none;
 }
 .btn-manhotrou:hover{
     color: rgb(219, 114, 114);

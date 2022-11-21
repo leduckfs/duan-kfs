@@ -564,13 +564,14 @@ color: #1add00;
 }
 .btn-manhotro{
   padding: 0.5em;
-  border: 1px solid #333;
+  border: none;
   display: inline-block;
   color: #000;
   margin-left: 5px;
   margin-top: 15px;
   margin-bottom: 5px;
   text-align: center;
+  border: none;
 }
 .close-fa-x{
   font-weight: bold;
