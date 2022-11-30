@@ -16,7 +16,7 @@ p {
 font-size: 12px;
 }
 body{
-background-color: #e1dfdf;
+background-color: #ffffff;
 }
 .header #nav {
   background-color: black;
@@ -35,7 +35,6 @@ background-color: #e1dfdf;
   padding: 0 1.5em;
   line-height: 2.5em;  
   position: relative;
-  display: inline-block;
 }
 #nav li:hover,
 thongtin> button:hover {
@@ -312,19 +311,16 @@ background: transparent;
   text-align: right;
 }
 #form_addnv{
-  height: auto;
   z-index: 100;
-  width: 40%;
   top: 4em;
   color: #000000;
   background-color: #ffffff;
-  margin-left: 20%;
   position: absolute;
-  box-shadow:2px 2px #31353D;
+  border: 1px solid #000;
+  margin: 10px;
 }
 #form_addnv .header_addnv{
   display: block;
-  margin-top: 5px;
   text-align: center;
   font-size: 20px;
   padding: 1em;
@@ -600,3 +596,63 @@ th {
   padding: 5px;
   margin: 2px;
   }
+  button{
+    padding: 2px;
+  }
+  /*drop down menu*/
+  .dropdown .dropbtn {
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    margin-top: -0.7em;
+    position: relative;
+  }
+  .dropdown-content {
+    margin-top: 3em;
+    display: none;
+    position: absolute;
+    background-color: #000000;
+    z-index: 1;
+    right: 0;
+  }
+  
+  .dropdown-content a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+    text-align: right;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: rgb(53, 39, 252);
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+ /*tab menu*/
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 25%;
+  height: 100%;
+  padding:1em;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  margin-top: 5px;
+  padding: 100px 20px;
+  height: 100%;
+}

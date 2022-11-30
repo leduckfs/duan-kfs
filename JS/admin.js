@@ -40,6 +40,7 @@ function open_addnv (){
       database.ref("THONGTINCANHAN").child(id_nv).remove();
       database.ref("GIAOVIEC").child(id_nv).remove();
       database.ref("LICHSU_GIAOVIEC").child(id_nv).remove();
+      database.ref("LICHSU_TIENDO").child(id_nv).remove();
       back_home();
     } else {
       swal("Hủy", "Dữ liệu được bảo toàn!", "error");
@@ -291,10 +292,10 @@ function hienthi_nv_realtime() {
 }
 function langnghe_cvg(id_nv){
   document.getElementById("ten_cvg").innerHTML=`<option value="">Lựa chọn công việc</option>`
-
   ////////////////////////////// lấy thông tin giao việc từ CSDL về web admin
   database.ref("GIAOVIEC").on('value', async function(snap) {
     var ketqualangnghe = await snap.val();
+    document.getElementById("ten_cvg").innerHTML=""
     document.getElementById("dscv_update").innerHTML = ""
     /////////////// tìm kiếm id nhân viên
     for (var search_nhanvien in ketqualangnghe) {
@@ -318,10 +319,13 @@ function langnghe_cvg(id_nv){
             var nguoinhan_bc = id_cvg.NGUOINHANBAOCAO
             var tinhtrangcv = id_cvg.TINHTRANG
             var thoigianbaocao = id_cvg.THOIGIANBAOCAO
+            var trangthaigiaoviec = id_cvg.TRANGTHAIGIAOVIEC
             //console.log(search_macv) // id công việc
             document.getElementById("ten_cvg").innerHTML+=`<option value="gv${search_macv}">${ten_cvg}</option>`
             ////////////////////// lắng nghe kết quả trả về data công việc
-            document.getElementById("dscv_update").innerHTML +=  `<label style="background-color:#424242;padding: 6px;"><button onclick="xembaocao('${tiendo}','${mt_cvg}','${yeucau_ht}', '${nguoinhan_bc}',  '${tinhtrangcv}', '${thoigianbaocao}','${search_macv}')">Xem báo cáo</button>&emsp;${ten_cvg}</label>
+            document.getElementById("dscv_update").innerHTML +=  `<label style="background-color:#c10e0e;padding: 6px;"><button disabled>${trangthaigiaoviec}</button>
+            <button onclick="xembaocao('${tiendo}','${mt_cvg}','${yeucau_ht}', '${nguoinhan_bc}',  '${tinhtrangcv}', '${thoigianbaocao}','${search_macv}')">Xem báo cáo</button>
+            &emsp;${ten_cvg}</label>
                                                                   <div class="row no-gutter header_phanmuc">
                                                                     <div class="col l-2"><textmargin><thongtin>Giám sát</thongtin></textmargin></div>
                                                                     <div class="col l-2"><textmargin><thongtin>Hỗ trợ</thongtin></textmargin></div>    
@@ -426,7 +430,7 @@ function giaoviec(){
         database.ref("GIAOVIEC").child(id_nv).child(tmp_dem).child("TINHTRANG").set("Chưa cập nhật");
         database.ref("GIAOVIEC").child(id_nv).child(tmp_dem).child("THOIGIANBAOCAO").set("Chưa cập nhật");
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
-        database.ref("GIAOVIEC").child(id_nv).child(tmp_dem).child("TRANGTHAIGIAOVIEC").set("1");
+        database.ref("GIAOVIEC").child(id_nv).child(tmp_dem).child("TRANGTHAIGIAOVIEC").set("CHƯA NHẬN VIỆC");
         swal("Đã giao việc!", "Công việc đã được cập nhật", "success");
         /////////// clr 
         document.getElementById("ten_cv").value = ""
@@ -719,3 +723,21 @@ function dangxuat(){
     }
     });
 }
+//////////////////
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+   
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();

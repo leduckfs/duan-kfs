@@ -29,6 +29,9 @@
     color: rgb(219, 114, 114);
     background-color: rgb(245, 245, 245);
 }
+button{
+    padding: 2px;
+  }
 
 
 

@@ -57,27 +57,51 @@ function langnghe_cvg(iduser){
               var tinhtrangcv = id_cvg.TINHTRANG
               var thoigianbaocao = id_cvg.THOIGIANBAOCAO
               var trangthaigvm = id_cvg.TRANGTHAIGIAOVIEC
+              if (trangthaigvm=="CHƯA NHẬN VIỆC"){
+                  ////////////////////// lắng nghe kết quả trả về data công việc
+                document.getElementById("dscv_update").innerHTML +=  `<label style="background-color:#c10e0e;padding: 6px;"><button id="xacnhan${search_macv}" onclick="nhancongviec('${trangthaigvm}','${search_macv}')">NHẬN VIỆC</button>
+                <button id="btnxembc${search_macv}" onclick="xembaocao('${tiendo}','${mt_cvg}','${yeucau_ht}', '${nguoinhan_bc}',  '${tinhtrangcv}', '${thoigianbaocao}','${search_macv}')" disabled>Xem nhận xét</button>
+                &emsp;${ten_cvg}</label>
+                <div class="row no-gutter header_phanmuc">
+                  <div class="col l-2"><textmargin><thongtin>Giám sát</thongtin></textmargin></div>
+                  <div class="col l-2"><textmargin><thongtin>Hỗ trợ</thongtin></textmargin></div>    
+                  <div class="col l-2"><textmargin><thongtin>Thời gian cập nhật</thongtin></textmargin></div>
+                  <div class="col l-2"><textmargin><thongtin>Bắt đầu</thongtin></textmargin></div>
+                  <div class="col l-2"><textmargin><thongtin>Kết thúc</thongtin></textmargin></div>
+                  <div class="col l-2"><textmargin><thongtin>Mô tả</thongtin></textmargin></div>
+                </div>
+                <div class="row no-gutter">
+                  <div class="col l-2"><textmargin><label>${gs_cvg}</label></textmargin></div>
+                  <div class="col l-2"><textmargin><label>${ht_cvg}</label></textmargin></div>            
+                  <div class="col l-2"><textmargin><label>${du_cvg}</label></textmargin></div>
+                  <div class="col l-2"><textmargin><label>${db_cvg}</label></textmargin></div>   
+                  <div class="col l-2"><textmargin><label>${de_cvg}</label></textmargin></div>
+                  <div class="col l-2" style=" max-height: 10em;overflow: auto; text-align:justify"><textmargin><label>${mt_cvg}</label></textmargin></div>
+                </div>`
+              } else   document.getElementById("dscv_update").innerHTML +=  
+                        `<label style="background-color:#ff3636;padding: 6px;"><button id="xacnhan${search_macv}" onclick="nhancongviec('${trangthaigvm}','${search_macv}')"disabled>ĐÃ NHẬN VIỆC</button>
+                        <button id="btnxembc${search_macv}" onclick="xembaocao('${tiendo}','${mt_cvg}','${yeucau_ht}', '${nguoinhan_bc}',  '${tinhtrangcv}', '${thoigianbaocao}','${search_macv}')">Xem nhận xét</button>
+                        &emsp;${ten_cvg}</label>
+                        <div class="row no-gutter header_phanmuc">
+                          <div class="col l-2"><textmargin><thongtin>Giám sát</thongtin></textmargin></div>
+                          <div class="col l-2"><textmargin><thongtin>Hỗ trợ</thongtin></textmargin></div>    
+                          <div class="col l-2"><textmargin><thongtin>Thời gian cập nhật</thongtin></textmargin></div>
+                          <div class="col l-2"><textmargin><thongtin>Bắt đầu</thongtin></textmargin></div>
+                          <div class="col l-2"><textmargin><thongtin>Kết thúc</thongtin></textmargin></div>
+                          <div class="col l-2"><textmargin><thongtin>Mô tả</thongtin></textmargin></div>
+                        </div>
+                        <div class="row no-gutter">
+                          <div class="col l-2"><textmargin><label>${gs_cvg}</label></textmargin></div>
+                          <div class="col l-2"><textmargin><label>${ht_cvg}</label></textmargin></div>            
+                          <div class="col l-2"><textmargin><label>${du_cvg}</label></textmargin></div>
+                          <div class="col l-2"><textmargin><label>${db_cvg}</label></textmargin></div>   
+                          <div class="col l-2"><textmargin><label>${de_cvg}</label></textmargin></div>
+                          <div class="col l-2" style=" max-height: 10em;overflow: auto; text-align:justify"><textmargin><label>${mt_cvg}</label></textmargin></div>
+                        </div>`
             
               //console.log(search_macv) // id công việc
               document.getElementById("ten_cvg").innerHTML+=`<option value="gv${search_macv}">${ten_cvg}</option>`
-              ////////////////////// lắng nghe kết quả trả về data công việc
-              document.getElementById("dscv_update").innerHTML +=  `<label style="background-color:#424242;padding: 6px;"><button style="padding: 2px;" onclick="xembaocao('${tiendo}','${mt_cvg}','${yeucau_ht}', '${nguoinhan_bc}',  '${tinhtrangcv}', '${thoigianbaocao}','${search_macv}')">Xem nhận xét</button>&emsp;${ten_cvg}</label>
-                                                                    <div class="row no-gutter header_phanmuc">
-                                                                      <div class="col l-2"><textmargin><thongtin>Giám sát</thongtin></textmargin></div>
-                                                                      <div class="col l-2"><textmargin><thongtin>Hỗ trợ</thongtin></textmargin></div>    
-                                                                      <div class="col l-2"><textmargin><thongtin>Thời gian cập nhật</thongtin></textmargin></div>
-                                                                      <div class="col l-2"><textmargin><thongtin>Bắt đầu</thongtin></textmargin></div>
-                                                                      <div class="col l-2"><textmargin><thongtin>Kết thúc</thongtin></textmargin></div>
-                                                                      <div class="col l-2"><textmargin><thongtin>Mô tả</thongtin></textmargin></div>
-                                                                    </div>
-                                                                    <div class="row no-gutter">
-                                                                      <div class="col l-2"><textmargin><label>${gs_cvg}</label></textmargin></div>
-                                                                      <div class="col l-2"><textmargin><label>${ht_cvg}</label></textmargin></div>            
-                                                                      <div class="col l-2"><textmargin><label>${du_cvg}</label></textmargin></div>
-                                                                      <div class="col l-2"><textmargin><label>${db_cvg}</label></textmargin></div>   
-                                                                      <div class="col l-2"><textmargin><label>${de_cvg}</label></textmargin></div>
-                                                                      <div class="col l-2" style=" max-height: 10em;overflow: auto; text-align:justify"><textmargin><label>${mt_cvg}</label></textmargin></div>
-                                                                    </div>`
+            
             }    
         }
       
@@ -167,6 +191,15 @@ function langnghe_nhansu(){
         document.getElementById('btn_submit_bc').innerHTML=`<thongtin><button onclick="capnhat_tiendo()" type="submit">Gửi báo cáo</button></thongtin>`
         }
     });
+
+}
+function nhancongviec(trangthaigvm, search_macv){
+  var id_cv = "btnxembc"+search_macv
+  var id_xacnhan = "xacnhan"+search_macv
+  document.getElementById(id_cv).disabled = false
+  document.getElementById(id_xacnhan).disabled = true
+  document.getElementById(id_xacnhan).innerHTML = "Đã nhận việc"
+  database.ref("GIAOVIEC").child(iduser).child(search_macv).child("TRANGTHAIGIAOVIEC").set("ĐÃ NHẬN VIỆC");
 
 }
 function capnhat_tiendo(){
