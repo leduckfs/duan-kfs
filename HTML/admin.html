@@ -12,12 +12,12 @@
     <link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
 </head>
 <body>
+    <!-- header -->
     <div class="grid no-gutter">
         <div class="row">
-            <nav class="col l-12 c-12 header">
+            <nav class="col l-12 m-12 c-12 header">
                 <ul id="nav">
-                   
-                    <div class="l-12 c-0">
+                    <div class="l-12 c-0 m-12">
                         <a href="https://service.kfs.vn/"><img src="../IMG/logo.png" style="width:4em"></a>
                         <li><a href="#"></a>DỊCH VỤ</li>
                         <li><a href="#"></a>VỀ CHÚNG TÔI</li>
@@ -25,28 +25,27 @@
                         <li><a href="#" ></a><i class="fa fa-phone" aria-hidden="true"></i> 0708 963 966</li>
                     </div>
                     <div class="row">
-                        <div class=" l-0 c-8">
+                        <div class=" l-0 c-8 m-0">
                             <a href="https://service.kfs.vn/"><img src="../IMG/logo.png" style="width:4em"></a>
                         </div>
-                        <div class="l-0 c-4 dropdown">
+                        <div class="l-0 c-4 m-0 dropdown">
                             <textmargin class="dropbtn"><i class="fa-solid fa-bars" style="font-size:1.5em; float:right;"></i></textmargin>
                             <div class="dropdown-content">
-                                <a href="#" onclick="open_addnv()"><i class="far fa-plus"></i>&emsp;Thêm nhân viên</a>
+                                <a href="#" onclick="open_addnv()">Thêm nhân viên</a>
                                 <a href="#">Danh sách</a>
                                 <a href="#">Giao việc</a>
                             </div>
                         </div>
                     </div>
-                   
                 </ul>     
             </nav>
         </div>
     </div>
-    <!--Header đầu trang, menu-->
+    <!-- menu -->
     <div class="grid" id="bg_body">
         <div class="row">
-            <div class="col l-2 c-0">
-                <div class="menu chiller-theme toggled">
+            <div class="col l-2 m-4 c-0">
+                <div class="menu">
                     <div class="sidebar-wrapper">
                         <h4 style="border-bottom: 0.01em solid #a89e9e;"></h4>
                         <div class="sidebar-header">
@@ -54,7 +53,7 @@
                             <span class="menu-infor">Lê Xuân Đức</span>
                             <span class="user-status">
                                 <i class="fa-solid fa-chevron-right"></i> ADMIN
-                                <i class="fa fa-circle"></i> Online
+                                <!-- <i class="fa fa-circle"></i> Online -->
                             </span>
                         </div>
                     <!-- sidebar-header  -->
@@ -66,58 +65,28 @@
                         </div>
                     </div>
                     <!-- sidebar-search  -->
-                    <div class="sidebar-menu" id="sidemenu">
+                    <div class="sidebar-menu">
                         <ul>
-                            <li class="header-menu"><span>Tổng quan</span></li>
-                            <li class="sidebar-dropdown">
-                                <a href="#">
-                                    <i class="fad fa-tachometer-alt"></i>
-                                    <span>Bảng điều khiển</span>
-                                </a>
-                                <div class="sidebar-submenu"><ul id="dstenthietbi"></ul></div>
-                            </li>
-                            <li onclick="hienthidanhsach()">
-                                <a href="#">
-                                    <i class="fas fa-list-ol"></i>
-                                    <span>Danh sách</span>
-                                </a>
-                            </li>
-                            <li id="tatcathietbi">
-                                <a href="#">
-                                    <i class="fal fa-table"></i>
-                                    <span>Tất cả nhân viên</span>
-                                </a>
-                            </li>
                             <li class="header-menu"><span>Tính năng</span></li>
-                            <li id="them" class="sidebar-dropdown">
-                                <a href="#" onclick="open_addnv()">
-                                    <i class="far fa-plus"></i>
-                                    <span>Thêm nhân viên</span>
+                            <li class="icon-menu row" onclick="open_addnv()">
+                                <a class="col l-1" href="#">
+                                    <i class="far fa-plus"></i>   
                                 </a>
-                                <div class="sidebar-submenu"><ul id="inputthem"></ul></div>
+                                <span class="col l-6">Thêm nhân viên</span>
                             </li>
-                            <li><a href="#">
-                                    <i class="fa fa-book"></i>
-                                    <span>Hướng dẫn</span>
+                           <!--  -->
+                            <li class="icon-menu row" onclick="dangxuat()">
+                                <a class="col l-1" href="#">
+                                    <i class="fa-solid fa-door-open"></i>  
                                 </a>
-                            </li>
-                            <li><a href="#">
-                                    <i class="fa fa-calendar"></i>
-                                    <span>Lịch</span>
-                                </a>    
-                            </li>
-                            <li onclick="dangxuat()"><a href="#">
-                                <i class="fa-sharp fa-solid fa-right-from-bracket"></i>
-                                <span>Đăng xuất</span>
-                            </a>
-                            <h4 style="border-bottom: 0.005em solid #424242;"></h4>
+                                <span class="col l-6">Đăng xuất</span>
                             </li>
                         </ul>
                     </div>
-                    </div>
                 </div>
                 </div>
-                <div class="col l-10">
+            </div>
+                <div class="col l-9">
                     <div class="row no-gutters" id="danhsach_nv">
                         <!--danh sách nhân viên-->
                     </div>  
@@ -125,7 +94,7 @@
             </div>
         </div>
        
-        <!--form them nhan vien-->
+    <!--form them nhan vien-->
     <div class="grid wide">
         <div class="row no-gutter">
             <div class="col l-o-3 c-10">
@@ -133,14 +102,16 @@
                     <div class="header_addnv">ĐĂNG KÝ TÀI KHOẢN
                         <i class="fas fa-chevron-double-left" onclick="close_addnv()"></i>
                     </div>
-                    <h1><i class="fas fa-user"></i><input id="tk_addnv" type="text" placeholder="Họ và tên" value="" maxlength="40" minlength="5" required></h1>
-                    <h1><i class="fas fa-key"></i><input id="mk_addnv" type="password" placeholder="Mật khẩu" minlength="5" required></h1>
-                    <h1><i class="fa-solid fa-file-lines"></i> Mô tả công việc</h1>
+                    <h1><i class="fas fa-user"></i>&ensp;Họ và tên</h1>
+                    <input id="tk_addnv" type="text" placeholder="Họ và tên" value="" maxlength="40" minlength="5" required>
+                    <h1><i class="fas fa-key"></i>&ensp;Mật khẩu</h1>
+                    <input id="mk_addnv" type="password" placeholder="Mật khẩu" minlength="5" required>
+                    <h1><i class="fa-solid fa-file-lines"></i>&ensp;Mô tả công việc</h1>
                     <textarea id="mt_addnv" placeholder="Mô tả" value="" minlength="30" required></textarea>
-                    <h1><i class="fa-solid fa-image"></i>Cập nhật ảnh đại diện</h1>
-                    <h1><input type="file" accept=".jpg, .png, .jpeg" id="file_avt" value="" required/></h1>
+                    <h1><i class="fa-solid fa-image"></i>&ensp;Cập nhật ảnh đại diện</h1>
+                    <input type="file" accept=".jpg, .png, .jpeg" id="file_avt" value="" required/>
                     <h1 id="v_avt" style="display: none;"></h1>
-                    <h1><i class="fa-solid fa-briefcase"></i>Vai trò</h1>
+                    <h1><i class="fa-solid fa-briefcase"></i>&ensp;Vai trò</h1>
                     <h1>    
                         <select id="chucvu">
                             <option value="Quản lý">Quản lý</option>
@@ -148,7 +119,7 @@
                             <option value="Nhân viên kinh doanh">Nhân viên kinh doanh</option>
                             <option value="Nhân viên kỹ thuật">Nhân viên kỹ thuật</option>
                         </select>
-                        <i style="border: solid rgba(6, 16, 155, 0.639); margin-left: 2%;padding: 5px;border-radius: 2px;">ID: <i id="id_addnv"></i></i>
+                        <label>ID: <i id="id_addnv"></i></label>
                         <button type="submit" onclick="submit_addnv()">Tạo tài khoản <i class="fa fa-shield-check"></i></button>
                     </h1> 
                     <div class="footer"></div>
@@ -159,31 +130,27 @@
     </div>
     
 <div class="form_moi" id="form_tt_nv">
-        
-            <nav class="col l-12 c-12 header">
+        <div class="grid no-gutter">
+            <div class="row">
+            <nav class="col l-12 header">
                 <ul id="nav">
-                   
-                    <div class="l-12 c-0">
-                        <div class="button_back" onclick="back_home()" style="font-size:2em;margin-top:-2px"><i class="fa-solid fa-chevron-left"></i></div>
-                        <a href="https://service.kfs.vn/"><img src="../IMG/logo.png" style="width:4em"></a>
-                    </div>   
+                        <img  onclick="back_home()" src="../IMG/logo.png" style="width:4em">
+                        <button class="tablink" onclick="openPage('tt_chitiet', this, '#333')">THÔNG TIN CHI TIẾT</button>
+                        <button class="tablink" onclick="openPage('tt_canhan', this, '#333')">THÔNG TIN CÁ NHÂN</button>
+                        <button class="tablink" onclick="openPage('tt_congviec', this, '#333')">THÔNG TIN CÔNG VIỆC</button>  
+                        <button class="tablink" onclick="openPage('cn_congviec', this, '#333')" id="defaultOpen">CẬP NHẬT CÔNG VIỆC</button>
                 </ul>     
             </nav>
-    
-    <!--Header thongtin-->
+        </div>
+    </div>
+    <!--Header-->
     <div class="grid wide">
-        
-       
         <nav class="header">
-            <button class="tablink" onclick="openPage('tt_canhan', this, 'red')">THÔNG TIN CÁ NHÂN</button>
-            <button class="tablink" onclick="openPage('tt_congviec', this, 'green')" id="defaultOpen">THÔNG TIN CÔNG VIỆC</button>
-            <button class="tablink" onclick="openPage('cn_congviec', this, 'blue')">CẬP NHẬT CÔNG VIỆC</button>
-            <button class="tablink" onclick="openPage('tt_chitiet', this, 'orange')">THÔNG TIN CHI TIẾT</button>
+           
+            <!--  -->
             <div id="tt_canhan" class="tabcontent">
                 <div class="row no-gutters">
-                    <div class="col l-2" >
-                        <a  href="#"><img class="avt_nv" src="../avt.jpg" id="avt_opennv"></a> 
-                    </div>
+                    <div class="col l-2"><a  href="#"><img class="avt_nv" src="../avt.jpg" id="avt_opennv"></a></div>
                     <div class="col l-10">
                         <h1><text_header id="ten_nv">Lê Xuân Đức</text_header></h1>
                         <div class="row no-gutters">
@@ -223,7 +190,6 @@
                                         <textmargin><label>Điện thoại</label></textmargin>
                                     </div>
                                     <div class="col l-7">
-                                    
                                         <textmargin><thongtin>Chưa cập nhật</thongtin></textmargin>
                                         <textmargin><thongtin>Chưa cập nhật</thongtin></textmargin>
                                     </div>
@@ -324,7 +290,7 @@
                     <div class="col l-2"><textmargin><label>Đang thực hiện</label></textmargin></div>              
                 </div>
             </div>
-            
+            <!--  -->
             <div id="cn_congviec" class="tabcontent">
                 <!--/////////////////////////////////////////Công việc đang thực hiện//////////////////////////////////////////////////////-->
                 <text_header1>III. CẬP NHẬT CÔNG VIỆC</text_header1>
@@ -343,8 +309,6 @@
                         </div>
                         <div class="col l-3"><textmargin><thongtin>Mô tả yêu cầu</thongtin></textmargin></div>           
                         <div class="col l-12"><textmargin><textarea placeholder="Nhập mô tả..." id="cv_giaomt" required></textarea></textmargin></div>
-                        <!-- <div class="col l-3"><textmargin><thongtin>Mô tả khác</thongtin></textmargin></div> 
-                        <div class="col l-12"><textmargin><textarea placeholder="Nhập mô tả..." id="cv_giaomtk" required></textarea></textmargin></div>  -->
                     </div>
                     <div class="col l-6">
                         <div class="row no-gutter">
@@ -391,7 +355,7 @@
                                 </div>
 
                                 <div class="col l-3"><textmargin><thongtin >Mô tả hiện tại</thongtin></textmargin></div>           
-                                <div class="col l-12"><textmargin><textarea id="cvg_motac" disabled></textarea></textmargin></div>
+                                <div class="col l-12"><textmargin><label id="cvg_motac">Chưa lựa chọn công việc</label></textmargin></div>
                                 <div class="col l-3"><textmargin><thongtin>Cập nhật mô tả</thongtin></textmargin></div> 
                                 <div class="col l-12"><textmargin><textarea placeholder="Nhập mô tả..." id="cvg_mota_update" required></textarea></textmargin></div> 
 
@@ -399,13 +363,6 @@
                             </div>
                         </div>
                         <div class="col l-6">
-                            <div class="row no-gutter">
-                                <div class="col l-2"><img class="avt"src="../IMG/bg.jpg" style="border-radius: 5px; height: 18em;"></div>
-                                <div class="col l-2"><img class="avt"src="../IMG/bg.jpg" style="border-radius: 5px; height: 18em;"></div>
-                                <div class="col l-2"><img class="avt"src="../IMG/bg.jpg" style="border-radius: 5px; height: 18em;"></div>
-                                <div class="col l-2"><img class="avt"src="../IMG/bg.jpg" style="border-radius: 5px; height: 18em;"></div>
-                                <div class="col l-2"><img class="avt"src="../IMG/bg.jpg" style="border-radius: 5px; height: 18em;"></div>
-                            </div> 
                         <div class="row no-gutter">
                             <div class="col l-3"><textmargin><thongtin>Bắt đầu</thongtin></textmargin></div>
                             <div class="col l-9"><thongtin><input type="datetime-local" id="date_begin_update" required></thongtin></div> 
@@ -436,19 +393,20 @@
                     <div id="tmp_data_sgv" style="display: none;"></div> <!--Nơi lưu giá trị tạm của lịch sử, dùng để update giá trị lịch sử-->
                 </form>
                 </div>
-                <div id="tt_chitiet" class="tabcontent">
-                    <text_header1>IV. THÔNG TIN CHI TIẾT<i class="fa-solid fa-pen"></i></text_header1>
-                    <text_header><i class="fa-sharp fa-solid fa-briefcase"></i>&emsp;Mô tả công việc</text_header>
-                    <textmargin><label id="mota_cv">Lập trình IOS</label></textmargin>
-                    <text_header><i class="fa-sharp fa-solid fa-briefcase"></i>&emsp;CV xin việc</text_header>
-                    <text_header onclick="xoa_nv()"><i class="fa-regular fa-x"></i>&emsp;Hủy tài khoản</text_header>
-                </div>
+            <!--  -->
+            <div id="tt_chitiet" class="tabcontent">
+                <text_header1>IV. THÔNG TIN CHI TIẾT<i class="fa-solid fa-pen"></i></text_header1>
+                <text_header><i class="fa-sharp fa-solid fa-briefcase"></i>&emsp;Mô tả công việc</text_header>
+                <textmargin><label id="mota_cv">Lập trình IOS</label></textmargin>
+                <text_header><i class="fa-sharp fa-solid fa-briefcase"></i>&emsp;CV xin việc</text_header>
+                <text_header onclick="xoa_nv()"><i class="fa-regular fa-x"></i>&emsp;Hủy tài khoản</text_header>
             </div>
-           
-        </nav>     
-    </div>
+            <!--  -->
+        </nav>    
+    </div>  
+</div>
 <div>
-<div class="footer_moi">
+<!-- <div class="footer_moi">
     <div class="grid wide">
         <div class="row">
             <div class="col l-4">
@@ -496,15 +454,9 @@
         </div> 
     </div>
     <div class="by_leduc">Design by LeDuc</div> 
+</div> -->
 </div>
-</div>
-<div id="display_bc">
-</div>
-
-</div>
-
-</div>
-</div>
+<div id="display_bc"></div>
 <!--1. thongtincanhan-->
     <script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>

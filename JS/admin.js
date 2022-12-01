@@ -10,6 +10,16 @@ function clr_addnv(){
   document.getElementById("mt_addnv").value = ""
   document.getElementById("file_avt").value = ""
 }
+function clr_giaoviec(){
+  document.getElementById("ten_cv").value = ""
+  document.getElementById("cv_giaomt").value = ""
+  document.getElementById("date_begin").value = ""
+  document.getElementById("date_end").value = ""
+  document.getElementById("dc_lam").value = ""
+  document.getElementById("hotro_cv").value = ""
+  document.getElementById("giamsat_cv").value = ""
+  document.getElementById("file_cv").value = ""
+}
 function open_addnv (){
   clr_addnv();
   ranID = randomString(10);
@@ -148,6 +158,8 @@ function open_tt_nv(id_nv,avt_nv, ten_nv, mota_cv, chucvu_nv){
 
 function back_home(){
   document.getElementById("form_tt_nv").style.display = "none";
+  document.getElementById('cvg_motac').innerHTML = "Chưa lựa chọn công việc"
+  clr_giaoviec()
   close_tiendo()
 }
 function sua_ttcn(){
@@ -291,11 +303,10 @@ function hienthi_nv_realtime() {
    });
 }
 function langnghe_cvg(id_nv){
-  document.getElementById("ten_cvg").innerHTML=`<option value="">Lựa chọn công việc</option>`
   ////////////////////////////// lấy thông tin giao việc từ CSDL về web admin
   database.ref("GIAOVIEC").on('value', async function(snap) {
     var ketqualangnghe = await snap.val();
-    document.getElementById("ten_cvg").innerHTML=""
+    document.getElementById("ten_cvg").innerHTML=`<option value="">Lựa chọn công việc</option>`
     document.getElementById("dscv_update").innerHTML = ""
     /////////////// tìm kiếm id nhân viên
     for (var search_nhanvien in ketqualangnghe) {
@@ -323,7 +334,7 @@ function langnghe_cvg(id_nv){
             //console.log(search_macv) // id công việc
             document.getElementById("ten_cvg").innerHTML+=`<option value="gv${search_macv}">${ten_cvg}</option>`
             ////////////////////// lắng nghe kết quả trả về data công việc
-            document.getElementById("dscv_update").innerHTML +=  `<label style="background-color:#c10e0e;padding: 6px;"><button disabled>${trangthaigiaoviec}</button>
+            document.getElementById("dscv_update").innerHTML +=  `<label style="background-color:#d42828;padding: 6px;"><button disabled>${trangthaigiaoviec}</button>
             <button onclick="xembaocao('${tiendo}','${mt_cvg}','${yeucau_ht}', '${nguoinhan_bc}',  '${tinhtrangcv}', '${thoigianbaocao}','${search_macv}')">Xem báo cáo</button>
             &emsp;${ten_cvg}</label>
                                                                   <div class="row no-gutter header_phanmuc">
@@ -350,9 +361,9 @@ function langnghe_cvg(id_nv){
 }
 
 function langnghe_his_cv(id_nv){
-  document.getElementById("his_update").innerHTML = ""
-  database.ref("LICHSU_GIAOVIEC").child(id_nv).once('value', async function(snap) {
+  database.ref("LICHSU_GIAOVIEC").child(id_nv).on('value', async function(snap) {
     var ketqualangnghe = await snap.val();
+    document.getElementById("his_update").innerHTML = ""
     for (var search_macv in ketqualangnghe) {
       var id_macv = ketqualangnghe[search_macv]
       var ten_cv_his = id_macv.TENCV
@@ -368,7 +379,7 @@ function langnghe_his_cv(id_nv){
         <div class="col l-2"><textmargin><thongtin>Mô tả</thongtin></textmargin></div>
       </div>
       <div class="row no-gutter" id="ds${search_macv}"></div>`
-
+      const id_timkiem = "ds"+search_macv
        // console.log(ketquagiaoviec) 
         for (var search_malichsu in id_macv) {
           if(search_malichsu != "TENCV"){
@@ -381,7 +392,7 @@ function langnghe_his_cv(id_nv){
               var de_cvg_his = id_giaoviec.DEADLINE
               var du_cvg_his = id_giaoviec.TIMECAPNHAT
               var mt_cvg_his = id_giaoviec.CV_GIAOMT
-              const id_timkiem = "ds"+search_macv
+           
               document.getElementById(id_timkiem).innerHTML += `  <div class="col l-2"><textmargin><label>${gs_cvg_his}</label></textmargin></div>
                                                                   <div class="col l-2"><textmargin><label>${ht_cvg_his}</label></textmargin></div>            
                                                                   <div class="col l-2"><textmargin><label>${du_cvg_his}</label></textmargin></div>
@@ -433,20 +444,12 @@ function giaoviec(){
         database.ref("GIAOVIEC").child(id_nv).child(tmp_dem).child("TRANGTHAIGIAOVIEC").set("CHƯA NHẬN VIỆC");
         swal("Đã giao việc!", "Công việc đã được cập nhật", "success");
         /////////// clr 
-        document.getElementById("ten_cv").value = ""
-        document.getElementById("cv_giaomt").value = ""
-        // document.getElementById("cv_giaomtk").value = ""
-        document.getElementById("date_begin").value = ""
-        document.getElementById("date_end").value = ""
-        document.getElementById("dc_lam").value = ""
-        document.getElementById("hotro_cv").value = ""
-        document.getElementById("giamsat_cv").value = ""
-        document.getElementById("file_cv").value = ""
-        //////////////////// hiển thị công việc
+        clr_giaoviec()
     });
     }  
   }  if(date_begin>=date_end)  swal("Sai thông tin!", "Vui lòng cập nhật lại thông tin", "error");
 }
+//////////////////////////////////
 function select_mota(obj){
   var mota = document.getElementById('cvg_motac');
   var date_begin_update = document.getElementById('date_begin_update'); 
@@ -489,11 +492,8 @@ function select_mota(obj){
  //   file_cv_update.value = file_cv_upd
   });
 }
+//////////////////////////////////////
 function xacnhan_sua_giaoviec(){
-  var avt_nv = document.getElementById("avt_opennv").src;
-  var ten_nv = document.getElementById("ten_nv").innerText;
-  var mota_cv_cn = document.getElementById("mota_cv").innerText;
-  var chucvu_nv = document.getElementById("chucvu_nv").innerText;
   var ma_update = randomString(10);
   var id_nv = document.getElementById("id_nv").value
   var id_cvg_select = document.getElementById('id_cvg').value
@@ -506,7 +506,7 @@ function xacnhan_sua_giaoviec(){
   var id_gs = "gs"+id_cvg_select
   var id_tu = "tu"+id_cvg_select
 
-  var mt_cv_his =   document.getElementById('cvg_motac').value;  /// value
+  var mt_cv_his =   document.getElementById('cvg_motac').innerHTML;  /// value
   var date_begin_his =  document.getElementById(id_db).innerText
   var date_end_his =  document.getElementById(id_de).innerText
   var dc_his =  document.getElementById(id_dc).innerText
@@ -538,6 +538,7 @@ function xacnhan_sua_giaoviec(){
         database.ref("GIAOVIEC").child(id_nv).child(id_cvg_select).child("FILE").set(file_cv);
         database.ref("GIAOVIEC").child(id_nv).child(id_cvg_select).child("TIMECAPNHAT").set(date_update);
         /////// lịch sử cập nhật
+        console.log(mt_cv_his)
         database.ref("LICHSU_GIAOVIEC").child(id_nv).child(id_cvg_select).child(ma_update).child("CV_GIAOMT").set(mt_cv_his); //oke
         database.ref("LICHSU_GIAOVIEC").child(id_nv).child(id_cvg_select).child(ma_update).child("TIMEBATDAU").set(date_begin_his);
         database.ref("LICHSU_GIAOVIEC").child(id_nv).child(id_cvg_select).child(ma_update).child("DEADLINE").set(date_end_his);
@@ -549,14 +550,14 @@ function xacnhan_sua_giaoviec(){
         database.ref("LICHSU_GIAOVIEC").child(id_nv).child(id_cvg_select).child("TENCV").set(ten_cv);
         swal("Đã giao việc!", "Công việc đã được cập nhật", "success");
         /////////// clr 
-        document.getElementById("cvg_motac").innerHTML = ""
+        document.getElementById("cvg_motac").innerHTML = "Chưa lựa chọn công việc"
+        document.getElementById("cvg_mota_update").value = ""
         document.getElementById("date_begin_update").value = ""
         document.getElementById("date_end_update").value = ""
         document.getElementById("dc_lam_update").value = ""
         document.getElementById("hotro_cv_update").value = ""
         document.getElementById("giamsat_cv_update").value = ""
     //    document.getElementById("file_cv_update").value = ""
-        open_tt_nv(id_nv, avt_nv, ten_nv, mota_cv_cn, chucvu_nv)
     });
     }  
   }  if(date_begin>=date_end)  swal("Sai thông tin!", "Vui lòng cập nhật lại thông tin", "error");
@@ -568,7 +569,6 @@ function xembaocao(tiendo, yeucau, yeucau_ht, nguoinhan_bc, tinhtrangcv, thoigia
                                                   top: 0,
                                                   behavior: 'smooth'
                                                 });
-  
   let id_nguoiht = yeucau_ht.split("*") /////////////////////tách chuỗi
   let id_nguoinhanbc = nguoinhan_bc.split("*")
   var yeucau_nht =""
@@ -577,7 +577,6 @@ function xembaocao(tiendo, yeucau, yeucau_ht, nguoinhan_bc, tinhtrangcv, thoigia
       
     database.ref("NHANSU").on('value', async function(snap) {
       var ketqualangnghe = await snap.val();
-
       for (var search_nhansu in ketqualangnghe) {
          id_nhanvien = ketqualangnghe[search_nhansu]
          var ten_nv = id_nhanvien.TEN
@@ -601,8 +600,8 @@ function xembaocao(tiendo, yeucau, yeucau_ht, nguoinhan_bc, tinhtrangcv, thoigia
                                                   <div class="col l-12"><text_header1>&emsp;|&emsp;Tiến độ công việc hiện tại</text_header1></div>
                                                   <div class="col l-6"><textmargin><thongtin ><i class="fa-solid fa-clipboard-list">&emsp;</i>Nội dung báo cáo</thongtin></textmargin></div> 
                                                   <div class="col l-6"><textmargin><thongtin >Yêu cầu công việc</thongtin></textmargin></div>          
-                                                  <div class="col l-6"><textmargin><textarea disabled>${tiendo}</textarea></textmargin></div>
-                                                  <div class="col l-6"><textmargin><textarea disabled>${yeucau}</textarea></textmargin></div>
+                                                  <div class="col l-6"><textmargin><label>${tiendo}</label></textmargin></div>
+                                                  <div class="col l-6"><textmargin><label>${yeucau}</label></textmargin></div>
                                                   <div class="col l-12"><textmargin><thongtin ><i class="fa-solid fa-code-pull-request"></i>&emsp;Yêu cầu người hỗ trợ</thongtin></textmargin></div>
                                                   <div class="col l-12"><button class="btn-manhotro">${yeucau_nht}</button></div>
                                                   <div class="col l-12"><textmargin><thongtin ><i class="fa-solid fa-share"></i>&emsp;Báo cáo đã gửi đến</thongtin></textmargin></div>
@@ -738,6 +737,13 @@ function openPage(pageName,elmnt,color) {
   document.getElementById(pageName).style.display = "block";
   elmnt.style.backgroundColor = color;
 }
-
-// Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
+////////////////
+document.getElementById('cv_giaomt').addEventListener('keypress', (e) => {
+  if (e.key == 'Enter' && !e.shiftKey || e.key == 'Enter' && e.shiftKey) {
+    const txtArea = document.getElementById('cv_giaomt');
+    e.preventDefault()
+    txtArea.value += ' ';
+    console.log(txtArea.value)
+  }
+})
