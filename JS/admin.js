@@ -146,7 +146,7 @@ function open_tt_nv(id_nv,avt_nv, ten_nv, mota_cv, chucvu_nv){
           <div class="col l-3"><textmargin><thongtin id="sotk_nganhang">${sotk_nganhang}</thongtin></textmargin></div>
           <div class="col l-1"><textmargin><label>Chủ TK</label></textmargin></div>
           <div class="col l-3"><textmargin><thongtin id="chutk_nganhang">${chutk_nganhang}</thongtin></textmargin></div>
-          <div class="col l-1"><textmargin><label>Ngân hàng</label></textmargin></div>
+          <div class="col l-1"><textmargin><label>Loại NH</label></textmargin></div>
           <div class="col l-2"><textmargin><thongtin id="loai_nganhang">${loai_nganhang}</thongtin></textmargin></div>
           <div class="col l-o-10"><thongtin><button id="btn_luu_ttcn" onclick="luu_ttcn()" style="display: none;">Lưu thông tin cá nhân&ensp;<i class="fa-solid fa-check"></i></button></thongtin></div>
           </div>`
@@ -291,7 +291,7 @@ function hienthi_nv_realtime() {
           var avt_nv = id_nhanvien.AVATAR
           if((ten_nv && mk_nv && mota_cv) != undefined){
             document.getElementById("danhsach_nv").innerHTML +=
-            `<div class="nhanvien col l-2" onclick="open_tt_nv('${id_nv}', '${avt_nv}','${ten_nv}','${mota_cv}', '${chucvu_nv}')">
+            `<div class="nhanvien" onclick="open_tt_nv('${id_nv}', '${avt_nv}','${ten_nv}','${mota_cv}', '${chucvu_nv}')">
                 <img src="${avt_nv}"class="avt" style="display:block">
                 <h1 style="color: #1a2319">ID: ${id_nv}</h1> 
                 <p>${ten_nv}</p>
