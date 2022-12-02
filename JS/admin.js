@@ -291,7 +291,7 @@ function hienthi_nv_realtime() {
           var avt_nv = id_nhanvien.AVATAR
           if((ten_nv && mk_nv && mota_cv) != undefined){
             document.getElementById("danhsach_nv").innerHTML +=
-            `<div class="nhanvien" onclick="open_tt_nv('${id_nv}', '${avt_nv}','${ten_nv}','${mota_cv}', '${chucvu_nv}')">
+            `<div class="nhanvien col l-2 m-4 c-6" onclick="open_tt_nv('${id_nv}', '${avt_nv}','${ten_nv}','${mota_cv}', '${chucvu_nv}')">
                 <img src="${avt_nv}"class="avt" style="display:block">
                 <h1 style="color: #1a2319">ID: ${id_nv}</h1> 
                 <p>${ten_nv}</p>
