@@ -118,36 +118,21 @@ function open_tt_nv(id_nv,avt_nv, ten_nv, mota_cv, chucvu_nv){
           if(get_id_nv==id_nv){
           document.getElementById("thongtin_canhan").innerHTML = `
           <div class="row no-gutter">
-            <div class="col l-2"><textmargin><label>CCCD</label></textmargin></div>
-            <div class="col l-3"><textmargin><thongtin id="cccd">${cccd}</thongtin></textmargin></div>
-            <div class="col l-1"><textmargin><label>Ngày cấp</label></textmargin></div>
-            <div class="col l-3"><textmargin><thongtin id="ngc_cccd">${ngc_cccd}</thongtin></textmargin></div>
-            <div class="col l-1"><textmargin><label>Nơi cấp</label></textmargin></div>
-            <div class="col l-2"><textmargin><thongtin id="nc_cccd">${nc_cccd}</thongtin></textmargin></div>
-          </div>
-          <div class="row no-gutter">
-          <div class="col l-2"><textmargin><label>Địa chỉ thường trú</label></textmargin></div>
-          <div class="col l-10"><textmargin><thongtin id="diachi_tt">${diachi_tt}</thongtin></textmargin></div>
-          </div>
-          <div class="row no-gutter">
-          <div class="col l-2"><textmargin><label>Địa chỉ hiện tại</label></textmargin></div>
-          <div class="col l-10"><textmargin><thongtin id="diachi_ht">${diachi_ht}</thongtin></textmargin></div>
-          </div>
-          <div class="row no-gutter">
-          <div class="col l-2"><textmargin><label>Tình trạng hôn nhân</label></textmargin></div>
-          <div class="col l-3"><textmargin><thongtin id="tinhtrang_hn">${tinhtrang_hn}</thongtin></textmargin></div>
-          <div class="col l-1"><textmargin><label>Dân tộc</label></textmargin></div>
-          <div class="col l-3"><textmargin><thongtin id="dantoc">${dantoc}</thongtin></textmargin></div>
-          <div class="col l-1"><textmargin><label>Tôn giáo</label></textmargin></div>
-          <div class="col l-2"><textmargin><thongtin id="tongiao">${tongiao}</thongtin></textmargin></div>
-          </div>
-          <div class="row no-gutter">
-          <div class="col l-2"><textmargin><label>Số tài khoản</label></textmargin></div>
-          <div class="col l-3"><textmargin><thongtin id="sotk_nganhang">${sotk_nganhang}</thongtin></textmargin></div>
-          <div class="col l-1"><textmargin><label>Chủ TK</label></textmargin></div>
-          <div class="col l-3"><textmargin><thongtin id="chutk_nganhang">${chutk_nganhang}</thongtin></textmargin></div>
-          <div class="col l-1"><textmargin><label>Loại NH</label></textmargin></div>
-          <div class="col l-2"><textmargin><thongtin id="loai_nganhang">${loai_nganhang}</thongtin></textmargin></div>
+            <div class="col l-4 m-12 c-12"><textmargin><label>CCCD&emsp;<thongtin id="cccd">${cccd}</thongtin></label></textmargin></div>
+            <div class="col l-4 m-6 c-12"><textmargin><label>Ngày cấp&emsp;<thongtin id="ngc_cccd">${ngc_cccd}</thongtin></label></textmargin></div>
+            <div class="col l-4 m-6 c-12"><textmargin><label>Nơi cấp&emsp;<thongtin id="nc_cccd">${nc_cccd}</thongtin></label></textmargin></div>
+
+            <div class="col l-4 m-6 c-12"><textmargin><label>Tình trạng hôn nhân&emsp;<thongtin id="tinhtrang_hn">${tinhtrang_hn}</thongtin></label></textmargin></div>
+            <div class="col l-4 m-6 c-12"><textmargin><label>Dân tộc&emsp;<thongtin id="dantoc">${dantoc}</thongtin></label></textmargin></div>
+            <div class="col l-4 m-6 c-12"><textmargin><label>Tôn giáo&emsp;<thongtin id="tongiao">${tongiao}</thongtin></label></textmargin></div>
+
+            <div class="col l-4 m-6 c-12"><textmargin><label>Số tài khoản&emsp;<thongtin id="sotk_nganhang">${sotk_nganhang}</thongtin></label></textmargin></div>
+            <div class="col l-4 m-6 c-12"><textmargin><label>Chủ TK&emsp;<thongtin id="chutk_nganhang">${chutk_nganhang}</thongtin></label></textmargin></div>
+            <div class="col l-4 m-6 c-12"><textmargin><label>Loại NH&emsp;<thongtin id="loai_nganhang">${loai_nganhang}</thongtin></label></textmargin></div>
+
+            <div class="col l-12 m-12 c-12"><textmargin><label>Địa chỉ thường trú&emsp;<thongtin id="diachi_tt">${diachi_tt}</thongtin></label></textmargin></div>
+            <div class="col l-12 m-12 c-12"><textmargin><label>Địa chỉ hiện tại&emsp;<thongtin id="diachi_ht">${diachi_ht}</thongtin></label></textmargin></div>
+
           <div class="col l-o-10"><thongtin><button id="btn_luu_ttcn" onclick="luu_ttcn()" style="display: none;">Lưu thông tin cá nhân&ensp;<i class="fa-solid fa-check"></i></button></thongtin></div>
           </div>`
           }
@@ -291,11 +276,11 @@ function hienthi_nv_realtime() {
           var avt_nv = id_nhanvien.AVATAR
           if((ten_nv && mk_nv && mota_cv) != undefined){
             document.getElementById("danhsach_nv").innerHTML +=
-            `<div class="nhanvien col l-2 m-4 c-6" onclick="open_tt_nv('${id_nv}', '${avt_nv}','${ten_nv}','${mota_cv}', '${chucvu_nv}')">
-                <img src="${avt_nv}"class="avt" style="display:block">
-                <h1 style="color: #1a2319">ID: ${id_nv}</h1> 
-                <p>${ten_nv}</p>
-                <p>${chucvu_nv}</p>
+            `<div class="nhanvien l-2 m-4 c-6" onclick="open_tt_nv('${id_nv}', '${avt_nv}','${ten_nv}','${mota_cv}', '${chucvu_nv}')">
+                <img src="${avt_nv}"class="avt_list">
+                <div style="width:100%; text-align:center;">
+                <p>[${id_nv}] - ${ten_nv}</p>
+                <p>${chucvu_nv}</p><div>
             </div>`
           }
          

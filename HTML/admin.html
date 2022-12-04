@@ -13,20 +13,16 @@
 </head>
 <body>
     <!-- header -->
-    <div class="grid no-gutter">
-        <div class="row">
+    <div class="grid no-gutters">
+        <div class="row no-gutters">
             <nav class="col l-12 m-12 c-12 header">
                 <ul id="nav">
                     <div class="l-12 c-0 m-12">
-                        <a href="https://service.kfs.vn/"><img src="../IMG/logo.png" style="width:4em"></a>
-                        <li><a href="#"></a>DỊCH VỤ</li>
-                        <li><a href="#"></a>VỀ CHÚNG TÔI</li>
-                        <li><a href="#"></a>TRANG CHỦ</li>
-                        <li><a href="#" ></a><i class="fa fa-phone" aria-hidden="true"></i> 0708 963 966</li>
+                        <h1 style="font-size:23px">KFS CRM</h1>
                     </div>
-                    <div class="row">
+                    <div class="row no-gutters">
                         <div class=" l-0 c-8 m-0">
-                            <a href="https://service.kfs.vn/"><img src="../IMG/logo.png" style="width:4em"></a>
+                            <a href="#"><img src="../IMG/logo.png" style="width:4em"></a>
                         </div>
                         <div class="l-0 c-4 m-0 dropdown">
                             <textmargin class="dropbtn"><i class="fa-solid fa-bars" style="font-size:1.5em; float:right;"></i></textmargin>
@@ -43,8 +39,8 @@
     </div>
     <!-- menu -->
     <div class="grid" id="bg_body">
-        <div class="row">
-            <div class="col l-2 m-3 c-0">
+        <div class="row no-gutters">
+            <div class="l-2 m-3 c-0">
                 <div class="menu">
                     <div class="sidebar-wrapper">
                         <h4 style="border-bottom: 0.01em solid #a89e9e;"></h4>
@@ -68,28 +64,27 @@
                     <div class="sidebar-menu">
                         <ul>
                             <li class="header-menu"><span>Tính năng</span></li>
-                            <li class="icon-menu row" onclick="open_addnv()">
-                                <a class="col l-1" href="#">
-                                    <i class="far fa-plus"></i>   
+                            <li class="icon-menu row no-gutters" onclick="open_addnv()">
+                                <a class="l-12" href="#">
+                                    <i class="far fa-plus"></i><span>Thêm nhân viên</span>   
                                 </a>
-                                <span class="col l-6">Thêm nhân viên</span>
                             </li>
                            <!--  -->
-                            <li class="icon-menu row" onclick="dangxuat()">
-                                <a class="col l-1" href="#">
-                                    <i class="fa-solid fa-door-open"></i>  
+                            <li class="icon-menu row no-gutters" onclick="dangxuat()">
+                                <a class="l-12" href="#">
+                                    <i class="fa-solid fa-door-open"></i><span>Đăng xuất</span>  
                                 </a>
-                                <span class="col l-6">Đăng xuất</span>
+                                
                             </li>
                         </ul>
                     </div>
                 </div>
                 </div>
             </div>
-                <div class="col l-10 m-9 c-12">
-                    <div class="row">
-                        <div class="grid wide">
-                            <div class="row" id="danhsach_nv">
+                <div class="l-10 m-9 c-12">
+                    <div class="row no-gutters">
+                        <div class="grid">
+                            <div class="row no-gutters" id="danhsach_nv">
                         <!--danh sách nhân viên-->
                             </div>
                         </div>
@@ -99,9 +94,6 @@
         </div>
        
     <!--form them nhan vien-->
-    <div class="grid wide">
-        <div class="row no-gutter">
-            <div class="col l-o-3 c-10">
                 <form onsubmit="return false" id="form_addnv" style="display: none;">
                     <div class="header_addnv">ĐĂNG KÝ TÀI KHOẢN
                         <i class="fas fa-chevron-double-left" onclick="close_addnv()"></i>
@@ -128,38 +120,29 @@
                     </h1> 
                     <div class="footer"></div>
             </form> 
-            <!--/////////form thong tin nhan vien //////////////////////////////-->
+            <!--/////////form thong tin nhan vien //////////////////////////////-->    
+<div class="form_moi" id="form_tt_nv">
+        <div class="grid">
+            <div class="row no-gutters">
+                <button class="tablink l-3 m-6 c-6" onclick="openPage('cn_congviec', this, '#333')" id="defaultOpen">CẬP NHẬT CÔNG VIỆC</button>
+                <button class="tablink l-3 m-6 c-6" onclick="openPage('tt_canhan', this, '#333')">THÔNG TIN CÁ NHÂN</button>
+                <button class="tablink l-3 m-6 c-6" onclick="openPage('tt_congviec', this, '#333')">THÔNG TIN CÔNG VIỆC</button>  
+                <button class="tablink l-3 m-6 c-6" onclick="openPage('tt_chitiet', this, '#333')">THÔNG TIN CHI TIẾT</button>
+                <button class="tablink l-12 m-12 c-12" onclick="back_home()">TRỞ VỀ</button>
             </div>
         </div>
-    </div>
-    
-<div class="form_moi" id="form_tt_nv">
-        <div class="grid no-gutter">
-            <div class="row">
-            <nav class="col l-12 header">
-                <ul id="nav">
-                        <img  onclick="back_home()" src="../IMG/logo.png" style="width:4em">
-                        <button class="tablink" onclick="openPage('tt_chitiet', this, '#333')">THÔNG TIN CHI TIẾT</button>
-                        <button class="tablink" onclick="openPage('tt_canhan', this, '#333')">THÔNG TIN CÁ NHÂN</button>
-                        <button class="tablink" onclick="openPage('tt_congviec', this, '#333')">THÔNG TIN CÔNG VIỆC</button>  
-                        <button class="tablink" onclick="openPage('cn_congviec', this, '#333')" id="defaultOpen">CẬP NHẬT CÔNG VIỆC</button>
-                </ul>     
-            </nav>
-        </div>
-    </div>
     <!--Header-->
     <div class="grid wide">
         <nav class="header">
-           
             <!--  -->
             <div id="tt_canhan" class="tabcontent">
                 <div class="row no-gutters">
-                    <div class="col l-2"><a  href="#"><img class="avt_nv" src="../avt.jpg" id="avt_opennv"></a></div>
-                    <div class="col l-10">
+                    <div class="col l-2 m-3 c-12"><a  href="#"><img class="avt_nv" src="../avt.jpg" id="avt_opennv"></a></div>
+                    <div class="col l-10 m-9 c-12">
                         <h1><text_header id="ten_nv">Lê Xuân Đức</text_header></h1>
                         <div class="row no-gutters">
                             <div class="col l-5">
-                                <div class="row">
+                                <div class="row no-gutters">
                                     <div class="col l-5">
                                         <textmargin><label>Mã nhân viên</label></textmargin>
                                         <textmargin><label>Chức vụ</label></textmargin>
@@ -188,8 +171,7 @@
                             </div>
                             <div class="col l-3">
                                 <div class="row no-gutters">
-                                    <div class="col l-5">
-                                    
+                                    <div class="col l-5">   
                                         <textmargin><label>Tài khoản</label></textmargin>
                                         <textmargin><label>Điện thoại</label></textmargin>
                                     </div>
@@ -202,57 +184,59 @@
                         </div>    
                     </div>  
                 </div>
-                <text_header1>III. THÔNG TIN CÁ NHÂN 
-                    <i class="fa-solid fa-pen" onclick="sua_ttcn()"></i>
-                </text_header1>
-                <div id="thongtin_canhan">
-                    <!--noi dung thong tin-->
+                <div class="col">
+                    <text_header1>III. THÔNG TIN CÁ NHÂN 
+                        <i class="fa-solid fa-pen" onclick="sua_ttcn()"></i>
+                    </text_header1>
+                    <div id="thongtin_canhan">
+                        <!--noi dung thong tin-->
+                    </div>
                 </div>
             </div>
             <!-- END TAB 1 -->
             <div id="tt_congviec" class="tabcontent">
                 <text_header1>II. THÔNG TIN CÔNG VIỆC <i class="fa-solid fa-pen"></i></text_header1>
                 <text_header><i class="fa-solid fa-list"></i>&emsp;Thông tin cơ bản</text_header>
-                <div class="row no-gutter header_phanmuc">
+                <div class="row no-gutters header_phanmuc">
                         <div class="col l-3"><textmargin><thongtin>Ngày bắt đầu làm việc</thongtin></textmargin></div>
                         <div class="col l-3"><textmargin><thongtin>Địa điểm làm việc</thongtin></textmargin></div>
                         <div class="col l-3"><textmargin><thongtin>Phòng ban - bộ phận</thongtin></textmargin></div>
                         <div class="col l-3"><textmargin><thongtin>Chức vụ</thongtin></textmargin></div>             
                 </div>
-                <div class="row no-gutter">
+                <div class="row no-gutters">
                     <div class="col l-3"><textmargin><label>20/05/2046</label></textmargin></div>
                     <div class="col l-3"><textmargin><label>Sky Center</label></textmargin></div>
                     <div class="col l-3"><textmargin><label>IT phần mềm</label></textmargin></div>
                     <div class="col l-3"><textmargin><label>Lập trình viên</label></textmargin></div>
                 </div>
-                <div class="row no-gutter">
+                <div class="row no-gutters">
                     <div class="col l-3"><textmargin><label>20/10/2046</label></textmargin></div>
                     <div class="col l-3"><textmargin><label>Sky Center</label></textmargin></div>
                     <div class="col l-3"><textmargin><label>IT phần cứng</label></textmargin></div>
                     <div class="col l-3"><textmargin><label>Lập trình viên</label></textmargin></div>
                 </div>
-                <div class="row no-gutter">
+                <div class="row no-gutters">
                     <div class="col l-3"><textmargin><label>20/05/2047</label></textmargin></div>
                     <div class="col l-3"><textmargin><label>Sky Center</label></textmargin></div>
                     <div class="col l-3"><textmargin><label>IT - Kỹ thuật</label></textmargin></div>
                     <div class="col l-3"><textmargin><label>Quản lý - Lập trình viên</label></textmargin></div>
                 </div>
                 <text_header><i class="fa-solid fa-money-check-dollar"></i>&emsp;Tài sản</text_header>
-                <div class="row no-gutter header_phanmuc">
+                <div class="row no-gutters header_phanmuc">
                     <div class="col l-2"><textmargin><thongtin>Loại tài sản</thongtin></textmargin></div>
                     <div class="col l-3"><textmargin><thongtin>Mô tả</thongtin></textmargin></div>
                     <div class="col l-2"><textmargin><thongtin>Ngày mượn</thongtin></textmargin></div>
                     <div class="col l-2"><textmargin><thongtin>Ngày trả</thongtin></textmargin></div>
                     <div class="col l-3"><textmargin><thongtin>Trạng thái</thongtin></textmargin></div>             
                 </div>
-                <div class="row no-gutter">
+                <div class="row no-gutters">
                     <div class="col l-2"><textmargin><label>Laptop</label></textmargin></div>
                     <div class="col l-3"><textmargin><label>Asus 14"</label></textmargin></div>
                     <div class="col l-2"><textmargin><label>17/10/2046</label></textmargin></div>
                     <div class="col l-2"><textmargin><label>17/11/2047</label></textmargin></div>
                     <div class="col l-3"><textmargin><label>Đã trả</label></textmargin></div>             
                 </div>
-                <div class="row no-gutter">
+                <div class="row no-gutters">
                     <div class="col l-2"><textmargin><label>Điện thoại</label></textmargin></div>
                     <div class="col l-3"><textmargin><label>Iphone 13 Sliver 256GB</label></textmargin></div>
                     <div class="col l-2"><textmargin><label>17/10/2046</label></textmargin></div>
@@ -261,7 +245,7 @@
                 </div>
                 <!--///////////////////////////////////////////////////////////////////////////////////////////////////-->
                 <text_header><i class="fa-sharp fa-solid fa-briefcase"></i>&emsp;Tiến độ công việc</text_header>
-                <div class="row no-gutter header_phanmuc">
+                <div class="row no-gutters header_phanmuc">
                     <div class="col l-2"><textmargin><thongtin>Công việc</thongtin></textmargin></div>
                     <div class="col l-2"><textmargin><thongtin>Yêu cầu</thongtin></textmargin></div>
                     <div class="col l-2"><textmargin><thongtin>Hỗ trợ</thongtin></textmargin></div>
@@ -269,7 +253,7 @@
                     <div class="col l-2"><textmargin><thongtin>Thời gian hoàn thành</thongtin></textmargin></div>
                     <div class="col l-2"><textmargin><thongtin>Trạng thái</thongtin></textmargin></div>
                 </div>
-                <div class="row no-gutter">
+                <div class="row no-gutters">
                     <div class="col l-2"><textmargin><label>Thiết kế Website quản lý</label></textmargin></div>
                     <div class="col l-2"><textmargin><label>Cập nhật giao diện</label></textmargin></div>
                     <div class="col l-2"><textmargin><label>Lê Xuân Đức</label></textmargin></div>
@@ -277,7 +261,7 @@
                     <div class="col l-2"><textmargin><label>18/11/2046</label></textmargin></div>   
                     <div class="col l-2"><textmargin><label>Hoàn thành</label></textmargin></div>              
                 </div>
-                <div class="row no-gutter">
+                <div class="row no-gutters">
                     <div class="col l-2"><textmargin><label>Đào tạo IT</label></textmargin></div>
                     <div class="col l-2"><textmargin><label>Lập trình Mobile</label></textmargin></div>
                     <div class="col l-2"><textmargin><label>Lê Xuân Đức</label></textmargin></div>
@@ -285,7 +269,7 @@
                     <div class="col l-2"><textmargin><label>25/11/2046</label></textmargin></div>   
                     <div class="col l-2"><textmargin><label>Đang thực hiện</label></textmargin></div>              
                 </div>
-                <div class="row no-gutter">
+                <div class="row no-gutters">
                     <div class="col l-2"><textmargin><label>Thiết kế Website quản lý</label></textmargin></div>
                     <div class="col l-2"><textmargin><label>Cập nhật tính năng</label></textmargin></div>
                     <div class="col l-2"><textmargin><label>Lê Xuân Đức</label></textmargin></div>
@@ -297,6 +281,7 @@
             <!--  -->
             <div id="cn_congviec" class="tabcontent">
                 <!--/////////////////////////////////////////Công việc đang thực hiện//////////////////////////////////////////////////////-->
+            <div class="grid">
                 <text_header1>I. CẬP NHẬT CÔNG VIỆC</text_header1>
                 <text_header><i class="fa-sharp fa-solid fa-spinner"></i></i>&emsp;Công việc đang thực hiện</text_header>
                 <div id="dscv_update"><!--//////////////////// nội dung công việc--></div>
@@ -305,9 +290,9 @@
             <!-- Giao việcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc-->
             <text_header><i class="fa-solid fa-bars-progress"></i>&emsp;Giao việc</text_header>
             <form onsubmit="return false" id="form_giaoviec">
-                <div class="row no-gutter">
+                <div class="row no-gutters">
                     <div class="col l-6">
-                        <div class="row no-gutter">
+                        <div class="row no-gutters">
                             <div class="col l-3"><textmargin><thongtin>Tên công việc</thongtin></textmargin></div>
                             <div class="col l-9"><thongtin><input placeholder="Nhập tên" id="ten_cv" required></thongtin></div>            
                         </div>
@@ -315,27 +300,27 @@
                         <div class="col l-12"><textmargin><textarea placeholder="Nhập mô tả..." id="cv_giaomt" required></textarea></textmargin></div>
                     </div>
                     <div class="col l-6">
-                        <div class="row no-gutter">
+                        <div class="row no-gutters">
                             <div class="col l-3"><textmargin><thongtin>Bắt đầu</thongtin></textmargin></div>
                             <div class="col l-9"><thongtin><input type="datetime-local" id="date_begin" required></thongtin></div>
                         </div>
-                        <div class="row no-gutter">
+                        <div class="row no-gutters">
                             <div class="col l-3"><textmargin><thongtin>Hạn cuối</thongtin></textmargin></div>
                             <div class="col l-9"><thongtin><input type="datetime-local" id="date_end" required></thongtin></div>           
                         </div>
-                        <div class="row no-gutter">
+                        <div class="row no-gutters">
                             <div class="col l-3"><textmargin><thongtin>Địa điểm</thongtin></textmargin></div>
                             <div class="col l-9"><thongtin><input placeholder="Nơi làm việc" id="dc_lam" required></thongtin></div>            
                         </div>
-                        <div class="row no-gutter">
+                        <div class="row no-gutters">
                             <div class="col l-3"><textmargin><thongtin>Hỗ trợ</thongtin></textmargin></div>
                             <div class="col l-9"><thongtin><input placeholder="Nhóm - người hỗ trợ" id="hotro_cv" required></thongtin></div>            
                         </div>
-                        <div class="row no-gutter">
+                        <div class="row no-gutters">
                             <div class="col l-3"><textmargin><thongtin>Giám sát</thongtin></textmargin></div>
                             <div class="col l-9"><thongtin><input placeholder="Nhóm - người giám sát" id="giamsat_cv" required></thongtin></div>            
                         </div>
-                        <div class="row no-gutter">
+                        <div class="row no-gutters">
                             <div class="col l-3"><textmargin><thongtin>Đính kèm</thongtin></textmargin></div>
                             <div class="col l-9"><thongtin><input type="file" id="file_cv" disabled></thongtin></div>            
                         </div>
@@ -346,9 +331,9 @@
          <!--Cập nhật giao việc-->   
             <text_header><i class="fa-solid fa-bars-progress"></i>&emsp;Cập nhật giao việc</text_header>
                 <form onsubmit="return false" id="form_sua_giaoviec">
-                    <div class="row no-gutter">
+                    <div class="row no-gutters">
                         <div class="col l-6">
-                            <div class="row no-gutter">
+                            <div class="row no-gutters">
                                 <div class="col l-12"><textmargin><thongtin>Công việc</thongtin></textmargin></div>
                                 <div class="col l-12">
                                     <h1 id="id_cvg" style="display: none;"></h1>
@@ -367,27 +352,27 @@
                             </div>
                         </div>
                         <div class="col l-6">
-                        <div class="row no-gutter">
+                        <div class="row no-gutters">
                             <div class="col l-3"><textmargin><thongtin>Bắt đầu</thongtin></textmargin></div>
                             <div class="col l-9"><thongtin><input type="datetime-local" id="date_begin_update" required></thongtin></div> 
                         </div>
-                        <div class="row no-gutter">
+                        <div class="row no-gutters">
                             <div class="col l-3"><textmargin><thongtin>Hạn cuối</thongtin></textmargin></div>
                             <div class="col l-9"><thongtin><input type="datetime-local" id="date_end_update" required></thongtin></div>           
                         </div>
-                        <div class="row no-gutter">
+                        <div class="row no-gutters">
                             <div class="col l-3"><textmargin><thongtin>Địa điểm</thongtin></textmargin></div>
                             <div class="col l-9"><thongtin><input placeholder="Nơi làm việc" id="dc_lam_update" required></thongtin></div>            
                         </div>
-                        <div class="row no-gutter">
+                        <div class="row no-gutters">
                             <div class="col l-3"><textmargin><thongtin>Hỗ trợ</thongtin></textmargin></div>
                             <div class="col l-9"><thongtin><input placeholder="Nhóm - người hỗ trợ" id="hotro_cv_update" required></thongtin></div>            
                         </div>
-                        <div class="row no-gutter">
+                        <div class="row no-gutters">
                             <div class="col l-3"><textmargin><thongtin>Giám sát</thongtin></textmargin></div>
                             <div class="col l-9"><thongtin><input placeholder="Nhóm - người giám sát" id="giamsat_cv_update" required></thongtin></div>            
                         </div>
-                        <div class="row no-gutter">
+                        <div class="row no-gutters">
                             <div class="col l-3"><textmargin><thongtin>Đính kèm</thongtin></textmargin></div>
                             <div class="col l-9"><thongtin><input type="file" id="file_cv_update" disabled></thongtin></div>            
                         </div>
@@ -397,6 +382,7 @@
                     <div id="tmp_data_sgv" style="display: none;"></div> <!--Nơi lưu giá trị tạm của lịch sử, dùng để update giá trị lịch sử-->
                 </form>
                 </div>
+            </div>
             <!--  -->
             <div id="tt_chitiet" class="tabcontent">
                 <text_header1>IV. THÔNG TIN CHI TIẾT<i class="fa-solid fa-pen"></i></text_header1>
