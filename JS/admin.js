@@ -22,8 +22,7 @@ function clr_giaoviec(){
 }
 function open_addnv (){
   clr_addnv();
-  ranID = randomString(10);
-  document.getElementById("id_addnv").innerHTML = ranID;
+  // ranID = randomString(10);
   document.getElementById('form_addnv').style.display = 'block'
  }
  function close_addnv(){
@@ -32,60 +31,101 @@ function open_addnv (){
  }
  function xoa_nv(){
   var id_nv = document.getElementById("id_nv").value
-  swal({
+  Swal.fire({
 		title: "Bạn chắc chắn muốn xóa?",
 		text: "Bạn sẽ không thể hổi phục lại dữ liệu!",
-		type: "warning",
+		icon: "warning",
 		showCancelButton: true,
 		confirmButtonColor: '#DD6B55',
 		confirmButtonText: 'Đồng ý, xóa!',
 		cancelButtonText: "Không, hủy yêu cầu!",
-		closeOnConfirm: false,
-		closeOnCancel: false
-	},
-	function(isConfirm){
-    if (isConfirm){
-      swal("Thành công!", "Dữ liệu đã được xóa!", "success");
+	}).then((result) => {
+    if (result.isConfirmed){
+      Swal.fire(
+        'Thành công!',
+        'Dữ liệu đã được xóa!',
+        'success'
+      )
       database.ref("NHANSU").child(id_nv).remove();
       database.ref("THONGTINCANHAN").child(id_nv).remove();
       database.ref("GIAOVIEC").child(id_nv).remove();
       database.ref("LICHSU_GIAOVIEC").child(id_nv).remove();
       database.ref("LICHSU_TIENDO").child(id_nv).remove();
       back_home();
+      console.log("xoathanhcong")
     } else {
-      swal("Hủy", "Dữ liệu được bảo toàn!", "error");
-    }
-	});
-    
+      Swal.fire(
+        'Hủy!',
+        'Dữ liệu được bảo toàn!',
+        'error'
+      )
+  } 
+	}); 
  }
  function submit_addnv(){
   var tk_nv = document.getElementById("tk_addnv").value
   var mk_nv = document.getElementById("mk_addnv").value
   var mt_nv = document.getElementById("mt_addnv").value
-   if((tk_nv.length && mk_nv.length)>4 && mt_nv.length> 29 
-      && document.getElementById("file_avt").value!=""){
-        database.ref("NHANSU").child(ranID).child("AVATAR").set(document.getElementById("v_avt").value);
-         database.ref("NHANSU").child(ranID).child("TEN").set(tk_nv);
-         database.ref("NHANSU").child(ranID).child("MATKHAU").set(mk_nv);
-         database.ref("NHANSU").child(ranID).child("MOTA").set(mt_nv);
-         database.ref("NHANSU").child(ranID).child("CHUCVU").set(document.getElementById("chucvu").value);
-         database.ref("NHANSU").child(ranID).child("ID").set(ranID);
-         database.ref("THONGTINCANHAN").child(ranID).child("CCCD").set("Chưa cập nhật");
-         database.ref("THONGTINCANHAN").child(ranID).child("NGAYCAP").set("Chưa cập nhật");
-         database.ref("THONGTINCANHAN").child(ranID).child("NOICAP").set("Chưa cập nhật");
-         database.ref("THONGTINCANHAN").child(ranID).child("DCTHUONGTRU").set("Chưa cập nhật");
-         database.ref("THONGTINCANHAN").child(ranID).child("DCHIENTAI").set("Chưa cập nhật");
-         database.ref("THONGTINCANHAN").child(ranID).child("HONNHAN").set("Chưa cập nhật");
-         database.ref("THONGTINCANHAN").child(ranID).child("DANTOC").set("Chưa cập nhật");
-         database.ref("THONGTINCANHAN").child(ranID).child("TONGIAO").set("Chưa cập nhật");
-         database.ref("THONGTINCANHAN").child(ranID).child("SOTK").set("Chưa cập nhật");
-         database.ref("THONGTINCANHAN").child(ranID).child("TENTK").set("Chưa cập nhật");
-         database.ref("THONGTINCANHAN").child(ranID).child("LOAINH").set("Chưa cập nhật");
-         ranID = randomString(10);
-         document.getElementById("id_addnv").innerHTML = ranID;
-         swal("Tốt lắm!", "Đã thêm thành công một nhân viên!", "success");
-         hienthi_nv_realtime();
-         clr_addnv();
+  var avt_nv = document.getElementById("v_avt").value
+  var chucvu_nv = document.getElementById("chucvu").value
+  var email_nv = document.getElementById("email_nv").value
+  var sodienthoai_nv = document.getElementById("sodienthoai_nv").value
+   if((tk_nv.length && mk_nv.length)>4 && mt_nv.length> 0 
+      && avt_nv!=""){
+  
+          database.ref("IDMAX").once('value', async function(snap) {
+            var ketqualangnghe = await snap.val();
+                var sttID = ketqualangnghe;
+                const nhansu = {
+                  "AVATAR" : avt_nv,
+                  "TEN" : tk_nv,
+                  "MATKHAU" : mk_nv,
+                  "MOTA" : mt_nv,
+                  "CHUCVU" : chucvu_nv,
+                  "ID" : sttID,
+                  "EMAIL" : email_nv,
+                  "SODIENTHOAI" : sodienthoai_nv,
+                  "PHONGBAN" : "Chưa cập nhật",
+                  "GIOLAMVIEC" : "Chưa cập nhật", 
+                  "DIADIEMLAMVIEC" : "Chưa cập nhật",  
+                  // "CCCD" : "Chưa cập nhật",
+                  // "NGAYCAP" : "Chưa cập nhật",
+                  // "NOICAP" : "Chưa cập nhật",
+                  // "DCTHUONGTRU" : "Chưa cập nhật",
+                  // "DCHIENTAI" : "Chưa cập nhật",
+                  // "HONNHAN" : "Chưa cập nhật",
+                  // "TONGIAO" : "Chưa cập nhật",
+                  // "LOAINH" : "Chưa cập nhật"
+              }
+                database.ref("TESTNHANSU").child(sttID).set(nhansu);
+                document.getElementById("id_addnv").innerHTML ="Thêm thành công: " + nhansu.TEN;
+                database.ref("IDMAX").set(++sttID)
+                hienthi_nv_realtime();
+                open_tableuser().click();
+           })
+       
+        //  database.ref("NHANSU").child(ranID).child("AVATAR").set(avt_nv);
+        //  database.ref("NHANSU").child(ranID).child("TEN").set(tk_nv);
+        //  database.ref("NHANSU").child(ranID).child("MATKHAU").set(mk_nv);
+        //  database.ref("NHANSU").child(ranID).child("MOTA").set(mt_nv);
+        //  database.ref("NHANSU").child(ranID).child("CHUCVU").set(chucvu_nv);
+        //  database.ref("NHANSU").child(ranID).child("ID").set(ranID);
+        //  database.ref("THONGTINCANHAN").child(ranID).child("CCCD").set("Chưa cập nhật");
+        //  database.ref("THONGTINCANHAN").child(ranID).child("NGAYCAP").set("Chưa cập nhật");
+        //  database.ref("THONGTINCANHAN").child(ranID).child("NOICAP").set("Chưa cập nhật");
+        //  database.ref("THONGTINCANHAN").child(ranID).child("DCTHUONGTRU").set("Chưa cập nhật");
+        //  database.ref("THONGTINCANHAN").child(ranID).child("DCHIENTAI").set("Chưa cập nhật");
+        //  database.ref("THONGTINCANHAN").child(ranID).child("HONNHAN").set("Chưa cập nhật");
+        //  database.ref("THONGTINCANHAN").child(ranID).child("DANTOC").set("Chưa cập nhật");
+        //  database.ref("THONGTINCANHAN").child(ranID).child("TONGIAO").set("Chưa cập nhật");
+        //  database.ref("THONGTINCANHAN").child(ranID).child("SOTK").set("Chưa cập nhật");
+        //  database.ref("THONGTINCANHAN").child(ranID).child("TENTK").set("Chưa cập nhật");
+        //  database.ref("THONGTINCANHAN").child(ranID).child("LOAINH").set("Chưa cập nhật");
+        //  ranID = randomString(10);
+        
+
+        
+        //  clr_addnv();
    }
  }
 ////////////////////////////// xem thông tin nhân viên
@@ -97,7 +137,7 @@ function open_tt_nv(id_nv,avt_nv, ten_nv, mota_cv, chucvu_nv){
  document.getElementById("ten_nv").innerHTML = ten_nv;
  document.getElementById("mota_cv").innerHTML = mota_cv;
  document.getElementById("chucvu_nv").innerHTML = chucvu_nv;
- database.ref("THONGTINCANHAN").child(id_nv).child("ID").set(id_nv);
+//  database.ref("THONGTINCANHAN").child(id_nv).child("ID").set(id_nv);
  database.ref("THONGTINCANHAN").once('value', async function(snap) {
        var ketqualangnghe = await snap.val();
        for (var search_nhansu in ketqualangnghe) {
@@ -250,10 +290,15 @@ function hienthi_nv_realtime() {
     // kiểm tra kích thước hình ảnh (500KB)
    // console.log(getSizeImage)
     if (getSizeImage > (500*500)) {
-        swal("Kích thước tối đa là 500KB!", "Bạn đang tải lên tệp quá dung lượng", "error");
+        Swal.fire({
+          title: 'Kích thước tối đa là 500KB!',
+          text: 'Bạn đang tải lên tệp quá dung lượng',
+          icon: 'error',
+          showConfirmButton: false,
+          timer: 1500
+        })
         document.getElementById("file_avt").value = "";
     } else {
-      swal("Thành công!", "Tệp đã được tải lên", "success");
       reader_avt.addEventListener("load", (event) => {
         // Lấy chuỗi Binary thông tin hình ảnh
         const img = event.target.result;
@@ -427,12 +472,19 @@ function giaoviec(){
         database.ref("GIAOVIEC").child(id_nv).child(tmp_dem).child("THOIGIANBAOCAO").set("Chưa cập nhật");
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
         database.ref("GIAOVIEC").child(id_nv).child(tmp_dem).child("TRANGTHAIGIAOVIEC").set("CHƯA NHẬN VIỆC");
-        swal("Đã giao việc!", "Công việc đã được cập nhật", "success");
+        Swal.fire(
+          'Đã giao việc!',
+          'Công việc đã được cập nhật!',
+          'success'
+        )
         /////////// clr 
         clr_giaoviec()
     });
     }  
-  }  if(date_begin>=date_end)  swal("Sai thông tin!", "Vui lòng cập nhật lại thông tin", "error");
+  }  if(date_begin>=date_end)  Swal.fire('Sai thông tin!',
+                                          'Vui lòng cập nhật lại thông tin!',
+                                          'error'
+                                        );
 }
 //////////////////////////////////
 function select_mota(obj){
@@ -533,7 +585,11 @@ function xacnhan_sua_giaoviec(){
         database.ref("LICHSU_GIAOVIEC").child(id_nv).child(id_cvg_select).child(ma_update).child("TIMECAPNHAT").set(timeupdate_his);
         database.ref("LICHSU_GIAOVIEC").child(id_nv).child(id_cvg_select).child(ma_update).child("TENCV").set(ten_cv);
         database.ref("LICHSU_GIAOVIEC").child(id_nv).child(id_cvg_select).child("TENCV").set(ten_cv);
-        swal("Đã giao việc!", "Công việc đã được cập nhật", "success");
+        Swal.fire(
+          'Đã giao việc!',
+          'Công việc đã được cập nhật!',
+          'success'
+        )
         /////////// clr 
         document.getElementById("cvg_motac").innerHTML = "Chưa lựa chọn công việc"
         document.getElementById("cvg_mota_update").value = ""
@@ -545,7 +601,10 @@ function xacnhan_sua_giaoviec(){
     //    document.getElementById("file_cv_update").value = ""
     });
     }  
-  }  if(date_begin>=date_end)  swal("Sai thông tin!", "Vui lòng cập nhật lại thông tin", "error");
+  }  if(date_begin>=date_end)  Swal.fire('Sai thông tin!',
+                                          'Vui lòng cập nhật lại thông tin!',
+                                          'error'
+                                        );
 
 }
 ////////////////////////////////////////////////////////////////////////////
@@ -691,21 +750,18 @@ function get_nhanxet(giatri_nhap, id_nv, macv, ma_bc_his){
  database.ref("LICHSU_TIENDO").child(id_nv).child(macv).child(ma_bc_his).child("DANHGIA").set(giatri_nhap);
 }
 function dangxuat(){
-  swal({
+  Swal.fire({
         title: "Xác nhận đăng xuất",
         showCancelButton: true,
         confirmButtonColor: '#DD3435',
         confirmButtonText: 'Đồng ý',
         cancelButtonText: "Không, hủy yêu cầu!",
-        closeOnConfirm: true,
-        closeOnCancel: true
-    },
-    function(isConfirm){
-    if (isConfirm){
+    }).then((result) => {
+      if (result.isConfirmed) {
         localStorage.clear();
         window.location.href = '../HTML/login.html';
-    }
-    });
+      }
+    })
 }
 //////////////////
 function openPage(pageName,elmnt,color) {
@@ -729,6 +785,6 @@ document.getElementById('cv_giaomt').addEventListener('keypress', (e) => {
     const txtArea = document.getElementById('cv_giaomt');
     e.preventDefault()
     txtArea.value += ' ';
-    console.log(txtArea.value)
+ //   console.log(txtArea.value)
   }
 })
