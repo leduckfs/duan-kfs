@@ -5,7 +5,7 @@ function login(){
         for (var i = 0; i < chon_checkbox.length; i++){
             if (chon_checkbox[i].checked === true){
                 if(chon_checkbox[i].value === "NV"){ 
-                    database.ref("NHANSU").once('value', async function(snap) {
+                    database.ref("TESTNHANSU").once('value', async function(snap) {
                         var ketqualangnghe = await snap.val();
                         for (var seach_nhansu in ketqualangnghe) {
                             id_nhanvien = ketqualangnghe[seach_nhansu]

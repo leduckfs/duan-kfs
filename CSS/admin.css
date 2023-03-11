@@ -13,7 +13,112 @@ a {
 p {
   font-size: 12px;
 }
-
+hr.line {
+  border-top: 1px solid rgb(44, 44, 44);
+}
+.title-trangchu{
+  font-size: 20px;
+  padding: 15px 5px;
+  width: 100%;
+  font-weight: 600;
+  color: #333;
+}
+.title-more{
+  font-size: 16px;
+  padding: 15px 5px;
+  width: 100%;
+  font-weight: 600;
+  color: #333;
+}
+.button-block{
+  position: relative;
+  height: 150px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.button-block .l-6>p{
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 20px;
+}
+.l-2>p{
+  text-align: center;
+  color: #000000;
+  font-weight: 600;
+  font-size: 16px;
+  background-color: #ffffff;
+  padding: 5px;
+  border-radius: 5px;
+  border:  1px solid #585858;
+}
+.button-block .l-6 .demso{
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 50px;
+  margin: 10% 1% 5% 5%;
+}
+.button-block  .l-6>i{
+  font-size: 50px;
+  color: #fff;
+  margin: 25%;
+}
+.button-nhom {
+  padding: 5px;
+  display: inline-block;
+  margin: 0px 5px 5px 0px;
+  border: 1px solid #333;
+  overflow: hidden;
+  font-weight: 600;
+  cursor: pointer;
+  height: 50px;
+}
+.button-nhom-menu{
+  padding: 5px;
+  margin-top: 25px;
+  display: inline-block;
+  overflow: hidden;
+  font-weight: 600;
+  cursor: pointer;
+  height: 25px;
+}
+.button-nhom, .button-nhom-menu:hover {
+  background-color: #16110c;
+  color: #fff;
+}
+#button-nhanvien{
+  background-color: #3e76e7;
+}
+#button-phongban{
+  background-color: #dd8842;
+}
+#button-kho{
+  background-color: #60d649;
+}
+#button-congviec{
+  background-color: #49d4b1;
+}
+#button-thongbao{
+  background-color: #e44848;
+}
+.btn-block-more{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #e2e2e246;
+  color: #fff;
+  border: none;
+}
+.btn-block-more:hover{
+  background-color: #4444445e;
+}
+.cover{
+  margin: 5px;
+  width: 100%;
+}
 body {
   background-color: #ffffff;
 }
@@ -87,9 +192,8 @@ thongtin>button:hover {
 /*----------------sidebar-wrapper----------------*/
 .sidebar-wrapper {
   height: 100%;
-  position: fixed;
   z-index: 1;
-  background: #31353D;
+  background: #31353D; 
 }
 
 .avt {
@@ -148,12 +252,19 @@ thongtin>button:hover {
 .sidebar-wrapper a {
   text-decoration: none;
 }
-
+.icon-center {
+  text-align: center;
+  padding: 5px;
+  font-size: 15px;
+  right: 0;
+  content: "BACK";
+  font-weight: 600;
+}
 /*--------------------sidebar-header----------------------*/
 
 .sidebar-wrapper .sidebar-header {
   padding: 1em;
-  overflow: hidden;
+  overflow: scroll;
   margin-left: 1em;
   color: rgb(182, 182, 182);
 }
@@ -709,7 +820,7 @@ button {
   position: fixed;
   background-color: rgb(0,0,0);
   background-color: rgb(255, 255, 255);
-  overflow-y: hidden;
+  overflow-y: scroll;
   transition: 0.5s;
 }
 
@@ -752,7 +863,7 @@ phongban-label{
   width: 160px;
   z-index: 5;
   background-color: #111;
-  overflow-x: hidden;
+  overflow-x: scroll;
   padding-top: 16px;
 }
 
@@ -773,6 +884,7 @@ phongban-label{
   margin-left: 10px;
   padding: 30px 10px;
   text-align: left;
+  width: 100%;
 }
 summary{
   padding: 0px 0px;
@@ -784,4 +896,21 @@ summary:hover{
 
 .class_checkbox.disabled {
   background-color: blue;
+}
+.input_congviec{
+  height:25px;
+  border: 0.5px solid rgba(87, 87, 87, 0.404);
+  width:100%;
+  outline: none;
+  display: inline-block;
+  padding: 0.5em;
+  border-radius: none;
+  border-bottom: 0.5px solid rgba(87, 87, 87, 0.404);
+}
+.mau_congviec{
+  width: 100%;
+  height: 300px;
+  border: 1px solid #333;
+  /* border-radius: 5px; */
+  overflow: scroll;
 }

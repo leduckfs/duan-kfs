@@ -101,7 +101,6 @@ function open_addnv (){
                 document.getElementById("id_addnv").innerHTML ="Thêm thành công: " + nhansu.TEN;
                 database.ref("IDMAX").set(++sttID)
                 hienthi_nv_realtime();
-                open_tableuser().click();
            })
        
         //  database.ref("NHANSU").child(ranID).child("AVATAR").set(avt_nv);
@@ -277,7 +276,6 @@ function luu_ttcn(){
   document.getElementById("loai_nganhang").innerHTML = `<thongtin id="cccd">${v_loai_nganhang}</thongtin>`
 
 }
-
 function hienthi_nv_realtime() {
   document.getElementById("danhsach_nv").innerHTML = ""
   const reader_avt = new FileReader();   // Khởi tạo đối tượng FileReader
@@ -309,28 +307,28 @@ function hienthi_nv_realtime() {
   })
   /////////////////// lăng nghe kết quả trả về data nhân sự
   database.ref("NHANSU").on('value', async function(snap) {
-       var ketqualangnghe = await snap.val();
-       document.getElementById("danhsach_nv").innerHTML = ""
-       for (var search_nhansu in ketqualangnghe) {
-          id_nhanvien = ketqualangnghe[search_nhansu]
-          var ten_nv = id_nhanvien.TEN
-          var mk_nv = id_nhanvien.MATKHAU
-          var mota_cv = id_nhanvien.MOTA
-          var chucvu_nv = id_nhanvien.CHUCVU
-          var id_nv = id_nhanvien.ID
-          var avt_nv = id_nhanvien.AVATAR
-          if((ten_nv && mk_nv && mota_cv) != undefined){
-            document.getElementById("danhsach_nv").innerHTML +=
-            `<div class="nhanvien l-2 m-4 c-6" onclick="open_tt_nv('${id_nv}', '${avt_nv}','${ten_nv}','${mota_cv}', '${chucvu_nv}')">
-                <img src="${avt_nv}"class="avt_list">
-                <div style="width:100%; text-align:center;">
-                <p>[${id_nv}] - ${ten_nv}</p>
-                <p>${chucvu_nv}</p><div>
-            </div>`
-          }
-         
-       }
-   });
+    var ketqualangnghe = await snap.val();
+    document.getElementById("danhsach_nv").innerHTML = ""
+    for (var search_nhansu in ketqualangnghe) {
+      id_nhanvien = ketqualangnghe[search_nhansu]
+      var ten_nv = id_nhanvien.TEN
+      var mk_nv = id_nhanvien.MATKHAU
+      var mota_cv = id_nhanvien.MOTA
+      var chucvu_nv = id_nhanvien.CHUCVU
+      var id_nv = id_nhanvien.ID
+      var avt_nv = id_nhanvien.AVATAR
+      if((ten_nv && mk_nv && mota_cv) != undefined){
+        document.getElementById("danhsach_nv").innerHTML +=
+        `<div class="nhanvien l-2 m-4 c-6" onclick="open_tt_nv('${id_nv}', '${avt_nv}','${ten_nv}','${mota_cv}', '${chucvu_nv}')">
+            <img src="${avt_nv}"class="avt_list">
+            <div style="width:100%; text-align:center;">
+            <p>[${id_nv}] - ${ten_nv}</p>
+            <p>${chucvu_nv}</p><div>
+        </div>`
+      }  
+    }
+  });
+ 
 }
 function langnghe_cvg(id_nv){
   ////////////////////////////// lấy thông tin giao việc từ CSDL về web admin
