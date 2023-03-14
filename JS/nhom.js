@@ -123,7 +123,7 @@ function hienthi_congviec(id_phongban, id_nhom){
                                         <div class="btn-danhgia" style="height:100%;" onclick="them_tacvu('${id_phongban}','${id_nhom}','${id_congviec}')">Thêm</div>
                                     </div> 
                                 </div>
-                                <div class="l-12">
+                                <div class="l-12" style="height:210px;overflow:scroll">
                                     <progress class="tiendo-css" id="tiendo${id_congviec}" value="" max="100"></progress>
                                     <b id="phantram${id_congviec}"></b>
                                     <p id="mucdo${id_congviec}" class="mucdo-css"></p>
@@ -164,8 +164,10 @@ function hienthi_tacvu(id_phongban, id_nhom, id_congviec){
                 if(cb_tacvu=="checked"){
                     j++;  
                 }
-                document.getElementById("tacvucongviec"+id_tacvu).innerHTML =`<input ${cb_tacvu} type="checkbox" class="checkbox-tacvu" id="cb${id_tacvu}" onclick="checkbox_tacvu('${id_phongban}','${id_nhom}','${id_congviec}','${id_tacvu}')">
-                                                                                <span class="span_congviec" style="margin-left:25px">${ten_tacvu}</span>
+                document.getElementById("tacvucongviec"+id_tacvu).innerHTML =`
+                                                                                <span class="span_congviec" style="margin-left:25px">
+                                                                                    <input ${cb_tacvu} type="checkbox" class="checkbox-tacvu" id="cb${id_tacvu}" onclick="checkbox_tacvu('${id_phongban}','${id_nhom}','${id_congviec}','${id_tacvu}')">${ten_tacvu}
+                                                                                </span>
                                                                                 <button class="todo-delete" onclick="xoa_tacvu('${id_phongban}','${id_nhom}','${id_congviec}','${id_tacvu}','${ten_tacvu}')">Xóa</button>
                                                                                 <hr class="line">`
                 }

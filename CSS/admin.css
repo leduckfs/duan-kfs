@@ -919,13 +919,13 @@ summary:hover{
   overflow: scroll;
 }
 .span_congviec{
-  height:30px;
-  outline: none;
-  margin: 2px;
-  display: inline-block;
   padding: 0.5em;
-  border-radius: none;
-  width: 73.5%;
+  margin: 2px;
+  outline: none;
+  display: inline-block;
+  width: 65%;
+  /* width: 73.5%; */
+  position: relative;
 }
 .todo-delete{
   background-color: #e24141;
@@ -938,10 +938,10 @@ summary:hover{
 }
 .checkbox-tacvu{
   position: absolute;
-  margin-top: 5px;
-  margin-left: 2px;
   width: 20px;
   height: 20px;
+  left: -20px;
+  top: 3px;
 }
 .tiendo-css{
   height: 5px;
