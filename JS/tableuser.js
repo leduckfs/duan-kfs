@@ -117,7 +117,7 @@ function closeNav() {
   document.getElementById("kg_mau").style.height = "0%";
 }
 function them_phongban() {
-  var ten_phongban = document.getElementById("ten_phongban").value;
+  var ten_phongban = document.getElementById("ten_phongban").value.trim();
   var id_phongban = randomString(20);
   database.ref("PHONGBAN").child(id_phongban).child("TENPHONGBAN").set(ten_phongban);
   Swal.fire({
@@ -162,9 +162,7 @@ function open_phongbanmoi(id_phongban, ten_phongban) {
                                                                 <hr class="line">
                                                                 <p class="title-trangchu" style="margin-left:-5px">Danh sách công việc</p>
                                                                 <div class="grid">
-                                                                  <div class="row no-gutters" id="kg_congviec" style="display: none;">
-
-                                                                  </div>
+                                                                  <div class="row no-gutters" id="kg_congviec"></div>
                                                                 </div>
                                                               </div>
                                                           </div>
