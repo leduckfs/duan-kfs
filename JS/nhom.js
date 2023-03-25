@@ -1,25 +1,25 @@
 
-function themnhom() {
-    var id_phongban = document.getElementById('id_phongban_open').innerHTML;
+function themnhom(id_phongban) {
+   // var id_phongban = document.getElementById('lid'+id_phongban).innerHTML;
     var tennhom = document.getElementById('input_tennhom').value.toUpperCase().trim();
     if (tennhom.length < 1) {
         document.getElementById('thongbao_themnhom').value = "Thông báo | Thêm nhóm thất bại - Lỗi tên nhóm";
     } else {
         database.ref("PHONGBAN").child(id_phongban).child(randomString(10)).set(tennhom);
-        document.getElementById('thongbao_themnhom').value = "Thông báo | Đã thêm thành công " + tennhom;
-        hienthi_nhom();
+        document.getElementById('thongbao_themnhom').value = "Thông báo | Đã thêm thành công " + tennhom + " - " + new Date();;
+        hienthi_nhom(id_phongban);
     }
 }
-function hienthi_nhom() {
+function hienthi_nhom(id_phongban) {
     document.getElementById('kg_congviec').style.display = "none";
-    var id_phongban = document.getElementById('id_phongban_open').innerHTML;
+ //   var id_phongban = document.getElementById('lid'+id_phongban).innerHTML;
     database.ref("PHONGBAN").child(id_phongban).on('value', async function (snap) {
         var ketqualangnghe = await snap.val();
-        document.getElementById('ds_nhom').innerHTML = ""
+        document.getElementById('ds_nhom'+id_phongban).innerHTML = ""
         for (var id_nhom in ketqualangnghe) {
             if (id_nhom !== "TENPHONGBAN") {
                 var tennhom = ketqualangnghe[id_nhom]
-                document.getElementById('ds_nhom').innerHTML += `<div class="button-nhom" style="position:relative">${tennhom}&emsp;
+                document.getElementById('ds_nhom'+id_phongban).innerHTML += `<div class="button-nhom" style="position:relative">${tennhom}&emsp;
                                                                     <i class="fal fa-sign-in-alt icon-center" onclick="vao_nhom('${tennhom}', '${id_phongban}', '${id_nhom}')">
                                                                     <p style="padding:5px;font-weight: 700;">OPEN</p></i>
                                                                     <i class="far fa-times" style="position:absolute;top:2px; left:2px" onclick="xoa_nhom('${id_phongban}', '${id_nhom}', '${tennhom}')"></i>
@@ -48,7 +48,7 @@ function xoa_nhom(id_phongban, id_nhom, tennhom) {
                 'success'
             )
             database.ref("PHONGBAN").child(id_phongban).child(id_nhom).remove();
-            document.getElementById('thongbao_themnhom').value = "Thông báo | Đã xóa thành công " + tennhom;
+            document.getElementById('thongbao_themnhom').value = "Thông báo | Đã xóa thành công " + tennhom + " - " + new Date();
         } else if (result.dismiss === Swal.DismissReason.cancel) {
             Swal.fire(
                 'Hủy!',
@@ -68,8 +68,8 @@ function xoa_nhom(id_phongban, id_nhom, tennhom) {
 function vao_nhom(tennhom, id_phongban, id_nhom) {
     document.getElementById('kg_congviec').innerHTML = "";
     hienthi_congviec(id_phongban, id_nhom);
-    document.getElementById('ds_nhom').innerHTML = `<div class="button-nhom">${tennhom}
-                                                        <i class="fas fa-chevron-left icon-center" onclick="hienthi_nhom()">
+    document.getElementById('ds_nhom'+id_phongban).innerHTML = `<div class="button-nhom">${tennhom}
+                                                        <i class="fas fa-chevron-left icon-center" onclick="hienthi_nhom('${id_phongban}')">
                                                         <p style="padding:5px">BACK</p></i>   
                                                     </div>`
     document.getElementById('kg_nhom').style.display = "";
@@ -120,7 +120,7 @@ function hienthi_congviec(id_phongban, id_nhom){
                                 </div>
                                 <div class="l-2">
                                     <div style="width:96%;margin:2px;text-align:center">
-                                        <div class="btn-danhgia" style="height:100%;" onclick="them_tacvu('${id_phongban}','${id_nhom}','${id_congviec}')">Thêm</div>
+                                        <div class="btn-danhgia" style="height:100%;width:100%;margin-left:-6px" onclick="them_tacvu('${id_phongban}','${id_nhom}','${id_congviec}')">Thêm</div>
                                     </div> 
                                 </div>
                                 <div class="l-12" style="height:210px;overflow:scroll">
@@ -141,6 +141,7 @@ function hienthi_congviec(id_phongban, id_nhom){
 }
 function them_tacvu(id_phongban, id_nhom, id_congviec){
     var tacvu = document.getElementById("tacvu"+id_congviec).value;
+    document.getElementById('thongbao_themnhom').value = "Thông báo | Đã thêm thành công " + tacvu + " - " + new Date();
     var id_tacvu = randomString(10);
     var obj_tacvu = {
         "TENTACVU":tacvu,
@@ -164,8 +165,7 @@ function hienthi_tacvu(id_phongban, id_nhom, id_congviec){
                 if(cb_tacvu=="checked"){
                     j++;  
                 }
-                document.getElementById("tacvucongviec"+id_tacvu).innerHTML =`
-                                                                                <span class="span_congviec" style="margin-left:25px">
+                document.getElementById("tacvucongviec"+id_tacvu).innerHTML =`<span class="span_congviec" style="margin-left:25px">
                                                                                     <input ${cb_tacvu} type="checkbox" class="checkbox-tacvu" id="cb${id_tacvu}" onclick="checkbox_tacvu('${id_phongban}','${id_nhom}','${id_congviec}','${id_tacvu}')">${ten_tacvu}
                                                                                 </span>
                                                                                 <button class="todo-delete" onclick="xoa_tacvu('${id_phongban}','${id_nhom}','${id_congviec}','${id_tacvu}','${ten_tacvu}')">Xóa</button>
@@ -208,7 +208,7 @@ function xoa_tacvu(id_phongban,id_nhom,id_congviec,id_tacvu,ten_tacvu){
                 'success'
             )   
             database.ref("CONGVIECPHONGBAN").child(id_phongban).child(id_nhom).child(id_congviec).child(id_tacvu).remove();
-            document.getElementById('thongbao_themnhom').value = "Thông báo | Đã xóa thành công " + ten_tacvu;
+            document.getElementById('thongbao_themnhom').value = "Thông báo | Đã xóa thành công " + ten_tacvu + " - " + new Date();
         } else if (result.dismiss === Swal.DismissReason.cancel) {
             Swal.fire(
                 'Hủy!',
@@ -235,7 +235,7 @@ function xoa_congviec(id_phongban, id_nhom, id_congviec, ten_congviec){
                 'success'
             ) 
             database.ref("CONGVIECPHONGBAN").child(id_phongban).child(id_nhom).child(id_congviec).remove();
-            document.getElementById('thongbao_themnhom').value = "Thông báo | Đã xóa thành công " + ten_congviec;
+            document.getElementById('thongbao_themnhom').value = "Thông báo | Đã xóa thành công " + ten_congviec + " - " + new Date();
         } else if (result.dismiss === Swal.DismissReason.cancel) {
             Swal.fire(
                 'Hủy!',

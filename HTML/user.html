@@ -5,23 +5,357 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KFS USER</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="../CSS/grid.css">
     <link rel="stylesheet" href="../CSS/user.css">
     <link rel="stylesheet" href="../CSS/admin.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css">
     <link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
 </head>
 <body>
+     <!-- header -->
+     <div class="grid no-gutters">
+        <div class="row no-gutters">
+            <nav class="col l-12 m-12 c-12 header">
+                <ul id="nav">
+                    <div class="l-12 c-0 m-12">
+                        <a href="#"><img src="../IMG/logo.png" style="width:4em"></a>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class=" l-0 c-8 m-0">
+                            <a href="#"><img src="../IMG/logo.png" style="width:4em"></a>
+                        </div>
+                        <div class="l-0 c-4 m-0 dropdown">
+                            <textmargin class="dropbtn"><i class="fa-solid fa-bars"
+                                    style="font-size:1.5em; float:right;"></i></textmargin>
+                            <div class="dropdown-content">
+                                <a href="#" onclick="open_addnv()">Thêm nhân viên</a>
+                                <a href="#">Danh sách</a>
+                                <a href="#">Giao việc</a>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- menu -->
+    <div class="grid" id="bg_body">
+        <div class="row no-gutters">
+            <div class="l-2 m-3 c-0">
+                <div class="menu">
+                    <div class="sidebar-wrapper">
+                        <div class="sidebar-header">
+                            <img src="../IMG/kfs.png" class="avt" id="avatar">  
+                            <span class="menu-infor" id="ten"></span>
+                            <span id="chucvu"></span>
+                        </div>
+                        <!-- sidebar-header  -->
+                        <div class="sidebar-search">
+                            <input id="search_nv" class="search-input" placeholder="Tìm kiếm...">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                </span>
+                            </div>
+                        </div>
+                        <!-- sidebar-search  -->
+                        <div class="sidebar-menu">
+                            <ul>
+                                <li class="header-menu"><span>Tính năng</span></li>
+                                <li class="icon-menu row no-gutters" onclick="open_addnv()">
+                                    <a class="l-12" href="#">
+                                        <i class="far fa-plus"></i><span>Nhiệm vụ của tôi</span>
+                                    </a>
+                                </li>
+                                <li class="icon-menu row no-gutters" onclick="open_addnv()">
+                                    <a class="l-12" href="#">
+                                        <i class="fas fa-list-ol"></i><span>Công việc của tôi</span>
+                                    </a>
+                                </li>
+                                <li class="icon-menu row no-gutters" onclick="open_addnv()">
+                                    <a class="l-12" href="#">
+                                        <i class="fal fa-info-circle"></i><span>Thông tin cá nhân</span>
+                                    </a>
+                                </li>
+                                <div class="l-10 m-9 c-12">
+                                    <div class="row no-gutters">
+                                        <div id="kg_user" class="overlay"></div>
+                                    </div>
+                                </div>
+                                <!--  -->
+                                <li class="icon-menu row no-gutters" onclick="dangxuat()">
+                                    <a class="l-12" href="#">
+                                        <i class="fa-solid fa-door-open"></i><span>Đăng xuất</span>
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="l-10 m-9 c-12">
+                <p class="title-trangchu">Trang chủ</p>
+                <hr class="line">
+                <div class="row no-gutters">
+                    <div class="cover l-2 button-block" id="button-nhanvien">
+                        <div class="row no-gutters">
+                            <div class="l-6">
+                                <p class="demso" id="sonhanvien">?</p>
+                                <p>Cộng sự</p>
+                            </div>
+                            <div class="l-6">
+                                <i class="fad fa-users"></i>
+                            </div>
+                            <button class="btn-block-more" onclick="more_nhanvien()">Xem thêm</button>
+                        </div>
+                    </div>
+                    <div class="cover l-2 button-block" id="button-phongban">
+                        <div class="row no-gutters">
+                            <div class="l-6">
+                                <p class="demso" id="sophongban">?</p>
+                                <p>Phòng ban</p>
+                            </div>
+                            <div class="l-6">
+                                <i class="fal fa-building"></i>
+                            </div>
+                            <button class="btn-block-more" onclick="hienthi_phongban()">Xem thêm</button>
+                        </div>
+                    </div>
+                    <div class="cover l-2 button-block" id="button-kho">
+                        <div class="row no-gutters">
+                            <div class="l-6">
+                                <p class="demso">758</p>
+                                <p>Kho</p>
+                            </div>
+                            <div class="l-6">
+                                <i class="fal fa-boxes"></i>
+                            </div>
+                            <button class="btn-block-more">Xem thêm</button>
+                        </div>
+                    </div>
+                    <div class="cover l-2 button-block" id="button-congviec">
+                        <div class="row no-gutters">
+                            <div class="l-6">
+                                <p class="demso">29</p>
+                                <p>Công việc</p>
+                            </div>
+                            <div class="l-6">
+                                <i class="fal fa-tools"></i>
+                            </div>
+                            <button class="btn-block-more">Xem thêm</button>
+                        </div>
+                    </div>
+                    <div class="cover l-2 button-block" id="button-thongbao">
+                        <div class="row no-gutters">
+                            <div class="l-6">
+                                <p class="demso">17</p>
+                                <p>Thông báo</p>
+                            </div>
+                            <div class="l-6">
+                                <i class="fas fa-exclamation"></i>
+                            </div>
+                            <button class="btn-block-more">Xem thêm</button>
+                        </div>
+                    </div>
+                    <div class="l-12 m-9 c-12" id="display_more">
+                        <div class="row no-gutters">
+                            
+                        </div> 
+                        <!-- hiển thị danh mục nhân viên -->
+                    </div>
+
+
+
+
+                    
+    <div class="form_moi" style="display: none;" id="form_nv">
+        <!--Header thongtin-->
+        <div>
+            <nav class="header">
+                <ul id="nav">
+                    <img src="/IMG/logo.png" style="width:4em">
+                    <div class="button_back" onclick="dangxuat()"><i class="fa-solid fa-chevron-left"style="width:4em"></i></div>
+                    <li><a href="#"></a>CÔNG VIỆC</li>
+                    <li id="trangthai_cvm"><a href="#"></a>THÔNG BÁO</li>
+                    <li><a href="#"></a>TRANG CHỦ</li>
+                    <li><a href="#"></a><i class="fa fa-phone" aria-hidden="true"></i> 0386 250 217</li>
+                <!--<li><span><i class="fa fa-search" aria-hidden="true"></i><input class="search-input" placeholder=" Tìm kiếm..."></span></li>--> 
+                </ul>
+            </nav>
+            <div class="grid wide">
+                <div class="row no-gutters">
+                    <div class="col l-2" >
+                        <a  href="#"><img class="avt_nv" id="avt_opennv"></a> 
+                    </div>
+                    <div class="col l-10">
+                        <h1><text_header id="ten_nv">Lê Xuân Đức</text_header></h1>
+                        <div class="row no-gutters">
+                            <div class="col l-5">
+                                <div class="row">
+                                    <div class="col l-5">
+                                        <textmargin><label>Mã nhân viên</label></textmargin>
+                                        <textmargin><label>Chức vụ</label></textmargin>
+                                        <textmargin><label>Gmail công ty</label></textmargin>
+                                    </div>
+                                    <div class="col l-7">
+                                        <textmargin><thongtin id="id_nv"></thongtin></textmargin>
+                                        <textmargin><thongtin id="chucvu_nv"></thongtin></textmargin>
+                                        <textmargin><thongtin>lexuanduc@kfs.com.vn</thongtin></textmargin>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col l-4">
+                                <div class="row no-gutters">
+                                    <div class="col l-5">
+                                        <textmargin><label>Ngày sinh</label></textmargin>
+                                        <textmargin><label>Quê quán </label></textmargin>
+                                        <textmargin><label>Gmail cá nhân</label></textmargin>
+                                    </div>
+                                    <div class="col l-7">
+                                        <textmargin><thongtin>23/09/2030</thongtin></textmargin>
+                                        <textmargin><thongtin>Quảng Nam</thongtin></textmargin>
+                                        <textmargin><thongtin>lexuanduc@gmail.com</thongtin></textmargin>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col l-3">
+                                <div class="row no-gutters">
+                                    <div class="col l-5">
+    
+                                        <textmargin><label>Tài khoản</label></textmargin>
+                                        <textmargin><label>Điện thoại</label></textmargin>
+                                    </div>
+                                    <div class="col l-7">
+    
+                                        <textmargin><thongtin>17864927</thongtin></textmargin>
+                                        <textmargin><thongtin>0386250217</thongtin></textmargin>
+                                    </div>
+                                </div>   
+                            </div>
+                        </div>    
+                    </div>  
+                </div>
+    
+                    <text_header1>I. THÔNG TIN CÁ NHÂN 
+                        <i class="fa-solid fa-pen" onclick="sua_ttcn()"></i>
+                    </text_header1>
+                    <div id="thongtin_canhan">
+                        <!--noi dung thong tin-->
+                    </div>
+    
+                <text_header1>II. THÔNG TIN CÔNG VIỆC <i class="fa-solid fa-pen"></i></text_header1>
+                <text_header><i class="fa-solid fa-list"></i>&emsp;Thông tin cơ bản</text_header>
+               <!--////////////////////////////////////////-->
+                <text_header><i class="fa-solid fa-money-check-dollar"></i>&emsp;Tài sản</text_header>
+                <!--///////////////////////////////////////////////////////////////////////////////////////////////////-->
+                <text_header><i class="fa-sharp fa-solid fa-briefcase"></i>&emsp;Tiến độ công việc</text_header>
+            <!--/////////////////////////////////////////Công việc đang thực hiện//////////////////////////////////////////////////////-->
+                <text_header1>III. CẬP NHẬT CÔNG VIỆC <i class="fa-solid fa-pen"></i></text_header1>
+                <text_header><i class="fa-sharp fa-solid fa-spinner"></i></i>&emsp;Công việc đang thực hiện</text_header>
+                <div id="dscv_update">
+                    <!--//////////////////// nội dung công việc-->
+                </div>
+                <text_header><i class="fa-sharp fa-solid fa-spinner"></i></i>&emsp;Lịch sử yêu cầu</text_header>
+                <div id="his_update">
+                    <!--//////////////////// nội dung công việc-->
+                </div>
+             <!--Cập nhật công việc việc-->   
+                <text_header><i class="fa-solid fa-bars-progress"></i>&emsp;Báo cáo tiến độ</text_header>
+                <form action="#" id="form_sua_giaoviec">
+                    <div class="row no-gutter">
+                        <div class="col l-6">
+                            <div class="row no-gutter">
+                                <div class="col l-12"><textmargin><thongtin>Công việc</thongtin></textmargin></div>
+                                <div class="col l-12">
+                                    <h1 id="id_cvg" style="display: none;"></h1>
+                                    <div id="aa">
+                                        <select id="ten_cvg" onchange="select_congviec_bc(this)">
+    
+                                         <!--nơi thêm giá trị công việc từ CSDL để hiển thị lên web-->
+                                        </select>
+                                    </div>
+    
+                                </div>
+    
+                                <div class="col l-3"><textmargin><thongtin >Tiên độ hiện tại</thongtin></textmargin></div>           
+                                <div class="col l-12"><textmargin><textarea id="tiendo_cv" disabled></textarea></textmargin></div>
+                                <div class="col l-3"><textmargin><thongtin>Cập nhật tiến độ</thongtin></textmargin></div> 
+                                <div class="col l-12"><textmargin><textarea placeholder="Nhập mô tả..." id="tiendo_update" required></textarea></textmargin></div> 
+    
+    
+                            </div>
+                        </div>
+                        <div class="col l-6">
+    
+                            <div class="row no-gutter">
+                                <div class="col l-2"><img class="avt"src="/IMG/bg.jpg" style="border-radius: 5px; height: 18em;"></div>
+                                <div class="col l-2"><img class="avt"src="/IMG/bg.jpg" style="border-radius: 5px; height: 18em;"></div>
+                                <div class="col l-2"><img class="avt"src="/IMG/bg.jpg" style="border-radius: 5px; height: 18em;"></div>
+                                <div class="col l-2"><img class="avt"src="/IMG/bg.jpg" style="border-radius: 5px; height: 18em;"></div>
+                                <div class="col l-2"><img class="avt"src="/IMG/bg.jpg" style="border-radius: 5px; height: 18em;"></div>
+                            </div> 
+                            <div class="row no-gutter">
+                                <div class="col l-12"><textmargin><thongtin>Thêm người nhận</thongtin></textmargin></div>                   
+                            </div>
+    
+                            <div id="ds_nguoinhan"></div>
+                            <div id="ds_nguoinhan_tmp" style="display: none;"></div>
+                    <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                            <div class="row no-gutter">
+                                <div class="col l-12"><textmargin><thongtin style="margin-bottom:-1.5em;">Yêu cầu hỗ trợ</thongtin></textmargin></div>                
+                            </div>
+                            <div id="ds_nguoihotro"><textmargin><thongtin></thongtin></textmargin></div>
+                            <div class="row no-gutter">
+                                <div class="col l-12"><textmargin><thongtin>Trạng thái công việc</thongtin></textmargin></div>                
+                            </div>
+                            <select onchange="sel_ttcv(this)">
+                                <option value="Không chọn">Lựa chọn</option>
+                                <option value="Đã hoàn thành">Đã hoàn thành</option>
+                                <option value="Đang hoàn thành">Đang hoàn thành</option>
+                                <option value="Cần hỗ trợ">Cần hỗ trợ</option>
+                                <option value="Không hoàn thành">Không hoàn thành</option>
+                                <option value="Yêu cầu hủy">Yêu cầu hủy</option>
+                            </select>
+                            <div id="sel_tt" style="display:none"></div> <!--/////////////// lưu trạng thái lựa chọn-->
+                        <div class="col l-o-9" id="btn_submit_bc"></div>  
+                    </div>
+                    <text_header><i class="fa-sharp fa-solid fa-spinner"></i></i>&emsp;Lịch sử báo cáo</text_header>
+                    </div>
+                    <div id="tmp_data_sgv" style="display: none;"></div> <!--Nơi lưu giá trị tạm của lịch sử, dùng để update giá trị lịch sử-->
+                    <div id="tmp_data_baocao" style="display:none"></div> <!--/////////////// lưu dữ liệu báo cáo-->
+                </form>
+    
+    
+    
+    
+                <text_header1>IV. THÔNG TIN CHI TIẾT<i class="fa-solid fa-pen"></i></text_header1>
+                <text_header><i class="fa-sharp fa-solid fa-briefcase"></i>&emsp;Mô tả công việc</text_header>
+                <textmargin><label id="mota_cv">Lập trình IOS</label></textmargin>
+                <text_header><i class="fa-sharp fa-solid fa-briefcase"></i>&emsp;CV xin việc</text_header>
+                <text_header onclick="xoa_nv()"><i class="fa-solid fa-x"></i>&emsp;Hủy tài khoản</text_header>
+            <div>
+        </div>
+    </div>
+    <div id="display_bc">
+    </div>
+    </div>
+    
+    
+    </div>
     <div id="ht_user"></div>
     <script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../JS/sortTable.js"></script>
     <script src="../JS/search.js"></script>
     <script src="../JS/database.js"></script>
     <script src="../JS/user.js"></script>
+    <script src="../JS/phongban_user.js"></script>
+    <script src="../JS/nhom.js"></script>
 </body>
 </html>

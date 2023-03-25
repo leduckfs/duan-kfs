@@ -100,7 +100,6 @@ function show_select_pb() {
     }
   })
 }
-// Close the dropdown if the user clicks outside of it
 window.onclick = function (event) {
   if (!event.target.matches('.dropbtn')) {
     var dropdowns = document.getElementsByClassName("dropdown-table-content");
@@ -131,18 +130,15 @@ function them_phongban() {
 function open_phongbanmoi(id_phongban, ten_phongban) {
   document.getElementById('table_nv').style.display = "none"
   document.getElementById("kg_mau").innerHTML = `<div id="${id_phongban}">
-                                                      <phongban-label style="background-color: rgb(224, 117, 45);" id="lable_mau">${ten_phongban}<label id="id_phongban_open" style="display:none">${id_phongban}</label></phongban-label>
+                                                      <phongban-label style="background-color: rgb(224, 117, 45);" id="lable_mau">${ten_phongban}<label id="lid${id_phongban}" style="display:none"></label></phongban-label>
                                                         <hr size="5px" color="#000" />
                                                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                                                         <div class="overlay-content">
                                                           <div class="sidebar">
-                                                              <a href="#"><i class="fa fa-fw fa-wrench"></i>&ensp;Cài đặt quyền</a>
-
-                                                              <a href="#" id="themnv${id_phongban}" onclick="themnv_phongban('${id_phongban}')"><i class="fa-solid fa-user-plus"></i>&ensp;Thêm nhân viên</a>
-                                                              <a href="#" onclick="xoa_pb('${id_phongban}')"><i class="fa fa-fw fa-home"></i>&ensp;Xóa không gian</a>
+                                                            <a href="#" id="themnv${id_phongban}" onclick="open_addnv_phongban('${id_phongban}', '${ten_phongban}')"><i class="fa-solid fa-user-plus"></i>&ensp;Thêm nhân viên</a>
+                                                            <a href="#" onclick="xoa_pb('${id_phongban}')"><i class="fa fa-fw fa-home"></i>&ensp;Xóa không gian</a>
                                                           </div>
-                                                          <div class="content-sidebar" id="content${id_phongban}">
-                                                           
+                                                          <div class="content-sidebar" id="content">
                                                               <hr class="line">
                                                               <div class="grid">
                                                                 <div class="row no-gutters">
@@ -153,10 +149,10 @@ function open_phongbanmoi(id_phongban, ten_phongban) {
                                                                   <thongtin><input id="thongbao_themnhom" style="width:100%;border-left: 0.5px solid rgba(87, 87, 87, 0.404);color: #0d8ee1" value="Thông báo | " disabled></thongtin>
                                                                 </div>
                                                                   <div class="l-2">
-                                                                    <button class="btn-danhgia" onclick="themnhom()" style="width:100%"><p>Thêm nhóm mới</p></button>
+                                                                    <button class="btn-danhgia" onclick="themnhom('${id_phongban}')" style="width:100%"><p>Thêm nhóm mới</p></button>
                                                                   </div>
                                                                   <p class="title-trangchu" style="margin-left:-5px">Nhóm làm việc</p>
-                                                                  <div id="ds_nhom"></div>
+                                                                  <div id="ds_nhom${id_phongban}"></div>
                                                                   <div id="kg_nhom" style="display: none;"></div>
                                                                 </div>
                                                                 <hr class="line">
@@ -169,55 +165,34 @@ function open_phongbanmoi(id_phongban, ten_phongban) {
                                                         </div>
                                                       </div>`
   document.getElementById("kg_mau").style.height = "100%";
-  hienthi_nhom();
+  hienthi_nhom(id_phongban);
   var nhaptennhom = document.getElementById("input_tennhom");
   nhaptennhom.addEventListener("keydown", function(e) {
     if (e.key === "Enter") {
-      themnhom();
+      themnhom(id_phongban);
     }
 });
 }
-// ############################################################################################################
-function themnv_phongban(id_phongban) {
-  var id_content = "content" + id_phongban
-  document.getElementById(id_content).innerHTML = `<thongtin><input type="search" onkeyup="search_nvpb()" placeholder="Nhập tên..." id="input_content"></thongtin>
-                                                      <ul id="list_nvpb"></ul>`
-
+//####
+function open_addnv_phongban(id_phongban, ten_phongban) {
+  document.getElementById("content").innerHTML = `<input class="input_congviec" type="search" onkeyup="search_nvpb()" 
+                                                                  placeholder="Nhập thông tin nhân viên..." id="input_content">
+                                                                <ul id="list_nvpb"></ul>`
   database.ref("TESTNHANSU").on('value', async function (snap) {
-    var ketqualangnghe = await snap.val();
-    for (var tim_nhanvien in ketqualangnghe) {
-      nhanvien = ketqualangnghe[tim_nhanvien];
-      // console.log(nhanvien.ID)
-      document.getElementById("list_nvpb").innerHTML +=
-        `<li style="padding:5px"><input id="check${nhanvien.ID}" type="checkbox"  style="width:auto;" disabled>&emsp;
-              <thongtin href="#" id="p${id_phongban}">${nhanvien.ID} - ${nhanvien.TEN} - ${nhanvien.CHUCVU}&emsp;</thongtin>
-              <thongtin>
-                <button onclick="them_nvpb('${id_phongban}', '${nhanvien.TEN}', '${nhanvien.ID}')">Thêm</button>
-                <button onclick="xoa_nvpb('${id_phongban}', '${nhanvien.ID}')">Xóa</button>
-                <button id="set${nhanvien.ID}" onclick="caidat_nvpb('${id_phongban}', '${nhanvien.ID}')">Cài đặt quyền</button>
-              </thongtin>
+      var ketqualangnghe = await snap.val();
+      document.getElementById("list_nvpb").innerHTML = ""
+      for (var id_nhanvien in ketqualangnghe) {
+        var nhanvien = ketqualangnghe[id_nhanvien];
+        var check = nhanvien[id_phongban+ten_phongban]
+           document.getElementById("list_nvpb").innerHTML +=
+          `<li style="padding:15px;position:relative"><input id="cb_add${id_nhanvien}" ${check} type="checkbox" onclick="check_nvpb('${id_phongban}','${id_nhanvien}', '${ten_phongban}')">&emsp;
+              <thongtin id="p${id_phongban}">${id_nhanvien} - ${nhanvien.TEN} - ${nhanvien.CHUCVU}&emsp;</thongtin>
+              <hr class="line">
+              <button class="btn-danhgia" id="set${id_nhanvien}" onclick="caidat_nvpb('${id_phongban}', '${id_nhanvien}')" style="position:absolute;right:0;">Cài đặt quyền</button>
             </li>`
-    }
-  })
-  database.ref("PHONGBAN").child(id_phongban).once('value', async function (snap) {
-    var ketqualangnghe = await snap.val();
-    for (var DANHMUCTEN in ketqualangnghe) {
-      DANHMUCNHANVIEN = ketqualangnghe[DANHMUCTEN]
-      var tt_check = DANHMUCNHANVIEN.CHECK
-      let id_nv = "NHANVIEN: " + DANHMUCNHANVIEN.ID
-      if (DANHMUCTEN === id_nv) {
-        var check_id = "check" + DANHMUCNHANVIEN.ID
-        document.getElementById(check_id).checked = tt_check
-        var checkbox_v = document.getElementById(check_id);
-        if (checkbox_v.checked == true) {
-          them_nvpb(id_phongban, nhanvien.TEN, DANHMUCNHANVIEN.ID)
-        } else {
-          xoa_nvpb(id_phongban, DANHMUCNHANVIEN.ID)
-        }
       }
-    }
-  })
-
+    })
+    
 }
 function search_nvpb() {
   var input, filter, ul, li, thongtin, i, txtValue;
@@ -237,21 +212,15 @@ function search_nvpb() {
 }
 const ds_nhansu = {}
 
-function them_nvpb(id_phongban, nhanvienten, nhanvienid) {
-  var check_nvpb = "check" + nhanvienid
-  ds_nhansu.TEN = nhanvienten;
-  ds_nhansu.ID = nhanvienid;
-  document.getElementById(check_nvpb).checked = true
-  ds_nhansu.CHECK = document.getElementById(check_nvpb).checked;
-
-  database.ref("PHONGBAN").child(id_phongban).child("NHANVIEN: " + nhanvienid).set(ds_nhansu);
-}
-function xoa_nvpb(id_phongban, nhanvienid) {
-  var check_nvpb = "check" + nhanvienid
-  document.getElementById(check_nvpb).checked = false
-  ds_nhansu.CHECK = document.getElementById(check_nvpb).checked;
-  database.ref("PHONGBAN").child(id_phongban).child("NHANVIEN: " + nhanvienid).child("CHECK").set(ds_nhansu.CHECK);
-  database.ref("PHONGBAN").child(id_phongban).child("NHANVIEN: " + nhanvienid).child("TEN").remove();
+function check_nvpb(id_phongban, id_nhanvien, ten_phongban) {
+  if(document.getElementById("cb_add"+id_nhanvien).checked === true){
+    database.ref("TESTNHANSU").child(id_nhanvien).child(id_phongban+ten_phongban).set("checked");
+  }
+  if (document.getElementById("cb_add"+id_nhanvien).checked == false){
+    database.ref("TESTNHANSU").child(id_nhanvien).child(id_phongban+ten_phongban).set("");
+   // database.ref("TESTNHANSU").child(id_nhanvien).child(id_phongban).remove();
+  }
+  open_addnv_phongban(id_phongban, ten_phongban)
 }
 function xoa_pb(id_phongban) {
   Swal.fire({

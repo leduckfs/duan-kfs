@@ -340,12 +340,8 @@ function langnghe_cvg(id_nv){
     for (var search_nhanvien in ketqualangnghe) {
       var search_nvid = ketqualangnghe[search_nhanvien]
       if(search_nhanvien==id_nv){
-     //   console.log(search_nhanvien) // id nhân viên 102J7B8y6T
-        //////////////// tìm kiếm id công việc;
           for (var search_macv in search_nvid) {
             var id_cvg = search_nvid[search_macv]
-         //   console.log(search_macv) // id công việc
-           // console.log(id_giaoviec)
             var ten_cvg = id_cvg.TENCV
             var gs_cvg = id_cvg.GIAMSAT
             var ht_cvg = id_cvg.HOTRO

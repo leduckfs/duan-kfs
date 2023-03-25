@@ -1,28 +1,24 @@
 iduser = localStorage.getItem("in_id")
-console.log(iduser)
 if (iduser == undefined || iduser == "") {
   window.location.href = '../HTML/login.html';
 }
+window.onload = hienthi_user()
 const timeout = setTimeout(hienthi_user, 1000);
 function hienthi_user() {
   langnghe_nhansu()
   document.getElementById("ht_user").innerHTML = ""
-  database.ref("NHANSU").once('value', async function (snap) {
+  database.ref("TESTNHANSU").once('value', async function (snap) {
     var ketqualangnghe = await snap.val();
-    for (var seach_nhansu in ketqualangnghe) {
-      id_nhanvien = ketqualangnghe[seach_nhansu]
-      var tk_nv = id_nhanvien.TEN
-      //     var mk_nv = id_nhanvien.MATKHAU
-      var avt_opennv = id_nhanvien.AVATAR
-      var chucvu_nv = id_nhanvien.CHUCVU
-      var id_nv = id_nhanvien.ID
-      var mota_nv = id_nhanvien.MOTA
-      if (id_nv == iduser) {
-        document.getElementById("avt_opennv").src = avt_opennv;
-        document.getElementById("ten_nv").innerHTML = tk_nv
-        document.getElementById("id_nv").innerHTML = id_nv
-        document.getElementById("chucvu_nv").innerHTML = chucvu_nv
-        document.getElementById("mota_cv").innerHTML = mota_nv
+    for (var id_nhanvien in ketqualangnghe) {
+      thongtin_nhanvien = ketqualangnghe[id_nhanvien]
+      if (id_nhanvien === iduser) {
+        document.getElementById("ten").innerHTML = thongtin_nhanvien.TEN
+        document.getElementById("chucvu").innerHTML = " | " + thongtin_nhanvien.CHUCVU
+        document.getElementById("avatar").src = thongtin_nhanvien.AVATAR;
+        document.getElementById("ten_nv").innerHTML = thongtin_nhanvien.TEN
+        document.getElementById("id_nv").innerHTML = id_nhanvien
+        document.getElementById("chucvu_nv").innerHTML = thongtin_nhanvien.CHUCVU
+        document.getElementById("mota_cv").innerHTML = thongtin_nhanvien.MOTA
       }
 
     }
@@ -30,7 +26,7 @@ function hienthi_user() {
   langnghe_cvg(iduser)
 }
 function langnghe_cvg(iduser) {
-  //  document.getElementById("ten_cvg").innerHTML=`<option value="">Lựa chọn công việc</option>`
+    document.getElementById("ten_cvg").innerHTML=`<option value="">Lựa chọn công việc</option>`
   ////////////////////////////// lấy thông tin giao việc từ CSDL về web
   database.ref("GIAOVIEC").on('value', async function (snap) {
     var ketqualangnghe = await snap.val();
@@ -43,7 +39,6 @@ function langnghe_cvg(iduser) {
         //////////////// tìm kiếm id công việc;
         for (var search_macv in search_nvid) {
           var id_cvg = search_nvid[search_macv]
-          // console.log(id_giaoviec)
           var ten_cvg = id_cvg.TENCV
           var gs_cvg = id_cvg.GIAMSAT
           var ht_cvg = id_cvg.HOTRO
@@ -98,21 +93,12 @@ function langnghe_cvg(iduser) {
                           <div class="col l-2"><textmargin><label>${de_cvg}</label></textmargin></div>
                           <div class="col l-2" style=" max-height: 10em;overflow: auto; text-align:justify"><textmargin><label>${mt_cvg}</label></textmargin></div>
                         </div>`
-
-          //console.log(search_macv) // id công việc
           document.getElementById("ten_cvg").innerHTML += `<option value="gv${search_macv}">${ten_cvg}</option>`
-
         }
       }
 
 
     }
-    //   if(trangthaigvm=="1"){
-    //     const audio = new Audio('/SOUND/notify.mp3');
-    //     audio.play();
-    //  //   document.getElementById("trangthai_cvm").innerHTML = "THÔNG BÁO CÓ CÔNG VIỆC MỚI"
-    //   //  database.ref("GIAOVIEC").child(id_nv).child(tmp_dem).child("TRANGTHAIGIAOVIEC").set("0");
-    //   }
 
   });
 
@@ -126,8 +112,6 @@ function langnghe_his_cv(id_nv) {
     for (var search_macv in ketqualangnghe) {
       var id_macv = ketqualangnghe[search_macv]
       var ten_cv_his = id_macv.TENCV
-      //  console.log(ten_cv_his)
-      //   console.log(search_macv) // mã công việc
       document.getElementById("his_update").innerHTML += `<label style="background-color:#40910a;padding: 6px;width:100%">${ten_cv_his}</label>
         <div class="row no-gutter header_phanmuc">
           <div class="col l-2"><textmargin><thongtin>Giám sát</thongtin></textmargin></div>
@@ -139,10 +123,8 @@ function langnghe_his_cv(id_nv) {
         </div>
         <div class="row no-gutter" id="ds${search_macv}"></div>`
 
-      // console.log(ketquagiaoviec) 
       for (var search_malichsu in id_macv) {
         if (search_malichsu != "TENCV") {
-          //  console.log(search_malichsu) // mã lịch sử công việc
           id_giaoviec = id_macv[search_malichsu]
           var ten_cv_his = id_giaoviec.TENCV
           var gs_cvg_his = id_giaoviec.GIAMSAT
@@ -177,18 +159,17 @@ function select_congviec_bc(obj) {
   });
 }
 function langnghe_nhansu() {
-  database.ref("NHANSU").on('value', async function (snap) {
+  database.ref("TESTNHANSU").on('value', async function (snap) {
     var ketqualangnghe = await snap.val();
-    document.getElementById("ds_nguoinhan").innerHTML = ""
+     document.getElementById("ds_nguoinhan").innerHTML = ""
     for (var search_nhansu in ketqualangnghe) {
       id_nhanvien = ketqualangnghe[search_nhansu]
       var ten_nv = id_nhanvien.TEN
-      var id_nv = id_nhanvien.ID
-      if (id_nv != iduser) {
-        document.getElementById("ds_nguoinhan").innerHTML += `<label class="btn-mannhan"><input class="btn-mannhan" id="btnnhan${id_nv}" type="checkbox">&ensp;${ten_nv}</label>`
-        document.getElementById("ds_nguoihotro").innerHTML += `<label class="btn-manhotrou"><input class="btn-manhotrou" id="btnhotro${id_nv}" type="checkbox">&ensp;${ten_nv}</label>`
+      if (iduser != iduser) {
+        document.getElementById("ds_nguoinhan").innerHTML += `<label class="btn-mannhan"><input class="btn-mannhan" id="btnnhan${iduser}" type="checkbox">&ensp;${ten_nv}</label>`
+        document.getElementById("ds_nguoihotro").innerHTML += `<label class="btn-manhotrou"><input class="btn-manhotrou" id="btnhotro${iduser}" type="checkbox">&ensp;${ten_nv}</label>`
       }
-      document.getElementById('btn_submit_bc').innerHTML = `<thongtin><button onclick="capnhat_tiendo()" type="submit">Gửi báo cáo</button></thongtin>`
+        document.getElementById('btn_submit_bc').innerHTML = `<thongtin><button onclick="capnhat_tiendo()" type="submit">Gửi báo cáo</button></thongtin>`
     }
   });
 
