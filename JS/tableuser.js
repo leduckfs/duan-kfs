@@ -1,4 +1,3 @@
-window.onload = demsonhanvien();
 function open_tableuser() {
   document.getElementById('table_nv').style.display = 'block'
   document.getElementById('danhsach_nv').style.display = 'none'
@@ -31,19 +30,6 @@ function open_tableuser() {
                                                           <td>${nhanvien.DIADIEMLAMVIEC}</td>
                                                       </tr>`
     }
-    document.getElementById('sonhanvien').innerHTML = stt;
-  })
-
-}
-function demsonhanvien() {
-  database.ref("TESTNHANSU").on('value', async function (snap) {
-    var stt = 0;
-    var ketqualangnghe = await snap.val();
-    for (var tim_nhanvien in ketqualangnghe) {
-      nhanvien = ketqualangnghe[tim_nhanvien]
-      stt++;
-    }
-    document.getElementById('sonhanvien').innerHTML = stt;
   })
 
 }

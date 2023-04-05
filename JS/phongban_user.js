@@ -52,6 +52,3 @@ function open_phongban_user(id_phongban, ten_phongban){
 document.getElementById("kg_user").style.height = "100%";
 hienthi_nhom(id_phongban);
 }
-function closeNav() {
-    document.getElementById("kg_user").style.height = "0%";
-  }

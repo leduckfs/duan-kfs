@@ -109,6 +109,18 @@
                                         </details>
                                     </a>
                                 </li>
+                                <li class="icon-menu row no-gutters">
+                                    <a class="dropdown-table">
+                                        <details>
+                                            <summary>&emsp;Thêm kho</summary>
+                                            <thongtin><input id="ten_kho" style="width: 100%;" type="text"
+                                                    placeholder="Nhập tên kho" value="" maxlength="40" minlength="5"
+                                                    required></thongtin>
+                                            <div style="width: 100%;text-align: center;" class="btn-danhgia"
+                                                onclick="them_kho()">Lưu</div>
+                                        </details>
+                                    </a>
+                                </li>
                                 <div class="l-10 m-9 c-12">
                                     <div class="row no-gutters">
                                         <div id="kg_mau" class="overlay"></div>
@@ -119,7 +131,6 @@
                                     <a class="l-12" href="#">
                                         <i class="fa-solid fa-door-open"></i><span>Đăng xuất</span>
                                     </a>
-
                                 </li>
                             </ul>
                         </div>
@@ -157,13 +168,13 @@
                     <div class="cover l-2 button-block" id="button-kho">
                         <div class="row no-gutters">
                             <div class="l-6">
-                                <p class="demso">758</p>
+                                <p class="demso" id="sokho">?</p>
                                 <p>Kho</p>
                             </div>
                             <div class="l-6">
                                 <i class="fal fa-boxes"></i>
                             </div>
-                            <button class="btn-block-more">Xem thêm</button>
+                            <button class="btn-block-more" onclick="more_kho()">Xem thêm</button>
                         </div>
                     </div>
                     <div class="cover l-2 button-block" id="button-congviec">
@@ -192,8 +203,8 @@
                     </div>
                     <div class="l-12 m-9 c-12" id="display_more">
                         <div class="row no-gutters">
-                            
-                        </div> 
+
+                        </div>
                         <!-- hiển thị danh mục nhân viên -->
                     </div>
                     <!-- table nhân viên -->
@@ -229,8 +240,8 @@
             <div class="header_addnv">ĐĂNG KÝ TÀI KHOẢN
                 <i class="fas fa-chevron-double-left" onclick="close_addnv()"></i>
             </div>
-            <div class="grid wide">
-                <div class="row">
+            <div class="grid">
+                <div class="row no-gutters">
                     <div class="l-6">
                         <h1><i class="fas fa-user"></i>&ensp;Họ và tên</h1>
                         <input id="tk_addnv" type="text" placeholder="Họ và tên" value="" maxlength="40" minlength="5"
@@ -249,26 +260,102 @@
                         <input type="file" accept=".jpg, .png, .jpeg" id="file_avt" value="" required />
                         <h1 id="v_avt" style="display: none;"></h1>
                         <h1><i class="fa-solid fa-briefcase"></i>&ensp;Vai trò</h1>
-                        <select id="chucvu" style="margin: -0.5% 5%;">
-                            <option value="Quản lý">Quản lý</option>
-                            <option value="Nhân viên IT">Nhân viên IT</option>
-                            <option value="Nhân viên kinh doanh">Nhân viên kinh doanh</option>
-                            <option value="Nhân viên kỹ thuật">Nhân viên kỹ thuật</option>
-                        </select>
-                        <label><i id="id_addnv"></i></label>
-                        <button type="submit" onclick="submit_addnv()" style="margin: -0.5% 5%;">Tạo tài khoản <i
+                        <div class="row no-gutters">
+                            <div class="l-4">
+                                <select id="chucvu" style="margin: 0% 16%;">
+                                    <option value="Quản lý">Quản lý</option>
+                                    <option value="Nhân viên IT">Nhân viên IT</option>
+                                    <option value="Nhân viên kinh doanh">Nhân viên kinh doanh</option>
+                                    <option value="Nhân viên kỹ thuật">Nhân viên kỹ thuật</option>
+                                </select>
+                            </div>
+                            <div class="l-8">
+                                <label><i id="id_addnv"></i></label>
+                                 <button type="submit" onclick="submit_addnv()" style="margin: -0.5% 15%;">Tạo tài khoản <i
                                 class="fa fa-shield-check"></i></button>
+                            </div>
+                        </div>  
                     </div>
-                    <div class="l-6">
-
-
-
-                    </div>
-
-
-                    <div class="footer"></div>
                 </div>
             </div>
+            <div class="footer"></div>
+        </form>
+
+          <!--form them san pham-->
+          <form onsubmit="return false" id="form_product" style="display: none;">
+            <div class="header_addnv">THÊM SẢN PHẨM
+                <i class="fas fa-chevron-double-left" onclick="close_addproduct()"></i>
+            </div>
+            <div class="grid">
+                <div class="row no-gutters">
+                    <div class="l-4">
+                        <h1><i class="fal fa-barcode-read"></i>&ensp;Mã sản phẩm</h1>
+                        <input id="ma_sanpham"  type="text" placeholder="Mã sản phẩm" value="" maxlength="40" minlength="5" disabled>
+                        <h1><i class="fas fa-qrcode"></i>&ensp;Mã phiếu (Nếu có)</h1>
+                        <input  type="text" placeholder="Mã phiếu" value="" maxlength="40" minlength="5">
+                        <h1><i class="fas fa-file-invoice-dollar"></i>&ensp;Loại phiếu (Nếu có)</h1>
+                        <select>
+                            <option value="Điện thoại">Phiếu thu</option>
+                            <option value="Laptop">Phiếu chi</option>
+                            <option value="Máy tính bàn">Phiếu xuất</option>
+                            <option value="Phụ kiện">Phiếu nhập</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                        <h1><i class="fas fa-pen"></i>&ensp;Tiêu đề</h1>
+                        <input  type="text" placeholder="Tên sản phẩm" value="" maxlength="40" minlength="5"required>
+                        <h1><i class="fas fa-sparkles"></i>&ensp;Trạng thái</h1>
+                        <select>
+                            <option value="Điện thoại">Mới</option>
+                            <option value="Laptop">Like New</option>
+                            <option value="Máy tính bàn">Xác</option>
+                            <option value="Phụ kiện">Không xác định</option>
+                        </select>
+                        <h1><i class="fas fa-filter"></i>&ensp;Loại sản phẩm</h1>
+                        <select>
+                            <option value="Điện thoại">Điện thoại</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Máy tính bàn">Máy tính bàn</option>
+                            <option value="Phụ kiện">Phụ kiện</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                    <div class="l-3">
+                        <h1><i class="fas fa-hand-holding-box"></i>&ensp;Đơn vị cung cấp</h1>
+                        <input  type="t" placeholder="Nơi cung cấp" min="0" required>
+                        <h1><i class="fas fa-sort-numeric-up-alt"></i></i>&ensp;Số lượng</h1>
+                        <input  type="number" placeholder="Số lượng" min="0" required>
+                        <h1><i class="fas fa-sack-dollar"></i>&ensp;Đơn giá NCC</h1>
+                        <input  type="number" placeholder="Đơn giá NCC" min="0" required>
+                        <h1><i class="fas fa-dollar-sign"></i>&ensp;Đơn giá bán</h1>
+                        <input  type="number" placeholder="Đơn giá bán" min="0" required>
+                        <h1><i class="fad fa-wallet"></i>&ensp;Đơn vị</h1>
+                        <input  type="text" placeholder="Đơn vị" required>
+                        <h1><i class="fas fa-shipping-timed"></i>&ensp;Phụ phí</h1>
+                        <input  type="number" placeholder="Đơn giá" min="0" required>
+                    </div>
+                    <div class="l-5">
+                        <h1><i class="fa-solid fa-image"></i>&ensp;Ảnh đại diện</h1>
+                        <input type="file" accept=".jpg, .png, .jpeg" value="" required />
+                        <h1><i class="fa-solid fa-file-lines"></i>&ensp;Mô tả đặc tính</h1>
+                        <textarea  placeholder="Mô tả" required></textarea>
+                        <h1><i class="fas fa-money-check-edit"></i>&ensp;Công nợ</h1>
+                        <div class="row no-gutters" style="outline: 1px solid #333; width: 90%;margin-left: 5%;border-radius: 5px;">
+                            <h1 class="l-4">Công nợ cũ</h1>
+                            <h1 class="l-6">100.000.000 VNĐ</h1>
+                            <h1 class="l-4">Công nợ mới</h1>
+                            <h1 class="l-6">132.000.000 VNĐ</h1>
+                            <h1 class="l-4">Phụ phí</h1>
+                            <h1 class="l-6">55.000 VNĐ</h1>
+                            <h1 class="l-4">Tổng cộng</h1>
+                            <h1 class="l-6">232.055.000 VNĐ</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+     
+                <button>Thêm</button>
+    
+            <div class="footer"></div>
         </form>
         <!--/////////form thong tin nhan vien //////////////////////////////-->
         <div class="form_moi" id="form_tt_nv">
@@ -292,8 +379,7 @@
                     <!--  -->
                     <div id="tt_canhan" class="tabcontent">
                         <div class="row no-gutters">
-                            <div class="col l-2 m-3 c-12"><a href="#"><img class="avt_nv"
-                                        id="avt_opennv"></a></div>
+                            <div class="col l-2 m-3 c-12"><a href="#"><img class="avt_nv" id="avt_opennv"></a></div>
                             <div class="col l-10 m-9 c-12">
                                 <h1>
                                     <text_header id="ten_nv">Lê Xuân Đức</text_header>
@@ -835,55 +921,7 @@
             </div>
         </div>
         <div>
-            <!-- <div class="footer_moi">
-    <div class="grid">
-        <div class="row">
-            <div class="l-4 m-0 c-0">
-                <textmargin><text_footer>Về chúng tôi</text_footer></textmargin>
-                <textmarginw><thongtin>KFS Store là cửa hàng công nghệ có gần 7 năm kinh nghiệm 
-                    về dịch vụ sửa chữa Apple (iPhone, iPad, iPod, MacBook, iMac, iMac Pro, 
-                    Mac Pro, Mac mini, Apple Watch, AirPods), máy tính văn phòng và các dòng 
-                    laptop mọi thương hiệu đồng thời cung cấp các sản phẩm chính hãng Apple,
-                    phụ kiện chính hãng, linh kiện máy tính, đồ chơi Hi-Tech.
-                </thongtin></textmarginw>
-                <div class="row">
-                    <div class="l-o-5 m-0 c-0"></div>
-                        <textmargin><i class="fa-brands fa-youtube"></i></textmargin>
-                        <textmargin><i class="fa-brands fa-instagram"></i></textmargin>
-                        <textmargin><i class="fa-brands fa-twitter"></i></textmargin>
-                        <textmargin><i class="fa-brands fa-facebook"></i></textmargin>
-                    </div>
-            </div>
-            <div class="l-4 m-0 c-0">
-                <textmargin><text_footer>Thời gian làm việc</text_footer></textmargin>
-                <div class="row">
-                    <div class="col l-5" >
-                        <textmarginw><thongtin>Thứ 2 - Thứ 7</thongtin></textmarginw>
-                        <textmarginw><thongtin>Chủ nhật</thongtin></textmarginw>
-                    </div>
-                 
-                    <div class="col l-7">
-                        <textmarginw><thongtin>08:00 - 22:00</thongtin></textmarginw>
-                        <textmarginw><thongtin>08:00 - 21:00</thongtin></textmarginw>
-                    </div>
-                    <iframe src="../IMG/bg.jpg"></iframe>
-                </div>
-            </div>
-            <div class="col l-4">
-                <textmargin><text_footer>Thông tin liên hệ</text_footer></textmargin>
-                <textmarginw><thongtin><i class="fa-solid fa-location-dot"></i>&emsp;
-                    2 đường Đồng Nai, phường 2, quận Tân Bình, thành phố Hồ Chí Minh</thongtin></textmarginw>
-                <textmarginw><thongtin><i class="fa-solid fa-location-dot"></i>&emsp;
-                    104 đường Nguyễn Văn Thương, phường 25, quận Bình Thạnh, thành phố Hồ Chí Minh</thongtin></textmarginw>
-                <textmarginw><thongtin><i class="fa fa-phone" aria-hidden="true"></i>&emsp; 0386 250 217</thongtin></textmarginw>
-                <textmarginw><thongtin>&emsp;&emsp; 0708 963 966</thongtin></textmarginw>
-                <textmarginw><thongtin><i class="fa-sharp fa-solid fa-envelope"></i>&emsp; lexuanduc@kfs.com.vn</thongtin></textmarginw>
-                <textmarginw><thongtin><i class="fa-solid fa-pen"></i>&emsp; <input type="email" placeholder="Đăng ký Gmail"><button>Gửi</button></thongtin></textmarginw>
-            </div> 
-        </div> 
-    </div>
-    <div class="by_leduc">Design by LeDuc</div> 
-</div> -->
+
         </div>
         <div id="display_bc"></div>
         <!--1. thongtincanhan-->
@@ -901,7 +939,9 @@
         <script src="../JS/tableuser.js"></script>
         <script src="../JS/morenhanvien.js"></script>
         <script src="../JS/morephongban.js"></script>
+        <script src="../JS/morekho.js"></script>
         <script src="../JS/nhom.js"></script>
+        <script src="../JS/product.js"></script>
 </body>
 
 </html>

@@ -2,8 +2,46 @@ id_admin =  localStorage.getItem("in_id_admin")
 if(id_admin == undefined || id_admin == ""){
   window.location.href = '../HTML/login.html';
 }
-const timeout = setTimeout(hienthi_nv_realtime, 1000);
-const audio = new Audio('../SOUND/notify.mp3');
+// cập nhật số phòng ban ở trang chủ
+
+database.ref("PHONGBAN").on('value', function (snap) {
+var ketqualangnghe = snap.val();
+var sophongban = 0;
+for (var id_phongban in ketqualangnghe) {
+    var phongban = ketqualangnghe[id_phongban]
+    for (var DANHMUCTEN in phongban) {
+        if (DANHMUCTEN === "TENPHONGBAN") {
+            sophongban++;
+        }
+    }
+}
+document.getElementById("sophongban").innerHTML = sophongban;
+})
+database.ref("KHO").on('value', function (snap) {
+  var ketqualangnghe = snap.val();
+  var soluongkho = 1;
+  for (var id_kho in ketqualangnghe) {
+      var kho = ketqualangnghe[id_kho]
+      for (var DANHMUCTEN in kho) {
+          if (DANHMUCTEN === "TENKHO") {
+              soluongkho++;
+          }
+      }
+  }
+  document.getElementById("sokho").innerHTML = soluongkho;
+})
+database.ref("TESTNHANSU").on('value', function (snap) {
+  var ketqualangnghe = snap.val();
+  var sonhanvien=0;
+  for (var tim_nhanvien in ketqualangnghe) {
+    nhanvien = ketqualangnghe[tim_nhanvien]
+    sonhanvien++;
+  }
+  document.getElementById('sonhanvien').innerHTML = sonhanvien;
+})
+
+// const timeout = setTimeout(hienthi_nv_realtime, 1000);
+//const audio = new Audio('../SOUND/notify.mp3');
 function clr_addnv(){
   document.getElementById("tk_addnv").value = ""
   document.getElementById("mk_addnv").value = ""
@@ -66,7 +104,7 @@ function open_addnv (){
   var tk_nv = document.getElementById("tk_addnv").value
   var mk_nv = document.getElementById("mk_addnv").value
   var mt_nv = document.getElementById("mt_addnv").value
-  var avt_nv = document.getElementById("v_avt").value
+  var avt_nv = document.getElementById("file_avt").value
   var chucvu_nv = document.getElementById("chucvu").value
   var email_nv = document.getElementById("email_nv").value
   var sodienthoai_nv = document.getElementById("sodienthoai_nv").value
@@ -76,6 +114,7 @@ function open_addnv (){
           database.ref("IDMAX").once('value', async function(snap) {
             var ketqualangnghe = await snap.val();
                 var sttID = ketqualangnghe;
+                console.log(sttID)
                 const nhansu = {
                   "AVATAR" : avt_nv,
                   "TEN" : tk_nv,

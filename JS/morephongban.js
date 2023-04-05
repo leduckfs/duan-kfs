@@ -1,23 +1,7 @@
-// cập nhật số phòng ban ở trang chủ
-window.onload = function() {
-    database.ref("PHONGBAN").on('value', async function (snap) {
-    var ketqualangnghe = await snap.val();
-    var sophongban = 0;
-    for (var id_phongban in ketqualangnghe) {
-        phongban = ketqualangnghe[id_phongban]
-        for (var DANHMUCTEN in phongban) {
-            if (DANHMUCTEN == "TENPHONGBAN") {
-                sophongban++;
-            }
-        }
-    }
-    document.getElementById("sophongban").innerHTML = sophongban;
-    })
-}
 function more_phongban() {
     database.ref("PHONGBAN").on('value', async function (snap) {
         var ketqualangnghe = await snap.val();
-        document.getElementById("display_more").innerHTML = `<p class="title-more">Danh sách phòng ban</p>`
+        document.getElementById("display_more").innerHTML =`<p class="title-more">Danh sách phòng ban</p>`
         for (var id_phongban in ketqualangnghe) {
             phongban = ketqualangnghe[id_phongban]
             for (var DANHMUCTEN in phongban) {

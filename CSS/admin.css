@@ -194,6 +194,7 @@ thongtin>button:hover {
   height: 100%;
   z-index: 1;
   background: #31353D; 
+  position: fixed;
 }
 
 .avt {
@@ -370,19 +371,19 @@ thongtin>button:hover {
   border-bottom: 1px solid rgb(43, 202, 123);
 }
 
-#form_addnv {
+#form_addnv, #form_product {
   z-index: 3;
-  top: 4em;
+  top: 3.7em;
   color: #000000;
   background-color: #ffffff;
   position: absolute;
   border: 1px solid #000;
   left: 0;
-  width: 66%;
-  margin: 0% 17%;
+  width: 100%;
+  height: 100%;
 }
 
-#form_addnv .header_addnv {
+#form_addnv .header_addnv, #form_product .header_addnv {
   display: block;
   text-align: center;
   font-size: 20px;
@@ -391,17 +392,17 @@ thongtin>button:hover {
   color: #aaa;
 }
 
-#form_addnv .fa-chevron-double-left {
+#form_addnv .fa-chevron-double-left, #form_product .fa-chevron-double-left {
   float: right;
   font-size: 120%;
 }
 
-#form_addnv .fa-chevron-double-left:hover,
-#form_addnv button:hover {
+#form_addnv .fa-chevron-double-left:hover, #form_product .fa-chevron-double-left:hover,
+#form_addnv button:hover, #form_product button:hover {
   color: #0c58ef;
 }
 
-#form_addnv input {
+#form_addnv input, #form_product input {
   outline: none;
   font-size: 16px;
   display: inline-block;
@@ -410,13 +411,12 @@ thongtin>button:hover {
   padding: 0.2em;
 }
 
-#form_addnv h1 {
-  margin: 0.3em;
+#form_addnv h1, #form_product h1 {
   margin-left: 5%;
   padding: 10px;
 }
 
-#form_addnv textarea {
+#form_addnv textarea, #form_product textarea {
   resize: none;
   width: 90%;
   height: 8em;
@@ -434,20 +434,31 @@ thongtin>button:hover {
   padding: 0.5em;
   border-radius: 5px;
   border: 0.005em solid #000000;
+  color: #ffffff;
+  background-color: #000000;
+}
+#form_product button{
+  float: right;
+  padding: 5px;
+  margin-top: 10px;
+  margin-right: 2%;
+  border-radius: 5px;
+  border: 0.005em solid #000000;
+  color: #ffffff;
+  background-color: #000000;
 }
 
 select {
   padding: 7px;
-  margin: 5px;
+  width: 90%;
+  margin: -0.5% 5%;
 }
-
-#form_addnv button {
-  color: #ffffff;
-  background-color: #000000;
-
+i#id_addnv {
+  position: absolute;
+  margin-left: 3%;
+  margin-top: 8px;
 }
-
-#form_addnv .footer {
+#form_addnv .footer, #form_product .footer {
   margin-top: 3em;
   padding: 0;
   height: 3em;
@@ -749,6 +760,7 @@ button {
   display: block;
   padding: 5px;
   text-align: left;
+  position: absolute;
 }
 
 .dropdown-content a:hover {
