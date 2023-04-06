@@ -7,10 +7,10 @@ function more_phongban() {
             for (var DANHMUCTEN in phongban) {
                 if (DANHMUCTEN == "TENPHONGBAN") {
                     var ten_phongban = phongban[DANHMUCTEN]
-                    document.getElementById("display_more").innerHTML +=`<div class="cover l-2 button-block" id="button-phongban" 
+                    document.getElementById("display_more").innerHTML +=`<div class="cover l-3 button-block" id="button-phongban" 
                                                                             style="display:inline-block;background-image:url('https://unsplash.it/400/200/?random')"
                                                                             onclick="open_phongbanmoi('${id_phongban}','${ten_phongban}')">
-                                                                            <p id="${id_phongban}">${ten_phongban}</p>
+                                                                            <p class="title" id="${id_phongban}">${ten_phongban}</p>
                                                                         </div>`
             }
             }

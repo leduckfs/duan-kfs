@@ -44,7 +44,7 @@
     <!-- menu -->
     <div class="grid" id="bg_body">
         <div class="row no-gutters">
-            <div class="l-2 m-3 c-0">
+            <div class="l-2 m-0 c-0">
                 <div class="menu">
                     <div class="sidebar-wrapper">
                         <h4 style="border-bottom: 0.01em solid #a89e9e;"></h4>
@@ -137,11 +137,12 @@
                     </div>
                 </div>
             </div>
-            <div class="l-10 m-9 c-12">
+            <div class="grid wide">
+            <div class="l-12 m-12 c-12">
                 <p class="title-trangchu">Trang chủ</p>
                 <hr class="line">
                 <div class="row no-gutters">
-                    <div class="cover l-2 button-block" id="button-nhanvien">
+                    <div class="cover l-3 m-6 c-6 button-block" id="button-nhanvien">
                         <div class="row no-gutters">
                             <div class="l-6">
                                 <p class="demso" id="sonhanvien">?</p>
@@ -153,7 +154,7 @@
                             <button class="btn-block-more" onclick="more_nhanvien()">Xem thêm</button>
                         </div>
                     </div>
-                    <div class="cover l-2 button-block" id="button-phongban">
+                    <div class="cover l-3 m-6 c-6 button-block" id="button-phongban">
                         <div class="row no-gutters">
                             <div class="l-6">
                                 <p class="demso" id="sophongban">?</p>
@@ -165,7 +166,7 @@
                             <button class="btn-block-more" onclick="more_phongban()">Xem thêm</button>
                         </div>
                     </div>
-                    <div class="cover l-2 button-block" id="button-kho">
+                    <div class="cover l-3 m-6 c-6 button-block" id="button-kho">
                         <div class="row no-gutters">
                             <div class="l-6">
                                 <p class="demso" id="sokho">?</p>
@@ -177,7 +178,7 @@
                             <button class="btn-block-more" onclick="more_kho()">Xem thêm</button>
                         </div>
                     </div>
-                    <div class="cover l-2 button-block" id="button-congviec">
+                    <div class="cover l-3 m-6 c-6 button-block" id="button-congviec">
                         <div class="row no-gutters">
                             <div class="l-6">
                                 <p class="demso">29</p>
@@ -189,26 +190,14 @@
                             <button class="btn-block-more">Xem thêm</button>
                         </div>
                     </div>
-                    <div class="cover l-2 button-block" id="button-thongbao">
-                        <div class="row no-gutters">
-                            <div class="l-6">
-                                <p class="demso">17</p>
-                                <p>Thông báo</p>
-                            </div>
-                            <div class="l-6">
-                                <i class="fas fa-exclamation"></i>
-                            </div>
-                            <button class="btn-block-more">Xem thêm</button>
-                        </div>
-                    </div>
-                    <div class="l-12 m-9 c-12" id="display_more">
+                    <div class="l-12 m-12 c-12" id="display_more">
                         <div class="row no-gutters">
 
                         </div>
                         <!-- hiển thị danh mục nhân viên -->
                     </div>
                     <!-- table nhân viên -->
-                    <table class="table_nv l-10 m-9 c-12" id="table_nv" style="display:none">
+                    <table class="table_nv l-10 m-12 c-12" id="table_nv" style="display:none">
                         <tr>
                             <th>STT</th>
                             <th>ID</th>
@@ -223,7 +212,7 @@
                         <!-- nội dung -->
                     </table>
                 </div>
-                <div class="l-10 m-9 c-12">
+                <div class="l-10 m-12 c-12">
                     <div class="row no-gutters">
                         <div class="grid">
                             <div class="row no-gutters" id="danhsach_nv">
@@ -233,6 +222,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
 
         <!--form them nhan vien-->
@@ -290,25 +280,25 @@
                 <div class="row no-gutters">
                     <div class="l-4">
                         <h1><i class="fal fa-barcode-read"></i>&ensp;Mã sản phẩm</h1>
-                        <input id="ma_sanpham"  type="text" placeholder="Mã sản phẩm" value="" maxlength="40" minlength="5" disabled>
+                        <input id="ma_sanpham"  type="text" placeholder="Mã sản phẩm" value="" maxlength="40" minlength="5">
                         <h1><i class="fas fa-qrcode"></i>&ensp;Mã phiếu (Nếu có)</h1>
-                        <input  type="text" placeholder="Mã phiếu" value="" maxlength="40" minlength="5">
+                        <input  type="text" id="ma_phieu" placeholder="Mã phiếu" value="" maxlength="40" minlength="5">
                         <h1><i class="fas fa-file-invoice-dollar"></i>&ensp;Loại phiếu (Nếu có)</h1>
-                        <select>
-                            <option value="Điện thoại">Phiếu thu</option>
-                            <option value="Laptop">Phiếu chi</option>
-                            <option value="Máy tính bàn">Phiếu xuất</option>
-                            <option value="Phụ kiện">Phiếu nhập</option>
+                        <select id="loai_phieu" onChange="chon_phieu(this)">
+                            <option value="Phiếu thu">Phiếu thu</option>
+                            <option value="Phiếu chi">Phiếu chi</option>
+                            <option value="Phiếu xuất">Phiếu xuất</option>
+                            <option value="Phiếu nhập">Phiếu nhập</option>
                             <option value="Khác">Khác</option>
                         </select>
                         <h1><i class="fas fa-pen"></i>&ensp;Tiêu đề</h1>
                         <input  type="text" placeholder="Tên sản phẩm" value="" maxlength="40" minlength="5"required>
                         <h1><i class="fas fa-sparkles"></i>&ensp;Trạng thái</h1>
                         <select>
-                            <option value="Điện thoại">Mới</option>
-                            <option value="Laptop">Like New</option>
-                            <option value="Máy tính bàn">Xác</option>
-                            <option value="Phụ kiện">Không xác định</option>
+                            <option value="Mới">Mới</option>
+                            <option value="Like New">Like New</option>
+                            <option value="Xác">Xác</option>
+                            <option value="Không xác định">Không xác định</option>
                         </select>
                         <h1><i class="fas fa-filter"></i>&ensp;Loại sản phẩm</h1>
                         <select>
@@ -352,9 +342,7 @@
                     </div>
                 </div>
             </div>
-     
-                <button>Thêm</button>
-    
+                <button onclick="submit_product()">Thêm</button>
             <div class="footer"></div>
         </form>
         <!--/////////form thong tin nhan vien //////////////////////////////-->

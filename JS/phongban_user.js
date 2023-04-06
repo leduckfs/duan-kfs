@@ -12,7 +12,7 @@ function hienthi_phongban() {
                   var ten_phongban = thongtin.toString().slice(20, thongtin.toString().length);
                   //console.log(phongban_check) // trangthai phong ban co duoc them vao nhanvien hay khong
                   //console.log(thongtin) // là id các phongban duoc them vao nhan vien
-                  document.getElementById("display_more").innerHTML += `<div class="cover l-2 button-block" id="btn${id_phongban}" 
+                  document.getElementById("display_more").innerHTML += `<div class="cover l-3 button-block" id="btn${id_phongban}" 
                                       style="display:inline-block;background-image:url('https://unsplash.it/400/200/?random')"
                                       onclick="open_phongban_user('${id_phongban}','${ten_phongban}')">
                                       <p id="${thongtin}">${ten_phongban}</p>

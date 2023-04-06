@@ -2,7 +2,7 @@ function more_nhanvien(){
     document.getElementById("display_more").innerHTML= ""
     document.getElementById("display_more").innerHTML+=`<p class="title-more">Quản lý nhân viên</p>
                                                                 <div class="row no-gutters">
-                                                                    <div class="cover l-2 button-block" id="button-nhanvien">
+                                                                    <div class="cover l-3 m-4 c-6 button-block" id="button-nhanvien">
                                                                         <div class="row no-gutters">
                                                                             <div class="l-6">
                                                                                 <p class="demso" id="sonhanvien">?</p>
@@ -14,7 +14,7 @@ function more_nhanvien(){
                                                                             
                                                                         </div>
                                                                     </div>
-                                                                    <div class="cover l-2 button-block" id="button-nhanvien">
+                                                                    <div class="cover l-3 m-4 c-6 button-block" id="button-nhanvien">
                                                                         <div class="row no-gutters">
                                                                             <div class="l-6">
                                                                                 <p class="demso" id="sonhanvien">?</p>
@@ -26,7 +26,7 @@ function more_nhanvien(){
                                                                          
                                                                         </div>
                                                                     </div>
-                                                                    <div class="cover l-2 button-block" id="button-nhanvien">
+                                                                    <div class="cover l-3 m-4 c-6 button-block" id="button-nhanvien">
                                                                     <div class="row no-gutters">
                                                                         <div class="l-6">
                                                                             <p class="demso" id="sonhanvien">?</p>
@@ -38,7 +38,7 @@ function more_nhanvien(){
                                                                         
                                                                     </div>
                                                                     </div>
-                                                                     <div class="cover l-2 button-block" id="button-nhanvien">
+                                                                     <div class="cover l-3 m-4 c-6 button-block" id="button-nhanvien">
                                                                         <div class="row no-gutters">
                                                                             <div class="l-6">
                                                                                 <p class="demso" id="sonhanvien">?</p>

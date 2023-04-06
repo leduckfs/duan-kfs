@@ -14,19 +14,19 @@ function more_kho() {
     database.ref("KHO").on('value', async function (snap) {
         var ketqualangnghe = await snap.val();
         document.getElementById("display_more").innerHTML =`<p class="title-more">Danh sách kho</p>
-                                                            <div class="cover l-2 button-block" id="button-khotong" 
+                                                            <div class="cover l-3 button-block" id="button-khotong" 
                                                                 style="display:inline-block;background-image:url('https://unsplash.it/400/200/?random')">
-                                                                <p id="khotong">Tất cả sản phẩm</p>
+                                                                <p class="title" id="khotong">Tất cả sản phẩm</p>
                                                             </div>`
         for (var id_kho in ketqualangnghe) {
             kho = ketqualangnghe[id_kho]
             for (var DANHMUCTEN in kho) {
                 if (DANHMUCTEN == "TENKHO") {
                     var ten_kho = kho[DANHMUCTEN]
-                    document.getElementById("display_more").innerHTML +=`<div class="cover l-2 button-block" id="button-kho" 
+                    document.getElementById("display_more").innerHTML +=`<div class="cover l-3 button-block" id="button-kho" 
                                                                             style="display:inline-block;background-image:url('https://unsplash.it/400/200/?random')"
                                                                             onclick="open_kho('${id_kho}','${ten_kho}')">
-                                                                            <p id="${id_kho}">${ten_kho}</p>
+                                                                            <p class="title" id="${id_kho}">${ten_kho}</p>
                                                                         </div>`
             }
             }

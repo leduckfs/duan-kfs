@@ -34,6 +34,7 @@ hr.line {
   position: relative;
   height: 150px;
   padding: 5px;
+  border: solid 3px white;
   border-radius: 5px;
 }
 .button-block .l-6>p{
@@ -42,15 +43,17 @@ hr.line {
   font-weight: 600;
   font-size: 20px;
 }
-.l-2>p{
+.title{
+  position: absolute;
   text-align: center;
-  color: #000000;
+  color: #ffffff;
   font-weight: 600;
   font-size: 16px;
-  background-color: #ffffff;
+  background-color: #5193f7;
   padding: 5px;
-  border-radius: 5px;
-  border:  1px solid #585858;
+  margin: -5px;
+  border-radius: 0px 0px 5px 0px;
+  border:  1px solid #ffffff;
 }
 .button-block .l-6 .demso{
   text-align: center;
@@ -116,7 +119,6 @@ hr.line {
   background-color: #4444445e;
 }
 .cover{
-  margin: 5px;
   width: 100%;
 }
 body {
