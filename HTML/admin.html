@@ -273,7 +273,7 @@
 
           <!--form them san pham-->
           <form onsubmit="return false" id="form_product" style="display: none;">
-            <div class="header_addnv">THÊM SẢN PHẨM
+            <div class="header_addsanpham">THÊM SẢN PHẨM
                 <i class="fas fa-chevron-double-left" onclick="close_addproduct()"></i>
             </div>
             <div class="grid">
@@ -284,7 +284,7 @@
                         <h1><i class="fas fa-qrcode"></i>&ensp;Mã phiếu (Nếu có)</h1>
                         <input  type="text" id="ma_phieu" placeholder="Mã phiếu" value="" maxlength="40" minlength="5">
                         <h1><i class="fas fa-file-invoice-dollar"></i>&ensp;Loại phiếu (Nếu có)</h1>
-                        <select id="loai_phieu" onChange="chon_phieu(this)">
+                        <select onChange="chon_phieu(this)">
                             <option value="Phiếu thu">Phiếu thu</option>
                             <option value="Phiếu chi">Phiếu chi</option>
                             <option value="Phiếu xuất">Phiếu xuất</option>
@@ -292,16 +292,16 @@
                             <option value="Khác">Khác</option>
                         </select>
                         <h1><i class="fas fa-pen"></i>&ensp;Tiêu đề</h1>
-                        <input  type="text" placeholder="Tên sản phẩm" value="" maxlength="40" minlength="5"required>
+                        <input  type="text" id="ten_sanpham" placeholder="Tên sản phẩm" value="" maxlength="40" minlength="5"required>
                         <h1><i class="fas fa-sparkles"></i>&ensp;Trạng thái</h1>
-                        <select>
+                        <select onChange="chon_trangthai(this)">
                             <option value="Mới">Mới</option>
                             <option value="Like New">Like New</option>
                             <option value="Xác">Xác</option>
                             <option value="Không xác định">Không xác định</option>
                         </select>
                         <h1><i class="fas fa-filter"></i>&ensp;Loại sản phẩm</h1>
-                        <select>
+                        <select onChange="chon_loai_sanpham(this)">
                             <option value="Điện thoại">Điện thoại</option>
                             <option value="Laptop">Laptop</option>
                             <option value="Máy tính bàn">Máy tính bàn</option>
@@ -311,38 +311,78 @@
                     </div>
                     <div class="l-3">
                         <h1><i class="fas fa-hand-holding-box"></i>&ensp;Đơn vị cung cấp</h1>
-                        <input  type="t" placeholder="Nơi cung cấp" min="0" required>
+                        <input  type="text" id="noi_cungcap" placeholder="Nơi cung cấp" min="0" required>
                         <h1><i class="fas fa-sort-numeric-up-alt"></i></i>&ensp;Số lượng</h1>
-                        <input  type="number" placeholder="Số lượng" min="0" required>
-                        <h1><i class="fas fa-sack-dollar"></i>&ensp;Đơn giá NCC</h1>
-                        <input  type="number" placeholder="Đơn giá NCC" min="0" required>
+                        <input  type="number" onkeyup="tongket_sanpham()" id="soluong" placeholder="Số lượng" min="0" required>
+                        <h1><i class="fas fa-sack-dollar"></i>&ensp;Đơn giá nhập</h1>
+                        <input  type="number" onkeyup="tongket_sanpham()" id="dongia_nhap" placeholder="Đơn giá nhập" min="0" required>
                         <h1><i class="fas fa-dollar-sign"></i>&ensp;Đơn giá bán</h1>
-                        <input  type="number" placeholder="Đơn giá bán" min="0" required>
-                        <h1><i class="fad fa-wallet"></i>&ensp;Đơn vị</h1>
-                        <input  type="text" placeholder="Đơn vị" required>
-                        <h1><i class="fas fa-shipping-timed"></i>&ensp;Phụ phí</h1>
-                        <input  type="number" placeholder="Đơn giá" min="0" required>
+                        <input  type="number" id="dongia_ban" placeholder="Đơn giá bán" min="0" required>
+                        <h1><i class="fad fa-wallet"></i>&ensp;Đơn vị tính</h1>
+                        <select onChange="chon_donvi(this)">
+                            <option value="Cái - chiếc">Cái - chiếc</option>
+                            <option value="Bộ">Bộ</option>
+                            <option value="Hộp">Hộp</option>
+                            <option value="L">Phụ kiện</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                        <input  type="text" id="donvi_tinh" placeholder="Đơn vị" required>
+                        <div class="grid">
+                            <div class="row">
+                                <div class="l-5" style="margin-left: 5%;">
+                                    <h1><i class="fas fa-shipping-timed"></i>&ensp;Phụ phí</h1>
+                                    <input  type="number" onkeyup="tongket_sanpham()" id="phuphi" placeholder="Đơn giá" min="0" required>
+                                </div>
+                                <div class="l-6">
+                                    <h1><i class="fas fa-quote-left"></i>&ensp;Loại phụ phí</h1>
+                                    <input style="width: 88%;" type="text" id="loai_phuphi" placeholder="Nhập loại" required>
+                                </div>
+                            </div>
+                        </div>     
                     </div>
                     <div class="l-5">
                         <h1><i class="fa-solid fa-image"></i>&ensp;Ảnh đại diện</h1>
-                        <input type="file" accept=".jpg, .png, .jpeg" value="" required />
-                        <h1><i class="fa-solid fa-file-lines"></i>&ensp;Mô tả đặc tính</h1>
-                        <textarea  placeholder="Mô tả" required></textarea>
+                        <input type="file" accept=".jpg, .png, .jpeg" id="avt_sanpham" required />
+                        <h1 id="value_avt_sanpham" style="display: none;"></h1>
+                        <h1><i class="fa-solid fa-file-lines"></i>&ensp;Mô tả đặc đặc tính</h1>
+                        <div style="width: 90%;">
+                            <button onclick="add_row()">Thêm hàng</button>
+                            <button onclick="delete_row()">Xóa hàng</button>
+                        </div>
+                        <div id="table_dssp">
+                            <table id="table_dactinh_sanpham">
+                                <tr>
+                                <th>STT</th>
+                                <th>Loại đặc tính</th>
+                                <th>Thông tin</th>
+                                </tr>
+                                <tr>
+                                <td>1</td>
+                                <td><input class="input-table" type="text"></td>
+                                <td><input class="input-table" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><input class="input-table" type="text"></td>
+                                    <td><input class="input-table" type="text"></td>
+                                </tr>
+                            </table>
+                        </div>
                         <h1><i class="fas fa-money-check-edit"></i>&ensp;Công nợ</h1>
-                        <div class="row no-gutters" style="outline: 1px solid #333; width: 90%;margin-left: 5%;border-radius: 5px;">
+                        <div class="row no-gutters" style="outline: 1px solid #333; width: 90%;margin-left: 5%">
                             <h1 class="l-4">Công nợ cũ</h1>
-                            <h1 class="l-6">100.000.000 VNĐ</h1>
+                            <h1 class="l-6">Chưa cập nhật</h1>
                             <h1 class="l-4">Công nợ mới</h1>
-                            <h1 class="l-6">132.000.000 VNĐ</h1>
+                            <h1 class="l-6" id="tinh_congno">0 VNĐ</h1>
                             <h1 class="l-4">Phụ phí</h1>
-                            <h1 class="l-6">55.000 VNĐ</h1>
-                            <h1 class="l-4">Tổng cộng</h1>
-                            <h1 class="l-6">232.055.000 VNĐ</h1>
+                            <h1 class="l-6" id="tinh_phuphi">0 VNĐ</h1>
+                            <h1 class="l-4">TỔNG CỘNG</h1>
+                            <h1 class="l-6" id="tong_congno" style="color:red">0 VNĐ</h1>
                         </div>
                     </div>
                 </div>
             </div>
-                <button onclick="submit_product()">Thêm</button>
+                <button onclick="submit_product()">Thêm sản phẩm</button>
             <div class="footer"></div>
         </form>
         <!--/////////form thong tin nhan vien //////////////////////////////-->

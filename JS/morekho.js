@@ -45,13 +45,15 @@ function open_kho(id_kho, ten_kho){
         <div class="overlay-content">
           <div class="sidebar">
             <a href="#" onclick="closeNav()"><i class="fa fa-fw fa-home"></i>&ensp;Trở về</a>
-            <a href="#" onclick="add_product()"><i class="fad fa-layer-plus"></i>&ensp;Thêm sản phẩm</a>
+            <a href="#" onclick="add_product('${id_kho}')"><i class="fad fa-layer-plus"></i>&ensp;Thêm sản phẩm</a>
           </div>
           <div class="content-sidebar" id="content">
               <div class="grid">
                   <p class="title-trangchu" style="margin-left:-5px">Danh sách sản phẩm</p>
-                  <div id="ds_nhom${id_kho}"></div>
-                  <div id="kg_nhom" style="display: none;"></div>
+                  <div id="ds_sanpham${id_kho}">
+                  
+                  </div>
+                  <div id="kg_sanpham" style="display: none;"></div>
                 </div>
                 <hr class="line">
           
@@ -63,5 +65,4 @@ function open_kho(id_kho, ten_kho){
         </div>
       </div>`
   document.getElementById("kg_mau").style.height = "100%";
-  hienthi_nhom(id_kho);
   }

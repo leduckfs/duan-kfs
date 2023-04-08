@@ -245,7 +245,19 @@ thongtin>button:hover {
   width: 100%;
   color: #fff;
 }
-
+.input-table{
+  border: none;
+  margin: 0px!important;
+  padding: 0px!important;
+}
+#table_dssp{
+  margin-left: 5%;
+  height: 100px;
+  overflow: scroll;
+}
+#table_dssp::-webkit-scrollbar{
+  display: none;
+}
 .sidebar-wrapper ul {
   list-style-type: none;
   padding: 0;
@@ -385,7 +397,7 @@ thongtin>button:hover {
   height: 100%;
 }
 
-#form_addnv .header_addnv, #form_product .header_addnv {
+#form_addnv .header_addnv, #form_product .header_addsanpham {
   display: block;
   text-align: center;
   font-size: 20px;
@@ -416,6 +428,10 @@ thongtin>button:hover {
 #form_addnv h1, #form_product h1 {
   margin-left: 5%;
   padding: 10px;
+  overflow: auto;
+}
+#form_addnv h1::-webkit-scrollbar, #form_product h1::-webkit-scrollbar {
+ display: none;
 }
 
 #form_addnv textarea, #form_product textarea {
